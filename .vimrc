@@ -15,12 +15,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " git repos:
-Plugin 'tomasr/molokai'		" color scheme
 Plugin 'altercation/vim-colors-solarized'		" color scheme
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'tomasr/molokai'		" color scheme
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'				" statusline
+Plugin 'vim-airline/vim-airline-themes'
 
 " Plugin 'Shougo/vimshell.vim'
 "Plugin 'Valloric/YouCompleteMe'
@@ -63,20 +66,25 @@ syntax enable			" enable syntax highlight
 set shiftwidth=4
 set tabstop=4
 set number
+"set relativenumber		" relative line number
 set hlsearch
 set autochdir			" change directory automatically
+set colorcolumn=80		"set up a ruler at column 80
 
-" status bar
+" set up status bar
 set laststatus=2		" always shows status bar
-set statusline=   " clear the statusline for when vimrc is reloaded
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%f\                          " file name
-set statusline+=%h%m%r%w                     " flags
-set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
-set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
-set statusline+=%{&fileformat}]              " file format
-set statusline+=%=                           " right align
-set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
-set statusline+=%b,0x%-8B\                   " current char
-set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+"set statusline=		" clear the statusline for when vimrc is reloaded
+"set statusline+=%-3.3n\                      " buffer number
+"set statusline+=%f\                          " file name
+"set statusline+=%h%m%r%w                     " flags
+"set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+"set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+"set statusline+=%{&fileformat}]              " file format
+"set statusline+=%=                           " right align
+"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+"set statusline+=%b,0x%-8B\                   " current char
+"set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
 
