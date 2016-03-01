@@ -3,8 +3,10 @@
 set nocompatible
 filetype off
 
+" install vundle
+"	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " set Runtime path to include Vundle and initialize
-set rtp+=E:\Vim/vimfiles/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 
 " this is the call to begin the Vundle Plugin Opperation
 call vundle#begin()
@@ -60,7 +62,7 @@ set cursorline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
 winpos 1068 119			" window position
-set lines=54 columns=104	" 25 lines and 80 columnn
+set lines=54 columns=96	" 25 lines and 80 columnn
 
 syntax enable			" enable syntax highlight
 set shiftwidth=4
