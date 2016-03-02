@@ -21,7 +21,7 @@ Plugin 'altercation/vim-colors-solarized'		" color scheme
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'tomasr/molokai'		" color scheme
+Plugin 'tomasr/molokai'							" color scheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'				" statusline
@@ -50,7 +50,7 @@ filetype plugin indent on	" required
 " Put your non-Plugin stuff after this line
 
 
-colorscheme solarized
+colorscheme molokai
 set background=dark
 set guicursor=a:blinkon0
 set guioptions-=m		" hide menu bar
@@ -59,10 +59,11 @@ set guioptions-=L
 set guioptions-=r
 set visualbell
 set cursorline
+" highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
 winpos 1068 119			" window position
-set lines=54 columns=96	" 25 lines and 80 columnn
+set lines=54 columns=88	" 25 lines and 80 columnn
 
 syntax enable			" enable syntax highlight
 set shiftwidth=4
