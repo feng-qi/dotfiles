@@ -17,7 +17,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " git repos:
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'		" color scheme
+Plugin 'majutsushi/tagbar'						" need exuberant-ctags
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -62,8 +65,8 @@ set cursorline
 " highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
-winpos 1068 119			" window position
-set lines=54 columns=88	" 25 lines and 80 columnn
+winpos 1133 129			" window position
+set lines=54 columns=98	" 25 lines and 80 columnn
 
 syntax enable			" enable syntax highlight
 set shiftwidth=4
