@@ -53,7 +53,7 @@ filetype plugin indent on	" required
 " Put your non-Plugin stuff after this line
 
 
-colorscheme molokai
+colorscheme solarized
 set background=dark
 set guicursor=a:blinkon0
 set guioptions-=m		" hide menu bar
@@ -66,7 +66,7 @@ set cursorline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
 winpos 1133 129			" window position
-set lines=54 columns=98	" 25 lines and 80 columnn
+set lines=54 columns=110	" 25 lines and 80 columnn
 
 syntax enable			" enable syntax highlight
 set shiftwidth=4
@@ -91,6 +91,23 @@ set laststatus=2		" always shows status bar
 "set statusline+=%b,0x%-8B\                   " current char
 "set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" YouCompleteMe setting
+set completeopt=longest,menu		" let complete behavior like IDE
+
+let g:ycm_confirm_extra_conf=0		" close load .ycm_extra_conf.py prompt
+let g:ycm_min_num_of_chars_for_completion=2	" complete start from 2nd char
+let g:ycm_seed_identifiers_with_syntax=1	" complete syntactic keyword
+let g:ycm_complete_in_comments=1	" complete in comments
+let g:ycm_complete_in_strings=1		" complete in strings
+let g:ycm_collect_identifiers_from_comments_and_strings=0
+let g:syntastic_always_populate_loc_list = 1
+" let g:ycm_key_list_select_completion = []
+" let g:ycm_key_list_previous_completion = []
+let g:ycm_filetype_blacklist = {
+		\ 'tagbar' : 1,
+		\ 'nerdtree' : 1,
+		\}
 
