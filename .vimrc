@@ -29,6 +29,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'				" statusline
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/taglist.vim'
 
 " Plugin 'Shougo/vimshell.vim'
 "Plugin 'Valloric/YouCompleteMe'
@@ -110,4 +111,13 @@ let g:ycm_filetype_blacklist = {
 		\ 'tagbar' : 1,
 		\ 'nerdtree' : 1,
 		\}
+
+" taglist setting
+set tags=tags;/			" find tags file in parent dir recursively
+"set taglist window in right, delete the following line if you don't like
+let Tlist_Use_Right_Window=1
+let Tlist_Auto_Update=1 
+let Tlist_File_Fold_Auto_Close=1
+"auto close Tlist when exiting file.
+let Tlist_Exit_OnlyWindow = 1 
 
