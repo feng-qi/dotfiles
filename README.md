@@ -1,6 +1,6 @@
 Installation:
 
-	git clone https://github.com/feng-qi/dotfiles ~
+	git clone https://github.com/feng-qi/dotfiles.git ~
 
 
 Create symlinks:
