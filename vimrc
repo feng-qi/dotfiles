@@ -31,6 +31,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'				" statusline
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
+Plugin 'junegunn/vim-easy-align'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/Conque-Shell'				" shell in vim
 "Plugin 'hallison/vim-markdown'
@@ -127,4 +128,8 @@ let Tlist_Exit_OnlyWindow = 1
 let g:syntastic_mode_map = {
 	\ "mode": "active" }
 "	\ "passive_filetypes": ["go"] }
+
+" setup for 'junegunn/vim-easy-align'
+nmap gt <Plug>(EasyAlign)
+xmap gt <Plug>(EasyAlign)
 
