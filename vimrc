@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " git repos:
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'		" color scheme
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'						" need exuberant-ctags
@@ -101,21 +101,21 @@ set laststatus=2		" always shows status bar
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " YouCompleteMe setting
-set completeopt=longest,menu		" let complete behavior like IDE
-
-let g:ycm_confirm_extra_conf=0		" close load .ycm_extra_conf.py prompt
-let g:ycm_min_num_of_chars_for_completion=2	" complete start from 2nd char
-let g:ycm_seed_identifiers_with_syntax=1	" complete syntactic keyword
-let g:ycm_complete_in_comments=1	" complete in comments
-let g:ycm_complete_in_strings=1		" complete in strings
-let g:ycm_collect_identifiers_from_comments_and_strings=0
-let g:syntastic_always_populate_loc_list = 1
-" let g:ycm_key_list_select_completion = []
-" let g:ycm_key_list_previous_completion = []
-let g:ycm_filetype_blacklist = {
-		\ 'tagbar' : 1,
-		\ 'nerdtree' : 1,
-		\}
+"set completeopt=longest,menu		" let complete behavior like IDE
+"
+"let g:ycm_confirm_extra_conf=0		" close load .ycm_extra_conf.py prompt
+"let g:ycm_min_num_of_chars_for_completion=2	" complete start from 2nd char
+"let g:ycm_seed_identifiers_with_syntax=1	" complete syntactic keyword
+"let g:ycm_complete_in_comments=1	" complete in comments
+"let g:ycm_complete_in_strings=1		" complete in strings
+"let g:ycm_collect_identifiers_from_comments_and_strings=0
+"let g:syntastic_always_populate_loc_list = 1
+"" let g:ycm_key_list_select_completion = []
+"" let g:ycm_key_list_previous_completion = []
+"let g:ycm_filetype_blacklist = {
+"		\ 'tagbar' : 1,
+"		\ 'nerdtree' : 1,
+"		\}
 
 " taglist setting
 set tags=tags;/			" find tags file in parent dir recursively
