@@ -118,7 +118,7 @@ set laststatus=2		" always shows status bar
 "		\}
 
 " taglist setting
-set tags=tags;/			" find tags file in parent dir recursively
+set tags=./tags;/			" find tags file in parent dir recursively
 "set taglist window in right, delete the following line if you don't like
 let Tlist_Use_Right_Window=1
 let Tlist_Auto_Update=1
