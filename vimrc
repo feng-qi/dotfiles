@@ -35,7 +35,7 @@ Plugin 'junegunn/vim-easy-align'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/Conque-Shell'				" shell in vim
 "Plugin 'hallison/vim-markdown'
-"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'Shougo/vimshell.vim'
 "Plugin 'Shougo/vimproc.vim'
 
@@ -132,4 +132,8 @@ let g:syntastic_mode_map = {
 " setup for 'junegunn/vim-easy-align'
 nmap gt <Plug>(EasyAlign)
 xmap gt <Plug>(EasyAlign)
+
+" setup for Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
