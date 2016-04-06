@@ -73,6 +73,8 @@ set cursorline
 
 winpos 1133 129			" window position
 set lines=54 columns=110	" 25 lines and 80 columnn
+set nowrap
+set textwidth=0			" don't auto break line
 
 syntax enable			" enable syntax highlight
 set shiftwidth=4
@@ -99,6 +101,7 @@ set laststatus=2		" always shows status bar
 
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+:nnoremap <c-tab> <c-w><c-w>				" use ctrl-tab to jump between windows
 
 " YouCompleteMe setting
 "set completeopt=longest,menu		" let complete behavior like IDE
