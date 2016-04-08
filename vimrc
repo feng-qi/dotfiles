@@ -32,6 +32,8 @@ Plugin 'vim-airline/vim-airline'				" statusline
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mileszs/ack.vim'						" need ack-grep
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/Conque-Shell'				" shell in vim
 "Plugin 'hallison/vim-markdown'
@@ -84,6 +86,7 @@ set number
 set hlsearch
 set autochdir			" change directory automatically
 set colorcolumn=80		"set up a ruler at column 80
+set foldmethod=indent	" fold according to indentation
 
 " set up status bar
 set laststatus=2		" always shows status bar
@@ -101,8 +104,6 @@ set laststatus=2		" always shows status bar
 
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
-:nnoremap <M-j> <C-W>w
-:nnoremap <M-k> <C-W>p
 
 " YouCompleteMe setting
 "set completeopt=longest,menu		" let complete behavior like IDE
@@ -148,4 +149,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git)$',
   \ 'file': '\v\.(log|jpg|png|jpeg|so|exe)$',
   \ }
+
+" setup for word complete, Ctrl-x_Ctrl-k
+set dictionary+=/usr/share/dict/words
 
