@@ -101,7 +101,8 @@ set laststatus=2		" always shows status bar
 
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
-:nnoremap <c-tab> <c-w><c-w>				" use ctrl-tab to jump between windows
+:nnoremap <M-j> <C-W>w
+:nnoremap <M-k> <C-W>p
 
 " YouCompleteMe setting
 "set completeopt=longest,menu		" let complete behavior like IDE
@@ -139,4 +140,12 @@ xmap gt <Plug>(EasyAlign)
 " setup for Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+" setup for plugin 'ctrlp.vim'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git)$',
+  \ 'file': '\v\.(log|jpg|png|jpeg|so|exe)$',
+  \ }
 
