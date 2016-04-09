@@ -34,6 +34,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'						" need ack-grep
+Plugin 'tommcdo/vim-exchange'					" swap two regions of text
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/Conque-Shell'				" shell in vim
 "Plugin 'hallison/vim-markdown'
@@ -74,7 +75,7 @@ set cursorline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
 winpos 1133 129			" window position
-set lines=54 columns=110	" 25 lines and 80 columnn
+"set lines=54 columns=110	" 25 lines and 80 columnn
 set nowrap
 set textwidth=0			" don't auto break line
 
@@ -131,7 +132,7 @@ let Tlist_File_Fold_Auto_Close=1
 "auto close Tlist when exiting file.
 let Tlist_Exit_OnlyWindow = 1
 let g:syntastic_mode_map = {
-	\ "mode": "active" }
+			\ "mode": "active" }
 "	\ "passive_filetypes": ["go"] }
 
 " setup for 'junegunn/vim-easy-align'
@@ -146,10 +147,19 @@ let g:indent_guides_guide_size = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git)$',
-  \ 'file': '\v\.(log|jpg|png|jpeg|so|exe)$',
-  \ }
+			\ 'dir':  '\v[\/]\.(git)$',
+			\ 'file': '\v\.(log|jpg|png|jpeg|so|exe)$',
+			\ }
 
 " setup for word complete, Ctrl-x_Ctrl-k
 set dictionary+=/usr/share/dict/words
+
+" enable omni completion
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+
+" setup for plugin vim-multiple-cursors
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
+"let g:multi_cursor_exit_from_insert_mode = 0
 
