@@ -62,7 +62,7 @@ filetype plugin indent on	" required
 " Put your non-Plugin stuff after this line
 
 
-colorscheme solarized
+colorscheme molokai
 set background=dark
 set guicursor=a:blinkon0
 set guioptions-=m		" hide menu bar
@@ -70,12 +70,9 @@ set guioptions-=T		" hide tool bar
 set guioptions-=L
 set guioptions-=r
 set visualbell
-set cursorline
 " highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
-winpos 1133 129			" window position
-"set lines=54 columns=110	" 25 lines and 80 columnn
 set nowrap
 set textwidth=0			" don't auto break line
 
@@ -85,8 +82,10 @@ set tabstop=4
 set number
 "set relativenumber		" relative line number
 set hlsearch
-set autochdir			" change directory automatically
+"set autochdir			" change directory automatically
+set cursorline
 set colorcolumn=80		"set up a ruler at column 80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 set foldmethod=indent	" fold according to indentation
 
 " set up status bar
@@ -157,9 +156,4 @@ set dictionary+=/usr/share/dict/words
 " enable omni completion
 "filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
-
-" setup for plugin vim-multiple-cursors
-highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-highlight link multiple_cursors_visual Visual
-"let g:multi_cursor_exit_from_insert_mode = 0
 
