@@ -35,6 +35,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'						" need ack-grep
 Plugin 'tommcdo/vim-exchange'					" swap two regions of text
+Plugin 'othree/xml.vim'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/Conque-Shell'				" shell in vim
 "Plugin 'hallison/vim-markdown'
@@ -86,7 +87,7 @@ set hlsearch
 set cursorline
 set colorcolumn=80		"set up a ruler at column 80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
-set foldmethod=indent	" fold according to indentation
+"set foldmethod=indent	" fold according to indentation
 
 " set up status bar
 set laststatus=2		" always shows status bar
@@ -143,12 +144,14 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " setup for plugin 'ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git)$',
-			\ 'file': '\v\.(log|jpg|png|jpeg|so|exe)$',
+			\ 'file': '\v\.(log|jpg|png|jpeg|so|exe|out)$',
 			\ }
+let g:ctrlp_max_files = 50000
+let g:ctrlp_max_depth = 40
 
 " setup for word complete, Ctrl-x_Ctrl-k
 set dictionary+=/usr/share/dict/words
