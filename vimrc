@@ -148,17 +148,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git)$',
-			\ 'file': '\v\.(log|jpg|png|jpeg|so|exe|out)$',
+			\ 'file': '\v\.(log|jpg|png|jpeg|so|o|a|exe|out)$',
 			\ }
+if (executable('ag'))
+	let g:ctrlp_user_command = 'ag %s -p ~/.agignore -t --nocolor -g ""'
+	let g:ackprg = 'ag --nogroup --nocolor --column'	" change ack program to ag
+endif
 let g:ctrlp_max_files = 50000
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_height = 10			" set result window height
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = '0'
-if (executable('ag'))
-	let g:ctrlp_user_command = 'ag %s -t --nocolor -g ""'
-	let g:ackprg = 'ag --nogroup --nocolor --column'	" change ack program to ag
-endif
 
 " setup for word complete, Ctrl-x_Ctrl-k
 set dictionary+=/usr/share/dict/words
