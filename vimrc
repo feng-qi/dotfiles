@@ -152,6 +152,13 @@ let g:ctrlp_custom_ignore = {
 			\ }
 let g:ctrlp_max_files = 50000
 let g:ctrlp_max_depth = 40
+let g:ctrlp_max_height = 10			" set result window height
+"let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = '0'
+if (executable('ag'))
+	let g:ctrlp_user_command = 'ag %s -t --nocolor -g ""'
+	let g:ackprg = 'ag --nogroup --nocolor --column'	" change ack program to ag
+endif
 
 " setup for word complete, Ctrl-x_Ctrl-k
 set dictionary+=/usr/share/dict/words
