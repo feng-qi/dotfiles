@@ -7,3 +7,6 @@ Create symlinks:
 
 	ln -s ~/dotfiles/vimrc ~/.vimrc
 
+file      | program
+--------- | --------
+agignore  | ag

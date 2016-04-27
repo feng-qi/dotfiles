@@ -24,7 +24,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'						" need exuberant-ctags
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'							" color scheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -71,6 +71,7 @@ set guioptions-=T		" hide tool bar
 set guioptions-=L
 set guioptions-=r
 set visualbell
+set showcmd
 " highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
@@ -108,20 +109,27 @@ set laststatus=2		" always shows status bar
 
 " YouCompleteMe setting
 "set completeopt=longest,menu		" let complete behavior like IDE
-"
 "let g:ycm_confirm_extra_conf=0		" close load .ycm_extra_conf.py prompt
 "let g:ycm_min_num_of_chars_for_completion=2	" complete start from 2nd char
 "let g:ycm_seed_identifiers_with_syntax=1	" complete syntactic keyword
 "let g:ycm_complete_in_comments=1	" complete in comments
 "let g:ycm_complete_in_strings=1		" complete in strings
 "let g:ycm_collect_identifiers_from_comments_and_strings=0
-"let g:syntastic_always_populate_loc_list = 1
-"" let g:ycm_key_list_select_completion = []
-"" let g:ycm_key_list_previous_completion = []
+"let g:ycm_key_list_select_completion = []
+"let g:ycm_key_list_previous_completion = []
 "let g:ycm_filetype_blacklist = {
 "		\ 'tagbar' : 1,
 "		\ 'nerdtree' : 1,
 "		\}
+
+" setup for plugin syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " taglist setting
 set tags=./tags;/			" find tags file in parent dir recursively
@@ -167,3 +175,8 @@ set dictionary+=/usr/share/dict/words
 "filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
 
+" setup for fortran
+let fortran_free_source = 1
+let fortran_have_tabs = 1
+let fortran_more_precise = 1
+let fortran_do_enddo = 1
