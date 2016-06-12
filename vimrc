@@ -28,6 +28,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'							" color scheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
 Plugin 'vim-airline/vim-airline'				" statusline
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
@@ -42,6 +44,8 @@ Plugin 'othree/xml.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'Shougo/vimshell.vim'
 "Plugin 'Shougo/vimproc.vim'
+Plugin 'nelstrom/vim-qargs'
+Plugin 'nelstrom/vim-visual-star-search'
 
 " All of you Plugins must be added before the following line
 call vundle#end()		" required
@@ -72,6 +76,9 @@ set guioptions-=L
 set guioptions-=r
 set visualbell
 set showcmd
+set hidden
+set incsearch
+set infercase
 " highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
@@ -82,6 +89,7 @@ syntax enable			" enable syntax highlight
 set shiftwidth=4
 set tabstop=4
 set number
+set history=200
 "set relativenumber		" relative line number
 set hlsearch
 "set autochdir			" change directory automatically
@@ -89,6 +97,25 @@ set cursorline
 set colorcolumn=80		"set up a ruler at column 80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 "set foldmethod=indent	" fold according to indentation
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
+" setup for word complete, Ctrl-x_Ctrl-k
+set dictionary+=/usr/share/dict/words
+
+" enable omni completion
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+
+" setup for fortran
+let fortran_free_source = 1
+let fortran_have_tabs = 1
+let fortran_more_precise = 1
+let fortran_do_enddo = 1
 
 " set up status bar
 set laststatus=2		" always shows status bar
@@ -104,6 +131,8 @@ set laststatus=2		" always shows status bar
 "set statusline+=%b,0x%-8B\                   " current char
 "set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
+" expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
+:cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -123,12 +152,12 @@ set laststatus=2		" always shows status bar
 "		\}
 
 " setup for plugin syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " taglist setting
@@ -152,7 +181,7 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " setup for plugin 'ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,tags     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git)$',
@@ -168,15 +197,12 @@ let g:ctrlp_max_height = 10			" set result window height
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = '0'
 
-" setup for word complete, Ctrl-x_Ctrl-k
-set dictionary+=/usr/share/dict/words
+" Shortcuts
+"	dictionary completion : <C-x><C-k>
+"	insert/delete indent  : <C-t>/<C-d>
+"	correct spelling error:
+"		[s: previous error
+"		]s: next error
+"		z=: correction list
+"		<C-x>s : correction in insert mode
 
-" enable omni completion
-"filetype plugin on
-"set omnifunc=syntaxcomplete#Complete
-
-" setup for fortran
-let fortran_free_source = 1
-let fortran_have_tabs = 1
-let fortran_more_precise = 1
-let fortran_do_enddo = 1
