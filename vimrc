@@ -133,6 +133,8 @@ set laststatus=2		" always shows status bar
 
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
 :cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+:cnoremap <C-p> <Up>
+:cnoremap <C-n> <Down>
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 
