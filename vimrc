@@ -137,6 +137,7 @@ set laststatus=2		" always shows status bar
 :cnoremap <C-n> <Down>
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+:inoremap <C-u> <esc>gUiwea
 
 " YouCompleteMe setting
 "set completeopt=longest,menu		" let complete behavior like IDE
