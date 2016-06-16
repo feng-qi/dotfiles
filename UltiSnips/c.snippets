@@ -22,11 +22,13 @@ endsnippet
 # #include <...>
 snippet inc
 #include <${1:stdio}.h>
+${0}
 endsnippet
 
 # #include "..."
 snippet Inc
 #include "${1:`vim_snippets#Filename("$1.h")`}"
+${0}
 endsnippet
 
 # ifndef...define...endif

@@ -78,7 +78,7 @@ set visualbell
 set showcmd
 set hidden
 set incsearch
-set infercase
+" set infercase
 " highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 " set softtabstop=4		" backspace will delete 4 spaces at 1 time
 
