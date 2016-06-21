@@ -4,6 +4,7 @@ snippet main
 int main(int argc, const char *argv[])
 {
 	${0}
+
 	return 0;
 }
 endsnippet
@@ -21,14 +22,12 @@ endsnippet
 ## Preprocessor
 # #include <...>
 snippet inc
-#include <${1:stdio}.h>
-${0}
+#include <${1:stdio}.h>${0}
 endsnippet
 
 # #include "..."
 snippet Inc
-#include "${1:`vim_snippets#Filename("$1.h")`}"
-${0}
+#include "${1:`vim_snippets#Filename("$1.h")`}"${0}
 endsnippet
 
 # ifndef...define...endif
@@ -73,35 +72,35 @@ endsnippet
 # if
 snippet if
 if (${1:true}) {
-	${0}
-}
+	${2}
+}${0}
 endsnippet
 
 snippet ife
 if (${1:true}) {
 	${2}
 } else {
-	${0}
-}
+	${3}
+}${0}
 endsnippet
 
 # else
 snippet el
 else {
-	${0}
-}
+	${1}
+}${0}
 endsnippet
 
 # else if
 snippet elif
 else if (${1:true}) {
-	${0}
-}
+	${2}
+}${0}
 endsnippet
 
 # ifi
 snippet ifi
-if (${1:true}) ${0};
+if (${1:true}) ${1};${0}
 endsnippet
 
 # ternary
@@ -117,7 +116,7 @@ switch (${1:/* variable */}) {
 		${4:break;}${5}
 	default:
 		${6}
-}
+}${0}
 endsnippet
 
 # switch without default
