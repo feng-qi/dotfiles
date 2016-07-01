@@ -6,6 +6,7 @@ Installation:
 Create symlinks:
 
 	ln -s ~/dotfiles/vimrc ~/.vimrc
+	ln -s ~/dotfiles/UltiSnips/ ~/.vim/UltiSnips
 
 file      | program
 --------- | --------
