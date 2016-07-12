@@ -24,7 +24,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'						" need exuberant-ctags
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'							" color scheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -155,9 +155,6 @@ set laststatus=2		" always shows status bar
 "		\}
 
 " setup for plugin syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
