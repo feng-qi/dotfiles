@@ -206,4 +206,5 @@ let g:ctrlp_working_path_mode = '0'
 "		z=: correction list
 "		<C-x>s : correction in insert mode
 "	zj/zk: jump between folds
+"	:windo diffthis/diffoff
 
