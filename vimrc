@@ -66,14 +66,15 @@ filetype plugin indent on	" required
 
 " Put your non-Plugin stuff after this line
 
-
 colorscheme molokai
 set background=dark
 set guicursor=a:blinkon0
-set guioptions-=m		" hide menu bar
-set guioptions-=T		" hide tool bar
-set guioptions-=L
-set guioptions-=r
+" set guioptions=aegit	" default
+set guioptions=
+"set guioptions-=m		" hide menu bar
+"set guioptions-=T		" hide tool bar
+"set guioptions-=L
+"set guioptions-=r
 set visualbell
 set showcmd
 set hidden
@@ -108,28 +109,10 @@ highlight SpecialKey guifg=#4a4a59
 set dictionary+=/usr/share/dict/words
 
 " enable omni completion
-"filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
-
-" setup for fortran
-let fortran_free_source = 1
-let fortran_have_tabs = 1
-let fortran_more_precise = 1
-let fortran_do_enddo = 1
 
 " set up status bar
 set laststatus=2		" always shows status bar
-"set statusline=		" clear the statusline for when vimrc is reloaded
-"set statusline+=%-3.3n\                      " buffer number
-"set statusline+=%f\                          " file name
-"set statusline+=%h%m%r%w                     " flags
-"set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
-"set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
-"set statusline+=%{&fileformat}]              " file format
-"set statusline+=%=                           " right align
-"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
-"set statusline+=%b,0x%-8B\                   " current char
-"set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
 :cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -138,6 +121,11 @@ set laststatus=2		" always shows status bar
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 :inoremap <C-u> <esc>gUiwea
+:nnoremap <c-tab> gt
+
+" setup for 'junegunn/vim-easy-align'
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " YouCompleteMe setting
 "set completeopt=longest,menu		" let complete behavior like IDE
@@ -158,7 +146,7 @@ set laststatus=2		" always shows status bar
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_check_on_wq = 0
 
 " taglist setting
 set tags=./tags;/			" find tags file in parent dir recursively
@@ -171,10 +159,6 @@ let Tlist_Exit_OnlyWindow = 1
 let g:syntastic_mode_map = {
 			\ "mode": "active" }
 "	\ "passive_filetypes": ["go"] }
-
-" setup for 'junegunn/vim-easy-align'
-nmap gt <Plug>(EasyAlign)
-xmap gt <Plug>(EasyAlign)
 
 " setup for Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level = 2
@@ -191,11 +175,17 @@ if (executable('ag'))
 	let g:ctrlp_user_command = 'ag %s -p ~/.agignore -t --nocolor -g ""'
 	let g:ackprg = 'ag --nogroup --nocolor --column'	" change ack program to ag
 endif
-let g:ctrlp_max_files = 50000
+let g:ctrlp_max_files = 10000
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_height = 10			" set result window height
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = '0'
+
+" setup for fortran
+"let fortran_free_source = 1
+"let fortran_have_tabs = 1
+"let fortran_more_precise = 1
+"let fortran_do_enddo = 1
 
 " Shortcuts
 "	dictionary completion : <C-x><C-k>
