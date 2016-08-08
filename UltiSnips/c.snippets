@@ -27,8 +27,8 @@ snippet inc
 endsnippet
 
 # #include "..."
-snippet Inc
-#include "${1:`vim_snippets#Filename("$1.h")`}"
+snippet incl
+#include "$1.h"
 endsnippet
 
 # ifndef...define...endif
@@ -238,10 +238,38 @@ snippet fpr
 fprintf(${1:stderr}, "${2:%s}\n"${3});
 endsnippet
 
-##
-## Miscellaneous
-# This is kind of convenient
-snippet .
-[${1}]
+
+snippet suc
+TEEC_SUCCESS
 endsnippet
 
+snippet aseqif
+CU_ASSERT_EQUAL_MSG_IF(${1:result}, ${2:TEEC_SUCCESS}, "${3:allocate shared memory} failed: $1=%#x", $1) {
+} else {
+	goto cleanup${3:3};
+}
+endsnippet
+
+snippet asneqif
+CU_ASSERT_NOT_EQUAL_MSG_IF
+endsnippet
+
+snippet aseq
+CU_ASSERT_EQUAL_MSG
+endsnippet
+
+snippet asneq
+CU_ASSERT_NOT_EQUAL_MSG
+endsnippet
+
+snippet fi
+TEEC_FinalizeContext(&${1:context});
+endsnippet
+
+snippet almem
+result = TEEC_AllocateSharedMemory(&${1:context}, &${2:session});
+endsnippet
+
+snippet relmem
+TEEC_ReleaseSharedMemory(&sharedMem${1:In});
+endsnippet
