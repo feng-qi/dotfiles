@@ -46,6 +46,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'Shougo/vimproc.vim'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'jiangmiao/auto-pairs'
 
 " All of you Plugins must be added before the following line
 call vundle#end()		" required
@@ -115,13 +116,15 @@ set dictionary+=/usr/share/dict/words
 set laststatus=2		" always shows status bar
 
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
-:cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-:cnoremap <C-p> <Up>
-:cnoremap <C-n> <Down>
+:cnoremap <C-n>      <Down>
+:cnoremap <C-p>      <Up>
+:cnoremap <expr>     %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+:inoremap <C-u>      <esc>gUiwea
+:nnoremap <F12>      :source ~/vimsession<cr>
+:nnoremap <F9>       :mksession! ~/vimsession<cr>
+:nnoremap <c-tab>    gt
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
-:inoremap <C-u> <esc>gUiwea
-:nnoremap <c-tab> gt
 
 " setup for 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
