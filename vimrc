@@ -115,16 +115,23 @@ set dictionary+=/usr/share/dict/words
 " set up status bar
 set laststatus=2		" always shows status bar
 
+let mapleader=" "
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
 :cnoremap <C-n>      <Down>
 :cnoremap <C-p>      <Up>
 :cnoremap <expr>     %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 :inoremap <C-u>      <esc>gUiwea
 :nnoremap <F12>      :source ~/vimsession<cr>
-:nnoremap <F9>       :mksession! ~/vimsession<cr>
+:nnoremap <F10>      :mksession! ~/vimsession<cr>
 :nnoremap <c-tab>    gt
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+:nnoremap <leader>1  1<C-w>w
+:nnoremap <leader>2  2<C-w>w
+:nnoremap <leader>3  3<C-w>w
+:nnoremap <leader>4  4<C-w>w
+:nnoremap <leader>5  5<C-w>w
+:nnoremap <leader>6  6<C-w>w
 
 " setup for 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
