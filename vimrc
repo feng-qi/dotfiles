@@ -121,6 +121,7 @@ let mapleader=" "
 :cnoremap <C-p>      <Up>
 :cnoremap <expr>     %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 :inoremap <C-u>      <esc>gUiwea
+:inoremap <C-a>      <esc>A
 :nnoremap <F12>      :source ~/vimsession<cr>
 :nnoremap <F10>      :mksession! ~/vimsession<cr>
 :nnoremap <c-tab>    gt
@@ -132,6 +133,7 @@ let mapleader=" "
 :nnoremap <leader>4  4<C-w>w
 :nnoremap <leader>5  5<C-w>w
 :nnoremap <leader>6  6<C-w>w
+:nnoremap <leader>7  7<C-w>w
 
 " setup for 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
