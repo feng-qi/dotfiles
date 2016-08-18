@@ -37,7 +37,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'						" need ack-grep
 Plugin 'tommcdo/vim-exchange'					" swap two regions of text
-Plugin 'othree/xml.vim'
+"Plugin 'othree/xml.vim'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/Conque-Shell'				" shell in vim
 "Plugin 'hallison/vim-markdown'
@@ -47,6 +47,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'mattn/emmet-vim'
+Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
 
 " All of you Plugins must be added before the following line
 call vundle#end()		" required
@@ -192,6 +194,9 @@ let g:ctrlp_max_depth = 40
 let g:ctrlp_max_height = 10			" set result window height
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = '0'
+
+" setup for plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
 
 " setup for fortran
 "let fortran_free_source = 1
