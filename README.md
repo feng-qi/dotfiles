@@ -5,8 +5,14 @@ Installation:
 
 Create symlinks:
 
-	ln -s ~/dotfiles/vimrc ~/.vimrc
-	ln -s ~/dotfiles/UltiSnips/ ~/.vim/UltiSnips
+```sh
+ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -s ~/dotfiles/gvimrc ~/.gvimrc
+ln -s ~/dotfiles/UltiSnips/ ~/.vim/UltiSnips
+
+ln -s ~/dotfiles/agignore ~/.agignore
+ln -s ~/dotfiles/zshrc ~/.zshrc
+```
 
 file      | program
 --------- | --------
