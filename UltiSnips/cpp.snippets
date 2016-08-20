@@ -24,7 +24,7 @@ endsnippet
 
 # for
 snippet for
-for (${1:int} ${2:i} = 0; $2 < ${3:count}; $2${4:++}) {
+for (${1:int} ${2:i} = 0; $2 != ${3:count}; $2${4:++}) {
 	${5}
 }
 endsnippet
@@ -40,7 +40,7 @@ endsnippet
 snippet do
 do {
 	${2}
-} while (${1:/* condition */});
+} while ($1);
 endsnippet
 
 # function definition
