@@ -6,6 +6,7 @@ Installation:
 Create symlinks:
 
 ```sh
+ln -s ~/dotfiles/spacemacs ~/.spacemacs
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/gvimrc ~/.gvimrc
 ln -s ~/dotfiles/UltiSnips/ ~/.vim/UltiSnips
