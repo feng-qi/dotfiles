@@ -23,24 +23,24 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; fengqi
      auto-completion
-     ;; better-defaults
+     better-defaults
      c-c++
      (chinese :variables chinese-default-input-method 'wubi)
      emacs-lisp
      ;; emoji
      ;; games
      git
-     ;; markdown
+     markdown
      org
      ranger
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
+     spell-checking
      ;; syntax-checking
      ;; version-control
+     ;; fengqi
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -250,8 +250,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
 	'(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
 	  ("org-cn"   . "http://elpa.zilongshanren.com/org/")
 	  ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq byte-compile-warnings '(not obsolete))
-  (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
+  ;; (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
+  (set-default 'truncate-lines t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -263,24 +266,11 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-linum-mode t)
   (global-prettify-symbols-mode t)
-  (electric-pair-mode t)
+  ;; (electric-pair-mode t)
   (global-set-key "\C-s" 'swiper)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (swiper ivy disaster company-c-headers cmake-mode clang-format xterm-color shell-pop multi-term eshell-prompt-extras esh-help pacmacs f dash-functional 2048-game ranger emoji-cheat-sheet-plus company-emoji toc-org org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize gnuplot chinese-wbim pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode smeargle orgit magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger evil-magit magit magit-popup git-commit with-editor company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(setq custom-file (expand-file-name "customize-group-setup.el" dotspacemacs-directory))
+(load custom-file 'no-error 'no-message)
