@@ -1,0 +1,113 @@
+* SPC
+** SPC
+Jump to word
+** TAB
+Previous buffer visible in woindow
+** !
+Run shell command
+** '
+Pop up shell
+** * /
+Search in project
+/: the word under cursor is searched automatically.
+** 0,1,...,9
+Jump to window
+** :
+Run M-x
+** ;
+Comment operator
+ip: comment out paragraph
+ii: comment out the indented
+** ?
+Helm session with keybindings
+** ` (C-o)
+Skip backwards in avy jump list
+** F1
+Fuzzy search among... things... Emacs things
+** a: Application
+*** c: Calculator
+*** d: Deer (file tree navigator) need ranger mode)
+*** E: Emojis (need emoji layer)
+*** G: Games (need games layer)
+*** i: IRC (need erc layer)
+*** m: Music (need Spotify layer)
+*** o: Org
+*** P: Processes
+*** r: Ranger (need ranger mode)
+*** s: Shells to choose (SPE ' for default shell)
+*** u: Undo tree visualize
+** b: Buffers
+*** .: (buffer-micro-state): switch through buffers and may kill them
+*** b: (helm-mini): choose buffers
+**** C-z: options
+**** C-c C-f: preview buffer
+*** B: ibuffer (need _bb-ibuffer_ layer)
+*** d: Delete buffer
+*** e: Erase buffer contents
+*** h: Go to Spacemacs home
+*** k: Kill buffer with ido
+*** K: Kill all other buffers
+*** m: Move buffer across windows
+*** M: Ace swap buffer in windows
+*** n/p: Next or previous (useful) buffer
+*** P/Y: Paste/Copy clipboard to/from buffer
+*** R: Revert to original file
+*** s: Switch to scratch buffer
+*** w: Toggle read only
+*** C-k: Kill buffers whose name matches regex
+** c: Compilation & commenting
+*** c: Helm compile
+*** C: Compile
+*** r: Recompile
+*** l/L: Comment line (or invert)
+*** p/P: Comment paragraph (or invert)
+*** t/T: Comment to the line (or invert)
+*** y/Y: Copy and comment
+** C: Capture and colors
+*** c: Org capture (see also SPC aoc)
+*** l: Helm colors
+*** t/T: Ort capture
+** e: Errors (needs syntax-checking layer)
+*** h: Describe syntax checker
+*** l: Toggle error list buffer
+*** n/N/P: Jump between errors
+Consider using [l and ]l from the unimpaired layer
+*** s, S: Select checker (and executable)
+*** v: Veryfy flycheck setup
+** f: Files
+*** a: FASD
+**** d: Directories
+**** f: Files
+**** s: Files and directories
+*** c: Write buffer to new filename
+*** C: Convert line endings
+**** d: To DOS
+**** u: To UNIX
+*** D: Delete buffer and file
+*** e: Emacs configuration-related stuff
+**** d: Go to spacemacs dotfile
+**** D: Ediff dotfile changes
+**** f: Spacemacs FAQ helm source
+**** h: Spacemacs helm (like all documents?!)
+**** i: Spacemacs user init file
+**** R: Synchronize dotfile (source dotfile)
+**** v: Show and copy Spacemacs version
+*** f: Find files
+*** F: Find files at cursor
+*** g: Grep
+*** j: Open dired and move point to given file
+*** J: Open junk file
+*** l: Open file literally (no extra feature/mode enabled)
+*** L: Locate
+**** -b: use base name(literally)
+*** o: Open in external app
+*** r: Recent files
+*** R: Rename file
+*** s: Write to file (save file)
+*** S: Write all buffers to files (save all files)
+*** t: Neotree (directory tree)
+*** v: Variables
+**** d: Add directory local variable
+**** f: Add file local variable
+**** p: Add file local variable (alternative format)
+*** y: Show and copy file name
