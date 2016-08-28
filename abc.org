@@ -111,3 +111,36 @@ Consider using [l and ]l from the unimpaired layer
 **** f: Add file local variable
 **** p: Add file local variable (alternative format)
 *** y: Show and copy file name
+** g:
+** h: Help
+*** RET: Enable minor mode
+*** SPC: Spacemacs helm (see also SPC feh)
+*** b: Helm bookmarks
+*** d: Describe
+**** c: Character
+**** f: Function
+**** F: Face
+**** k: Key
+**** m: Mode
+**** p: Package
+**** s: System
+**** t: Theme
+**** v: Variable
+*** i: Info at point
+*** k: Which-key top level
+*** l: Resume last helm session
+*** L: Helm locate (elisp) library
+*** m: Man pages
+*** M: Helm switch major mode
+*** T: Evil tutorial
+** i: insert
+*** e: Emojis (need emoji layer)
+*** j,J,k,K: Insert line above or below
+Consider using [-SPC and ]-SPC from unimpaired layer.
+*** l: Lorem ipsum text (random text)
+**** l: List items
+**** p: Paragraphs
+**** s: Sentences
+*** s: Helm yasnippets
+*** S: Auto-yasnippet
+*** u: Helm unicode characters
