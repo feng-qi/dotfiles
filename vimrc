@@ -70,6 +70,7 @@ filetype plugin indent on	" required
 " Put your non-Plugin stuff after this line
 
 colorscheme molokai
+set guifont=Source\ Code\ Pro
 set background=dark
 set guicursor=a:blinkon0
 " set guioptions=aegit	" default
@@ -129,6 +130,15 @@ let mapleader=" "
 :nnoremap <c-tab>    gt
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+" Be like spacemacs
+:nnoremap <leader>fs :w<cr>
+:nnoremap <leader>fS :wa<cr>
+:nnoremap <leader>gs :Gstatus<cr>
+:nnoremap <leader>gb :Gblame<cr>
+:nnoremap <leader>qq :qa<cr>
+:nnoremap <leader>wc :q<cr>
+:nnoremap <leader>w- :sp<cr>
+:nnoremap <leader>w/ :vsp<cr>
 :nnoremap <leader>1  1<C-w>w
 :nnoremap <leader>2  2<C-w>w
 :nnoremap <leader>3  3<C-w>w
