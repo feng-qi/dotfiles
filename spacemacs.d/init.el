@@ -255,6 +255,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq byte-compile-warnings '(not obsolete))
   ;; (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
   (set-default 'truncate-lines t)
+  (setq-default c-basic-offset 4)
   )
 
 (defun dotspacemacs/user-config ()
@@ -271,6 +272,8 @@ you should place your code here."
   (global-prettify-symbols-mode t)
   ;; (electric-pair-mode t)
   (global-set-key "\C-s" 'swiper)
+  (global-set-key (kbd "C-=") 'er/expand-region)
+  (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
