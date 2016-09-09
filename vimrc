@@ -47,7 +47,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
 
 " All of you Plugins must be added before the following line
@@ -127,7 +127,8 @@ let mapleader=" "
 :inoremap <C-a>      <esc>A
 :nnoremap <F12>      :source ~/vimsession<cr>
 :nnoremap <F10>      :mksession! ~/vimsession<cr>
-:nnoremap <c-tab>    gt
+:nnoremap <c-tab>    :tabnext<cr>
+:nnoremap <c-s-tab>  :tabprevious<cr>
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
@@ -137,6 +138,7 @@ let mapleader=" "
 :nnoremap <leader>gb :Gblame<cr>
 :nnoremap <leader>qq :qa<cr>
 :nnoremap <leader>wc :q<cr>
+:nnoremap <leader>wC :q!<cr>
 :nnoremap <leader>w- :sp<cr>
 :nnoremap <leader>w/ :vsp<cr>
 :nnoremap <leader>1  1<C-w>w
