@@ -144,3 +144,44 @@ Consider using [-SPC and ]-SPC from unimpaired layer.
 *** s: Helm yasnippets
 *** S: Auto-yasnippet
 *** u: Helm unicode characters
+** j: Join and split
+*** =: Reindent
+*** h/l: Pushes mark and go to beginning or end of line
+*** j: Insert a newline
+*** J: Split sexp and insert a newline
+*** k: Go to next line and indent
+*** o: Open new line above
+** J: Split sexp (no newline)
+** k: Evil lisp state
+Works like a microstate
+*** .: Enter lisp state without a command
+*** $/0: End/beginning of sexp
+*** (/): Insert sexp before or after (and leave lisp state)
+*** `: Hybrid
+**** k: Kill to end of line and leave parens balanced
+**** p: Push hybrid sexp
+**** s: Slurp hybrid sexp
+**** t: Transpose hybrid sexp
+*** a: absorb sexp
+*** b, B: Barf forward or backward
+*** c: Convolute sexps
+*** d: Delete
+**** s: Symbol
+**** w: To end of word
+**** x: sexp
+*** D: Delete backward
+**** s: Symbol
+**** w: To end of word
+**** x: sexp
+*** e, E: Delete to end of sexp (forward and backward) and splice
+*** h, l: Previous and next symbol (without regard for sexps)
+*** H, L: Previous and next sexp (on the same level)
+*** j, k: Next closing paren or previous opening paren
+*** J: Join sexps before and after point
+*** r: Raise sexp (substitute parent sexp with this one)
+*** s, S: Slurp forward or backward
+*** t: Transpose sexp (move sexp before previous one)
+*** U: Go to beginning of parent sexp
+*** w, W: Wrap or unwrap sexp in parens
+*** y: Copy sexp
+*** i, I, p, P, u, v, V, C-r, C-v, ESC: Do the same thing as in evil normal state
