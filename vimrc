@@ -32,60 +32,61 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-airline/vim-airline'				" statusline
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'godlygeek/tabular'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'						" need ack-grep
 Plugin 'tommcdo/vim-exchange'					" swap two regions of text
 "Plugin 'othree/xml.vim'
-"Plugin 'vim-scripts/taglist.vim'
-"Plugin 'vim-scripts/Conque-Shell'				" shell in vim
-"Plugin 'hallison/vim-markdown'
 Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'Shougo/vimshell.vim'
-"Plugin 'Shougo/vimproc.vim'
-Plugin 'nelstrom/vim-qargs'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'mattn/emmet-vim'
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
+Plugin 'easymotion/vim-easymotion'
 
 " All of you Plugins must be added before the following line
 call vundle#end()		" required
 filetype plugin indent on	" required
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-
 "***************** End configure *****************
 
-" Put your non-Plugin stuff after this line
+set encoding=utf-8
+"set langmenu=zh_CN.UTF-8
+"language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-colorscheme molokai
+if has('gui_running')
+	colorscheme solarized
+	set lines=54 columns=100	" 25 lines and 80 columnn
+
+	" setup for plugin vim-multiple-cursors
+	"	- put this *after* colorscheme setup, or it may has no effects
+	highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+	highlight link multiple_cursors_visual Visual
+	"let g:multi_cursor_exit_from_insert_mode = 0
+
+	set guicursor=a:blinkon0
+	" set guioptions=aegit	" default
+	set guioptions=
+	"set guioptions-=m		" hide menu bar
+	"set guioptions-=T		" hide tool bar
+	"set guioptions-=L
+	"set guioptions-=r
+else
+	colorscheme molokai
+endif
+
+set clipboard=unnamedplus
+set winaltkeys=no			" Alt key will not pop out menu bar menus
 set guifont=Source\ Code\ Pro
 set background=dark
-set guicursor=a:blinkon0
-" set guioptions=aegit	" default
-set guioptions=
-"set guioptions-=m		" hide menu bar
-"set guioptions-=T		" hide tool bar
-"set guioptions-=L
-"set guioptions-=r
 set visualbell
 set showcmd
 set hidden
-set incsearch
-" set infercase
-" highlight CursorLine  term=underline  guibg=#555555  cterm=underline
-" set softtabstop=4		" backspace will delete 4 spaces at 1 time
+set ignorecase
+"set incsearch			" become useless while plugin easymotion presents
+set infercase
 
 set nowrap
 set textwidth=0			" don't auto break line
@@ -93,14 +94,16 @@ set textwidth=0			" don't auto break line
 syntax enable			" enable syntax highlight
 set shiftwidth=4
 set tabstop=4
+"set softtabstop=4		" backspace will delete 4 spaces at 1 time
 set number
 set history=200
 "set relativenumber		" relative line number
-set hlsearch
+"set hlsearch
 "set autochdir			" change directory automatically
 set cursorline
+"highlight CursorLine  term=underline  guibg=#555555  cterm=underline
 set colorcolumn=80		"set up a ruler at column 80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+"highlight ColorColumn ctermbg=0 guibg=lightgrey
 "set foldmethod=indent	" fold according to indentation
 
 " Use the same symbols as TextMate for tabstops and EOLs
@@ -120,9 +123,9 @@ set laststatus=2		" always shows status bar
 
 let mapleader=" "
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
+:cnoremap <expr>     %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 :cnoremap <C-n>      <Down>
 :cnoremap <C-p>      <Up>
-:cnoremap <expr>     %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 :inoremap <C-u>      <esc>gUiwea
 :inoremap <C-a>      <esc>A
 :nnoremap <F12>      :source ~/vimsession<cr>
@@ -204,11 +207,25 @@ endif
 let g:ctrlp_max_files = 10000
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_height = 10			" set result window height
-"let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = '0'
 
 " setup for plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
+
+" setup for plugin 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enable = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" setup for plugin 'easymotion/vim-easymotion'
+let g:EasyMotion_smartcase = 1
+nmap f <Plug>(easymotion-bd-f)
+nmap F <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-bd-f2)
+nmap / <Plug>(easymotion-sn)
+nmap n <Plug>(easymotion-next)
+nmap N <Plug>(easymotion-prev)
 
 " setup for fortran
 "let fortran_free_source = 1
