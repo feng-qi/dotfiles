@@ -25,7 +25,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     c-c++
+     (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)
      (chinese :variables chinese-default-input-method 'wubi)
      emacs-lisp
      ;; emoji
@@ -274,7 +274,7 @@ you should place your code here."
   ;; (electric-pair-mode t)
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-=") 'er/expand-region)
-  (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+  ;; (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
