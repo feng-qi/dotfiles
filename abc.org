@@ -111,7 +111,39 @@ Consider using [l and ]l from the unimpaired layer
 **** f: Add file local variable
 **** p: Add file local variable (alternative format)
 *** y: Show and copy file name
-** g:
+** g: Git
+*** .: VCS microstatus (need version-control layer)
+*** b: Git blame microstate
+*** c: Git commit
+*** C: Git checkout
+*** d: Git diff
+*** D: Git diff between HEAD and working tree
+*** e: Ediff
+*** e: Ediff between HEAD and working tree
+*** f: Git fetch
+*** F: Git pull
+*** g: Gists (need github layer)
+**** b/B: Buffer (private)
+**** l: List gists
+**** r/R: Region (private)
+*** h: Github
+**** c/C: Go to (or copy) github URL to commit at point (by hash)
+**** l/L: Go to (or copy) github URL to point
+**** o: Open file in github
+**** C-c: Clone github repo
+*** H: Highlight
+**** c: Clear
+**** h: By age of change
+**** t: By last update time
+*** i: Git init
+*** I: Git ignore patterns
+*** l: Git log
+*** L: Git log for current file
+*** m: Show last commit message at point
+*** P: Push
+*** s: Magit status
+*** S/U: Stage or unstage whole file
+*** t: Git time-machine microstate
 ** h: Help
 *** RET: Enable minor mode
 *** SPC: Spacemacs helm (see also SPC feh)
