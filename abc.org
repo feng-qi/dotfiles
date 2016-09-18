@@ -217,6 +217,28 @@ Works like a microstate
 *** w, W: Wrap or unwrap sexp in parens
 *** y: Copy sexp
 *** i, I, p, P, u, v, V, C-r, C-v, ESC: Do the same thing as in evil normal state
+** l: Layouts
+*** 0-9: Switch to layout by number
+*** TAB: Switch to previous layout
+*** a: Add a buffer to the current layout
+*** A: Add all buffers to the current layout
+*** b: List buffers in the current layout
+*** c: Close layout (without killing buffers)
+*** C: Close other layouts (without killing buffers)
+*** h: Go to default layout
+*** l: List layouts or create a new one
+*** L: Load layouts from file
+*** n, C-l: Next layout
+*** N, p, C-h: Previous layout
+*** o: Open a custom layout
+*** r: Remove buffer from layout
+*** R: Rename layout
+*** s: Save all layouts to file
+*** S: Save specific layouts to file
+*** t: Show buffer without adding it to the layout
+*** w: need eyebrowse
+*** x; Kill layout (with buffers)
+*** X; Kill other layouts (with buffers)
 ** p: Projects
 *** !: Run shell command in project root
 *** &: Run asynchronous shell command in project root
