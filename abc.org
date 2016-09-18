@@ -217,3 +217,24 @@ Works like a microstate
 *** w, W: Wrap or unwrap sexp in parens
 *** y: Copy sexp
 *** i, I, p, P, u, v, V, C-r, C-v, ESC: Do the same thing as in evil normal state
+** p: Projects
+*** !: Run shell command in project root
+*** &: Run asynchronous shell command in project root
+*** a: Switch between implementation and test file
+*** b: List buffers in project
+*** c: Compile in project root
+*** d: Directories in a project
+*** D: Open direc/ranger in project root
+*** f: Files in a project
+*** G: Regenerate tags
+*** h: Helm projectile (all in one)
+*** I: Invalidate cache
+*** k: Kill buffers in project
+*** o: Projectile multi-occur (search in project buffers)
+*** p: List of projects
+*** r: Recent files in project
+*** R: Project-wide search and replace
+*** t: Neotree in project root
+*** T: Find test file (cmp. SPC p a)
+*** v: Open VC status window
+*** y: Find tag
