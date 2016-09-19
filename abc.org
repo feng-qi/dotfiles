@@ -239,6 +239,14 @@ Works like a microstate
 *** w: need eyebrowse
 *** x; Kill layout (with buffers)
 *** X; Kill other layouts (with buffers)
+** n: Narrowing/numbers
+*** +/=,-: Increase or decrease number at point
+*** ,/.: Scroll by full pages
+*** >/<: Scroll by half pages
+*** f: Narrow to function
+*** p: Narrow to page (Confuse user)
+*** r: Narrow to region
+*** w: Widen
 ** p: Projects
 *** !: Run shell command in project root
 *** &: Run asynchronous shell command in project root
