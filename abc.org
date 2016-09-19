@@ -283,3 +283,23 @@ Works like a microstate
 *** m: Show all marks by line
 *** r: Show registers with helm
 *** y: Helm kill ring
+** s: Searching
+*** `: Helm-ag pop stack
+*** b: Search through all opened buffers
+*** b: Search through all opened buffers (default input)
+*** c: Clear evil search highlight
+*** e: Evil iedit state
+*** f: Search through arbitrary path
+*** F: Search through arbitrary path (default input)
+*** h: Symbol highlight transient state
+*** H: Resume last AHS transient state
+*** j: Helm semantic/imenu
+*** l: Same as SPC r s
+*** p: Same as SPC /
+*** P: Same as SPC *
+*** s: Helm swoop
+*** S: Helm swoop (default input)
+*** w: Web
+**** g: Google suggestions
+**** w: Wikipedia suggestions
+*** C-s: Helm swoop (all buffers)
