@@ -268,3 +268,12 @@ Works like a microstate
 *** T: Find test file (cmp. SPC p a)
 *** v: Open VC status window
 *** y: Find tag
+** q: Quitting
+*** d: Restart Emacs with --debug-init
+*** D: Restart Emacs with only selected packages
+*** q: "Safe" quit (ask about changes)
+*** Q: "Unsafe" quit (don't ask)
+*** r: Quit and restart, reopen buffers
+*** R: Quit and restart
+*** s: Save buffers and exit
+*** z: Kill frame(leaving server on even if it kills the last frame)
