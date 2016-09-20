@@ -303,3 +303,9 @@ Works like a microstate
 **** g: Google suggestions
 **** w: Wikipedia suggestions
 *** C-s: Helm swoop (all buffers)
+*** a,g,k,t: Search with specific tool
+**** a: Search in this file
+**** A: Search in this file (use region as pattern)
+**** b/B: Same as SPC s b/B (except with specific tool)
+**** f/F: Same as SPC s f/F (except with specific tool)
+**** p/P: Same as SPC / or * (except with specific tool)
