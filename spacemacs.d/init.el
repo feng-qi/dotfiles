@@ -32,6 +32,8 @@ values."
      ;; emoji
      ;; games
      git
+     github
+     version-control
      markdown
      org
      ranger
