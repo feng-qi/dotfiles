@@ -27,6 +27,7 @@ values."
      better-defaults
      (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)
      (chinese :variables chinese-default-input-method 'wubi)
+     clojure
      emacs-lisp
      ;; emoji
      ;; games
