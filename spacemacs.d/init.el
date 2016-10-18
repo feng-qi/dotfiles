@@ -28,6 +28,7 @@ values."
      (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)
      (chinese :variables chinese-default-input-method 'wubi)
      clojure
+     ivy
      emacs-lisp
      ;; emoji
      ;; games
@@ -221,7 +222,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -278,7 +279,7 @@ you should place your code here."
   ;; (spaceline-compile)
   (global-company-mode t)
   (global-prettify-symbols-mode t)
-  (global-set-key "\C-s" 'swiper)
+  ;; (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-=") 'er/expand-region)
   (setq-default tab-width 4)
   )

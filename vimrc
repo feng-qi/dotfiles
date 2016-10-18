@@ -140,10 +140,11 @@ let mapleader=" "
 :nnoremap <leader>gs :Gstatus<cr>
 :nnoremap <leader>gb :Gblame<cr>
 :nnoremap <leader>qq :qa<cr>
-:nnoremap <leader>wc :q<cr>
-:nnoremap <leader>wC :q!<cr>
+:nnoremap <leader>wd :q<cr>
+:nnoremap <leader>wD :q!<cr>
 :nnoremap <leader>w- :sp<cr>
 :nnoremap <leader>w/ :vsp<cr>
+:nnoremap <leader>zz ZZ
 :nnoremap <leader>1  1<C-w>w
 :nnoremap <leader>2  2<C-w>w
 :nnoremap <leader>3  3<C-w>w
@@ -220,8 +221,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " setup for plugin 'easymotion/vim-easymotion'
 let g:EasyMotion_smartcase = 1
-nmap f <Plug>(easymotion-bd-f)
-nmap F <Plug>(easymotion-overwin-f)
+nmap F <Plug>(easymotion-bd-f)
+"nmap F <Plug>(easymotion-overwin-f)
 nmap s <Plug>(easymotion-bd-f2)
 nmap / <Plug>(easymotion-sn)
 nmap n <Plug>(easymotion-next)
