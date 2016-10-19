@@ -27,7 +27,7 @@ values."
      better-defaults
      (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)
      (chinese :variables chinese-default-input-method 'wubi)
-     clojure
+     (clojure :variables clojure-enable-fancify-symbols t)
      ivy
      emacs-lisp
      ;; emoji
