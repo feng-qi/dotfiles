@@ -39,6 +39,7 @@ values."
      javascript
      markdown
      org
+     python
      ranger
      (shell :variables
             shell-default-height 30
@@ -46,7 +47,6 @@ values."
      spell-checking
      vimscript
      ;; syntax-checking
-     ;; version-control
      ;; fengqi
      )
    ;; List of additional packages that will be installed without being
@@ -185,7 +185,7 @@ values."
    dotspacemacs-enable-paste-micro-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 0.6
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
@@ -281,6 +281,8 @@ you should place your code here."
   (global-prettify-symbols-mode t)
   ;; (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-=") 'er/expand-region)
+  (spacemacs/set-leader-keys (kbd "w-") 'split-window-below-and-focus)
+  (spacemacs/set-leader-keys (kbd "w/") 'split-window-right-and-focus)
   (setq-default tab-width 4)
   )
 
