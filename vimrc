@@ -77,9 +77,26 @@ else
 	colorscheme molokai
 endif
 
-set clipboard=unnamedplus
+if has('win32')
+	set guifont=Source_Code_Pro:h10:cANSI:qDRAFT
+elseif has('unix')
+	set guifont=Source\ Code\ Pro
+endif
+
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <Del>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
+map ' `
+
+set clipboard=unnamed
 set winaltkeys=no			" Alt key will not pop out menu bar menus
-set guifont=Source\ Code\ Pro
 set background=dark
 set visualbell
 set showcmd
