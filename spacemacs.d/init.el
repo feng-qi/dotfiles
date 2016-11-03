@@ -25,25 +25,30 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+     asm
      (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)
      (chinese :variables chinese-default-input-method 'wubi)
      (clojure :variables clojure-enable-fancify-symbols t)
-     ivy
+     ;; ivy
      emacs-lisp
      ;; emoji
      ;; games
      git
      github
      version-control
+     (gtags :variables gtags-enable-by-default nil)
+     cscope
      html
      javascript
      markdown
      org
+     pdf-tools
      python
      ranger
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     ;; speed-reading
      spell-checking
      vimscript
      ;; syntax-checking
