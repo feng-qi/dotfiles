@@ -44,6 +44,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'ARM9/arm-syntax-vim'
 
 " All of you Plugins must be added before the following line
 call vundle#end()		" required
@@ -55,6 +56,9 @@ set encoding=utf-8
 "set langmenu=zh_CN.UTF-8
 "language message zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 if has('gui_running')
 	colorscheme solarized
@@ -152,8 +156,10 @@ let mapleader=" "
 :nnoremap <leader>ev :split $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
+:nnoremap <leader><tab> <C-^>
 :nnoremap <leader>fs :w<cr>
 :nnoremap <leader>fS :wa<cr>
+:nnoremap <leader>fr :browse oldfiles<cr>
 :nnoremap <leader>gs :Gstatus<cr>
 :nnoremap <leader>gb :Gblame<cr>
 :nnoremap <leader>qq :qa<cr>
