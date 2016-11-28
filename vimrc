@@ -244,8 +244,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " setup for plugin 'easymotion/vim-easymotion'
 let g:EasyMotion_smartcase = 1
-nmap F <Plug>(easymotion-bd-f)
-"nmap F <Plug>(easymotion-overwin-f)
+"nmap F <Plug>(easymotion-bd-f)
+nmap F <Plug>(easymotion-overwin-f)
 nmap s <Plug>(easymotion-bd-f2)
 nmap / <Plug>(easymotion-sn)
 nmap n <Plug>(easymotion-next)

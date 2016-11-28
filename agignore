@@ -1,4 +1,6 @@
 tags
+TAGS
+*cscope*
 *~
 *.swp
 *.so
@@ -9,3 +11,5 @@ tags
 *.log
 *.jpg
 *.png
+*/doc
+*/obj
