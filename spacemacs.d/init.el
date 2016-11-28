@@ -51,6 +51,7 @@ values."
      ;; speed-reading
      spell-checking
      vimscript
+     yaml
      ;; syntax-checking
      ;; fengqi
      )
@@ -60,7 +61,8 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(chinese-pyim)
+   dotspacemacs-excluded-packages '(chinese-pyim
+                                    vi-tilde-fringe)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -289,6 +291,7 @@ you should place your code here."
   (spacemacs/set-leader-keys (kbd "w-") 'split-window-below-and-focus)
   (spacemacs/set-leader-keys (kbd "w/") 'split-window-right-and-focus)
   (setq-default tab-width 4)
+  (setq-default fill-column 75)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
