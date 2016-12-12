@@ -31,6 +31,7 @@ values."
      (clojure :variables clojure-enable-fancify-symbols t)
      ;; ivy
      emacs-lisp
+     haskell
      ;; emoji
      ;; games
      git
