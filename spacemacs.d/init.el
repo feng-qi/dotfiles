@@ -34,6 +34,7 @@ values."
      haskell
      ;; emoji
      ;; games
+     dash
      git
      github
      version-control
@@ -293,6 +294,7 @@ you should place your code here."
   (spacemacs/set-leader-keys (kbd "w/") 'split-window-right-and-focus)
   (setq-default tab-width 4)
   (setq-default fill-column 75)
+  (setq browse-url-browser-function 'eww-browse-url)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

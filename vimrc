@@ -267,4 +267,5 @@ nmap N <Plug>(easymotion-prev)
 "		<C-x>s : correction in insert mode
 "	zj/zk: jump between folds
 "	:windo diffthis/diffoff
+"	q: "open command history
 
