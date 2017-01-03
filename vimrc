@@ -128,7 +128,8 @@ set colorcolumn=80		"set up a ruler at column 80
 "set foldmethod=indent	" fold according to indentation
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬,trail:·		" space:·
+set listchars=tab:»-,eol:¶,trail:·
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
