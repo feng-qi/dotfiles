@@ -1,0 +1,26 @@
+[user]
+	name = fengqi
+	email = fengqi@microtrust.com.cn
+[alias]
+	ffil = log --all -- $1
+	lfic = "!f(){ git show --pretty=format:\"\" --name-only $1; };f"
+	mylog = log --graph --pretty=format:\"%h %an %ai %s %Cred %d\"
+	wcbr = for-each-ref --format=\"%(committerdate) %09 %(authorname) %09 %(refname)\"
+	st = status
+	a = add
+	aa = add --all
+	b = branch
+	cm = checkout master
+	co = checkout
+	cmsg = commit -m
+	d = diff
+	p = push
+	l = pull
+	up = pull --rebase
+	lg = log
+	lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lola = git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+[core]
+	editor = vi
+[push]
+	default = simple
