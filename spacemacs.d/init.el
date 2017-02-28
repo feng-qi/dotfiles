@@ -292,6 +292,7 @@ you should place your code here."
   (global-set-key (kbd "C-=") 'er/expand-region)
   (spacemacs/set-leader-keys (kbd "w-") 'split-window-below-and-focus)
   (spacemacs/set-leader-keys (kbd "w/") 'split-window-right-and-focus)
+  (spacemacs/set-leader-keys (kbd "fCr") 'revert-buffer-with-coding-system)
   (setq-default tab-width 4)
   (setq-default fill-column 75)
   ;; (setq browse-url-browser-function 'eww-browse-url)
