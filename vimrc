@@ -18,13 +18,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " git repos:
 Plugin 'SirVer/ultisnips'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'		" color scheme
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'						" need exuberant-ctags
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'							" color scheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -36,15 +33,18 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'						" need ack-grep
 Plugin 'tommcdo/vim-exchange'					" swap two regions of text
-"Plugin 'othree/xml.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
-"Plugin 'mattn/emmet-vim'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'ARM9/arm-syntax-vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'othree/xml.vim'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'godlygeek/tabular'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'ARM9/arm-syntax-vim'
 
 " All of you Plugins must be added before the following line
 call vundle#end()		" required
@@ -149,7 +149,7 @@ let mapleader=" "
 :cnoremap <C-n>      <Down>
 :cnoremap <C-p>      <Up>
 :inoremap <C-u>      <esc>gUiwea
-:inoremap <C-a>      <esc>A
+:inoremap <C-e>      <esc>A
 :nnoremap <F12>      :source ~/vimsession<cr>
 :nnoremap <F10>      :mksession! ~/vimsession<cr>
 :nnoremap <c-tab>    :tabnext<cr>
