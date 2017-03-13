@@ -62,7 +62,7 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 if has('gui_running')
 	colorscheme solarized
-	set lines=54 columns=100	" 25 lines and 80 columnn
+	set lines=53 columns=100	" 25 lines and 80 columnn
 
 	" setup for plugin vim-multiple-cursors
 	"	- put this *after* colorscheme setup, or it may has no effects
@@ -78,13 +78,13 @@ if has('gui_running')
 	"set guioptions-=L
 	"set guioptions-=r
 else
-	colorscheme molokai
+	"colorscheme molokai
 endif
 
 if has('win32')
 	set guifont=Source_Code_Pro:h10:cANSI:qDRAFT
 elseif has('unix')
-	set guifont=Source\ Code\ Pro
+	set guifont=Source\ Code\ Pro\ 11
 endif
 
 cnoremap <C-a> <Home>
@@ -106,7 +106,7 @@ set visualbell
 set showcmd
 set hidden
 set ignorecase
-"set incsearch			" become useless while plugin easymotion presents
+set incsearch			" become useless while plugin easymotion presents
 set infercase
 
 set nowrap
@@ -119,7 +119,7 @@ set tabstop=4
 set number
 set history=200
 "set relativenumber		" relative line number
-"set hlsearch
+set hlsearch
 "set autochdir			" change directory automatically
 set cursorline
 "highlight CursorLine  term=underline  guibg=#555555  cterm=underline
@@ -164,6 +164,7 @@ let mapleader=" "
 :nnoremap <leader>gs :Gstatus<cr>
 :nnoremap <leader>gb :Gblame<cr>
 :nnoremap <leader>qq :qa<cr>
+:nnoremap <leader>sc :nohlsearch<cr>
 :nnoremap <leader>wd :q<cr>
 :nnoremap <leader>wD :q!<cr>
 :nnoremap <leader>w- :sp<cr>
@@ -246,11 +247,11 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " setup for plugin 'easymotion/vim-easymotion'
 let g:EasyMotion_smartcase = 1
 "nmap F <Plug>(easymotion-bd-f)
-nmap F <Plug>(easymotion-overwin-f)
-nmap s <Plug>(easymotion-bd-f2)
-nmap / <Plug>(easymotion-sn)
-nmap n <Plug>(easymotion-next)
-nmap N <Plug>(easymotion-prev)
+"nmap F <Plug>(easymotion-overwin-f)
+"nmap s <Plug>(easymotion-bd-f2)
+"nmap / <Plug>(easymotion-sn)
+"nmap n <Plug>(easymotion-next)
+"nmap N <Plug>(easymotion-prev)
 
 " setup for fortran
 "let fortran_free_source = 1
@@ -268,5 +269,7 @@ nmap N <Plug>(easymotion-prev)
 "		<C-x>s : correction in insert mode
 "	zj/zk: jump between folds
 "	:windo diffthis/diffoff
+"		[c, ]c, diffget, diffput
 "	q: "open command history
+"	:retab
 
