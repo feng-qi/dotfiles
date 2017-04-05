@@ -277,6 +277,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
   (set-default 'truncate-lines t)
   (setq-default c-basic-offset 4)
+  (setq org-agenda-files '("~/org"))
+  (setq org-pomodoro-length 40)
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO")))
   )
 
 (defun dotspacemacs/user-config ()
