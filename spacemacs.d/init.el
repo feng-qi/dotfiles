@@ -25,20 +25,30 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+     semantic
      asm
-     (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      (chinese :variables chinese-default-input-method 'wubi)
      (clojure :variables clojure-enable-fancify-symbols t)
      ;; ivy
      emacs-lisp
+     (go :variables go-tab-width 4)
      haskell
+     (scala :variables
+            scala-indent:use-javadoc-style t
+            scala-enable-eldoc t
+            ;; scala-use-unicode-arrows t
+            scala-auto-start-ensime t
+            scala-auto-insert-asterisk-in-comments t)
      ;; emoji
      ;; games
      dash
      git
      github
      version-control
-     (gtags :variables gtags-enable-by-default nil)
+     ;; (gtags :variables gtags-enable-by-default nil)
      cscope
      html
      javascript
@@ -47,6 +57,7 @@ values."
      pdf-tools
      python
      ranger
+     fasd
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -109,7 +120,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -122,10 +133,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
+   dotspacemacs-themes '(solarized-dark
+                         spacemacs-dark
                          solarized-light
-                         solarized-dark
+                         spacemacs-light
                          leuven
                          monokai
                          zenburn)
@@ -133,8 +144,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   ;; dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font `("Source Code Pro"
+                               :size ,(if (string= system-name "qi-laptop") 15 13)
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -225,7 +237,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -275,8 +287,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq byte-compile-warnings '(not obsolete))
   ;; (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
-  (set-default 'truncate-lines t)
-  (setq-default c-basic-offset 4)
   (setq org-agenda-files '("~/org"))
   (setq org-pomodoro-length 40)
   (setq org-capture-templates
@@ -295,13 +305,49 @@ you should place your code here."
   (global-company-mode t)
   (global-prettify-symbols-mode t)
   ;; (global-set-key "\C-s" 'swiper)
+  (defun fengqi/define-key (keymap &rest bindings)
+    (while bindings
+      (define-key keymap (pop bindings) (pop bindings))))
+  (fengqi/define-key evil-normal-state-map
+                     "+" 'evil-numbers/inc-at-pt
+                     "-" 'evil-numbers/dec-at-pt)
+
   (global-set-key (kbd "C-=") 'er/expand-region)
-  (spacemacs/set-leader-keys (kbd "w-") 'split-window-below-and-focus)
-  (spacemacs/set-leader-keys (kbd "w/") 'split-window-right-and-focus)
-  (spacemacs/set-leader-keys (kbd "fCr") 'revert-buffer-with-coding-system)
-  (setq-default tab-width 4)
-  (setq-default fill-column 75)
+  (spacemacs/set-leader-keys
+    (kbd "os")  'just-one-space
+    (kbd "w-")  'split-window-below-and-focus
+    (kbd "tf")  'spacemacs/toggle-auto-fill-mode
+    (kbd "tF")  'spacemacs/toggle-fill-column-indicator
+    (kbd "w/")  'split-window-right-and-focus
+    (kbd "fCr") 'revert-buffer-with-coding-system
+    (kbd "8")   'spacemacs/toggle-maximize-frame)
+  ;; (spacemacs/set-leader-keys (kbd "in") (lambda () (interactive) (insert (file-name-nondirectory (buffer-file-name)))))
+  ;; (spacemacs/set-leader-keys (kbd "fO") (lambda () (interactive) (spacemacs//open-in-external-app (expand-file-name default-directory))))
+
+  (add-hook 'markdown-mode-hook 'auto-fill-mode)
+
+  (setq sp-highlight-pair-overlay     nil
+        sp-highlight-wrap-overlay     nil
+        sp-highlight-wrap-tag-overlay nil)
+
+  (setq-default tab-width      4
+                fill-column    80
+                truncate-lines t
+                c-basic-offset 4)
   ;; (setq browse-url-browser-function 'eww-browse-url)
+
+  (c-add-style "fengqi"
+               '((c-basic-offset . 2)
+                 (c-offset-alist
+                  (defun-open . 0)
+                  (defun-block-intro . +))))
+
+  (put 'helm-make-build-dir 'safe-local-variable 'stringp)
+  ;; (with-eval-after-load 'projectile
+  ;;   (push '("c" "h") projectile-other-file-alist))
+  ;; (push '(other . "k&r") c-default-style)
+  (when (file-exists-p "~/local.el")
+    (load "~/local.el"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

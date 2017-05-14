@@ -115,7 +115,8 @@ set textwidth=0			" don't auto break line
 syntax enable			" enable syntax highlight
 set shiftwidth=4
 set tabstop=4
-"set softtabstop=4		" backspace will delete 4 spaces at 1 time
+set expandtab
+set softtabstop=4		" backspace will delete 4 spaces at 1 time
 set number
 set history=200
 "set relativenumber		" relative line number
