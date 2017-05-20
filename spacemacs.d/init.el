@@ -18,14 +18,9 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     semantic
+     ;; semantic
      asm
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
@@ -77,6 +72,7 @@ values."
    dotspacemacs-excluded-packages '(chinese-pyim
                                     vi-tilde-fringe
                                     evil-escape
+                                    clean-aindent-mode
                                     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -89,8 +85,6 @@ This function is called at the very startup of Spacemacs initialization
 before layers configuration.
 You should not put any user code in there besides modifying the variable
 values."
-  ;; This setq-default sexp is an exhaustive list of all the supported
-  ;; spacemacs settings.
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -114,12 +108,6 @@ values."
                                        hybrid-mode-default-state 'normal)
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
-   ;; Specify the startup banner. Default value is `official', it displays
-   ;; the official spacemacs logo. An integer value is the index of text
-   ;; banner, `random' chooses a random text banner in `core/banners'
-   ;; directory. A string value must be a path to an image format supported
-   ;; by your Emacs build.
-   ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
@@ -142,9 +130,6 @@ values."
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
-   ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
-   ;; size to make separators look not too crappy.
-   ;; dotspacemacs-default-font '("Source Code Pro"
    dotspacemacs-default-font `("Source Code Pro"
                                :size ,(if (string= system-name "qi-laptop") 15 13)
                                :weight normal
@@ -253,12 +238,7 @@ values."
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
-   ;; If non nil advises quit functions to keep server open when quitting.
-   ;; (default nil)
    dotspacemacs-persistent-server nil
-   ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   ;; (default '("ag" "pt" "ack" "grep"))
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
@@ -280,9 +260,9 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq configuration-layer--elpa-archives
-	'(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
-	  ("org-cn"   . "http://elpa.zilongshanren.com/org/")
-	  ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
+    '(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
+      ("org-cn"   . "http://elpa.zilongshanren.com/org/")
+      ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq byte-compile-warnings '(not obsolete))
@@ -313,6 +293,7 @@ you should place your code here."
                      "-" 'evil-numbers/dec-at-pt)
 
   (global-set-key (kbd "C-=") 'er/expand-region)
+  (global-set-key (kbd "C-c i") 'ido-insert-buffer)
   (spacemacs/set-leader-keys
     (kbd "os")  'just-one-space
     (kbd "w-")  'split-window-below-and-focus
@@ -320,6 +301,7 @@ you should place your code here."
     (kbd "tF")  'spacemacs/toggle-fill-column-indicator
     (kbd "w/")  'split-window-right-and-focus
     (kbd "fCr") 'revert-buffer-with-coding-system
+    (kbd "dw")  'delete-trailing-whitespace
     (kbd "8")   'spacemacs/toggle-maximize-frame)
   ;; (spacemacs/set-leader-keys (kbd "in") (lambda () (interactive) (insert (file-name-nondirectory (buffer-file-name)))))
   ;; (spacemacs/set-leader-keys (kbd "fO") (lambda () (interactive) (spacemacs//open-in-external-app (expand-file-name default-directory))))
@@ -335,6 +317,11 @@ you should place your code here."
                 truncate-lines t
                 c-basic-offset 4)
   ;; (setq browse-url-browser-function 'eww-browse-url)
+  (when window-system
+    (add-to-list 'default-frame-alist '(height . 52))
+    (add-to-list 'default-frame-alist '(width . 100))
+    (add-to-list 'default-frame-alist '(top . 0))
+    (add-to-list 'default-frame-alist '(left . 1100)))
 
   (c-add-style "fengqi"
                '((c-basic-offset . 2)
@@ -346,8 +333,8 @@ you should place your code here."
   ;; (with-eval-after-load 'projectile
   ;;   (push '("c" "h") projectile-other-file-alist))
   ;; (push '(other . "k&r") c-default-style)
-  (when (file-exists-p "~/local.el")
-    (load "~/local.el"))
+  ;; (when (file-exists-p "~/.local.el")
+  ;;   (load "~/.local.el"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
