@@ -291,14 +291,16 @@ you should place your code here."
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
                      "-" 'evil-numbers/dec-at-pt)
+  (fengqi/define-key evil-motion-state-map
+                     "t" 'evil-find-char-backward)
 
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
   (spacemacs/set-leader-keys
     (kbd "os")  'just-one-space
     (kbd "w-")  'split-window-below-and-focus
-    (kbd "tf")  'spacemacs/toggle-auto-fill-mode
-    (kbd "tF")  'spacemacs/toggle-fill-column-indicator
+    ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
+    ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
     (kbd "w/")  'split-window-right-and-focus
     (kbd "fCr") 'revert-buffer-with-coding-system
     (kbd "dw")  'delete-trailing-whitespace

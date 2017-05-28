@@ -87,18 +87,6 @@ elseif has('unix')
 	set guifont=Source\ Code\ Pro\ 11
 endif
 
-cnoremap <C-a> <Home>
-cnoremap <C-b> <Left>
-cnoremap <C-d> <Del>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-n> <Down>
-cnoremap <C-p> <Up>
-cnoremap <M-b> <S-Left>
-cnoremap <M-f> <S-Right>
-
-map ' `
-
 set clipboard=unnamed
 set winaltkeys=no			" Alt key will not pop out menu bar menus
 set background=dark
@@ -146,38 +134,52 @@ set laststatus=2		" always shows status bar
 
 let mapleader=" "
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
-:cnoremap <expr>     %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-:cnoremap <C-n>      <Down>
-:cnoremap <C-p>      <Up>
-:inoremap <C-u>      <esc>gUiwea
-:inoremap <C-e>      <esc>A
-:nnoremap <F12>      :source ~/vimsession<cr>
-:nnoremap <F10>      :mksession! ~/vimsession<cr>
-:nnoremap <c-tab>    :tabnext<cr>
-:nnoremap <c-s-tab>  :tabprevious<cr>
-:nnoremap <leader>ev :split $MYVIMRC<cr>
-:nnoremap <leader>sv :source $MYVIMRC<cr>
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+cnoremap <C-n>  <Down>
+cnoremap <C-p>  <Up>
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-d>  <Del>
+cnoremap <C-e>  <End>
+cnoremap <C-f>  <Right>
+cnoremap <C-n>  <Down>
+cnoremap <C-p>  <Up>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+
+inoremap <C-u>      <esc>gUiwea
+inoremap <C-e>      <esc>A
+
+nnoremap <F12>      :source ~/vimsession<cr>
+nnoremap <F10>      :mksession! ~/vimsession<cr>
+nnoremap <c-tab>    :tabnext<cr>
+nnoremap <c-s-tab>  :tabprevious<cr>
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
-:nnoremap <leader><tab> <C-^>
-:nnoremap <leader>fs :w<cr>
-:nnoremap <leader>fS :wa<cr>
-:nnoremap <leader>fr :browse oldfiles<cr>
-:nnoremap <leader>gs :Gstatus<cr>
-:nnoremap <leader>gb :Gblame<cr>
-:nnoremap <leader>qq :qa<cr>
-:nnoremap <leader>sc :nohlsearch<cr>
-:nnoremap <leader>wd :q<cr>
-:nnoremap <leader>wD :q!<cr>
-:nnoremap <leader>w- :sp<cr>
-:nnoremap <leader>w/ :vsp<cr>
-:nnoremap <leader>zz ZZ
-:nnoremap <leader>1  1<C-w>w
-:nnoremap <leader>2  2<C-w>w
-:nnoremap <leader>3  3<C-w>w
-:nnoremap <leader>4  4<C-w>w
-:nnoremap <leader>5  5<C-w>w
-:nnoremap <leader>6  6<C-w>w
-:nnoremap <leader>7  7<C-w>w
+nnoremap <leader><tab> <C-^>
+nnoremap <leader>fs :w<cr>
+nnoremap <leader>fS :wa<cr>
+nnoremap <leader>fr :browse oldfiles<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gd :windo diffthis<cr>
+nnoremap <leader>gD :windo diffoff<cr>
+nnoremap <leader>qq :qa<cr>
+nnoremap <leader>sc :nohlsearch<cr>
+nnoremap <leader>wd :q<cr>
+nnoremap <leader>wD :q!<cr>
+nnoremap <leader>w- :sp<cr>
+nnoremap <leader>w/ :vsp<cr>
+nnoremap <leader>1  1<C-w>w
+nnoremap <leader>2  2<C-w>w
+nnoremap <leader>3  3<C-w>w
+nnoremap <leader>4  4<C-w>w
+nnoremap <leader>5  5<C-w>w
+nnoremap <leader>6  6<C-w>w
+nnoremap <leader>7  7<C-w>w
+nnoremap t F
+nnoremap ' `
 
 " setup for 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
