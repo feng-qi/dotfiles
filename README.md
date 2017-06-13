@@ -10,7 +10,6 @@ Create symlinks:
 ```sh
 ln -s ~/dotfiles/spacemacs.d ~/.spacemacs.d
 ln -s ~/dotfiles/vimrc ~/.vimrc
-ln -s ~/dotfiles/gvimrc ~/.gvimrc
 ln -s ~/dotfiles/UltiSnips/ ~/.vim/UltiSnips
 
 ln -s ~/dotfiles/agignore ~/.agignore

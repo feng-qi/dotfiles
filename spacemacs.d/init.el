@@ -27,7 +27,7 @@ values."
             c-c++-enable-clang-support t)
      (chinese :variables chinese-default-input-method 'wubi)
      (clojure :variables clojure-enable-fancify-symbols t)
-     ;; ivy
+     ivy
      emacs-lisp
      (go :variables go-tab-width 4)
      haskell
@@ -67,7 +67,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(bison-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     vi-tilde-fringe
@@ -280,6 +280,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq ivy-count-format "(%d/%d) ")
   (setq powerline-default-separator nil)
   ;; (spaceline-compile)
   (global-company-mode t)
@@ -291,12 +292,13 @@ you should place your code here."
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
                      "-" 'evil-numbers/dec-at-pt)
-  (fengqi/define-key evil-motion-state-map
-                     "t" 'evil-find-char-backward)
+  ;; (fengqi/define-key evil-motion-state-map
+  ;;                    "t" 'evil-find-char-backward)
 
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
   (spacemacs/set-leader-keys
+    (kbd "bv")  'mark-whole-buffer
     (kbd "os")  'just-one-space
     (kbd "w-")  'split-window-below-and-focus
     ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
@@ -309,6 +311,8 @@ you should place your code here."
   ;; (spacemacs/set-leader-keys (kbd "fO") (lambda () (interactive) (spacemacs//open-in-external-app (expand-file-name default-directory))))
 
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook 'smartparens-mode)
 
   (setq sp-highlight-pair-overlay     nil
         sp-highlight-wrap-overlay     nil

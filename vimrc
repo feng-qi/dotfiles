@@ -38,6 +38,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
+" Plugin 'sjl/gundo.vim'                        " need python support
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'scrooloose/syntastic'
 " Plugin 'othree/xml.vim'
