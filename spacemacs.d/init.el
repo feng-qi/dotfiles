@@ -25,9 +25,11 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
-     (chinese :variables chinese-default-input-method 'wubi)
+     (chinese :variables
+              chinese-default-input-method 'wubi
+              chinese-enable-youdao-dict t)
      (clojure :variables clojure-enable-fancify-symbols t)
-     ivy
+     ;; ivy
      emacs-lisp
      (go :variables go-tab-width 4)
      haskell
@@ -297,9 +299,13 @@ you should place your code here."
 
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
+  (spacemacs|create-align-repeat-x "space" " " nil t)
   (spacemacs/set-leader-keys
+    (kbd "xas") 'spacemacs/align-repeat-space
+    (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
     (kbd "bv")  'mark-whole-buffer
     (kbd "os")  'just-one-space
+    (kbd "oy"   'youdao-dictionary-search-at-point+)
     (kbd "w-")  'split-window-below-and-focus
     ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
     ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
