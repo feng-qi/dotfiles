@@ -287,7 +287,8 @@ you should place your code here."
   ;; (spaceline-compile)
   (global-company-mode t)
   (global-prettify-symbols-mode t)
-  ;; (global-set-key "\C-s" 'swiper)
+  (setq-default show-trailing-whitespace t)
+
   (defun fengqi/define-key (keymap &rest bindings)
     (while bindings
       (define-key keymap (pop bindings) (pop bindings))))
@@ -305,7 +306,7 @@ you should place your code here."
     (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
     (kbd "bv")  'mark-whole-buffer
     (kbd "os")  'just-one-space
-    (kbd "oy"   'youdao-dictionary-search-at-point+)
+    (kbd "oy")  'youdao-dictionary-search-at-point+
     (kbd "w-")  'split-window-below-and-focus
     ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
     ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
@@ -319,6 +320,7 @@ you should place your code here."
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'smartparens-mode)
+  (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
   (setq sp-highlight-pair-overlay     nil
         sp-highlight-wrap-overlay     nil
