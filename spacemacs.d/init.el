@@ -312,6 +312,7 @@ you should place your code here."
     ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
     (kbd "w/")  'split-window-right-and-focus
     (kbd "fCr") 'revert-buffer-with-coding-system
+    (kbd "fCc") 'set-buffer-file-coding-system ; change buffer encoding
     (kbd "dw")  'delete-trailing-whitespace
     (kbd "8")   'spacemacs/toggle-maximize-frame)
   ;; (spacemacs/set-leader-keys (kbd "in") (lambda () (interactive) (insert (file-name-nondirectory (buffer-file-name)))))

@@ -17,28 +17,29 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " git repos:
-Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'		" color scheme
-Plugin 'majutsushi/tagbar'						" need exuberant-ctags
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomasr/molokai'							" color scheme
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-airline/vim-airline'				" statusline
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'						" need ack-grep
 Plugin 'tommcdo/vim-exchange'					" swap two regions of text
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
-Plugin 'easymotion/vim-easymotion'
+Plugin 'itchyny/lightline.vim'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'tomasr/molokai'							" color scheme
+" Plugin 'majutsushi/tagbar'						" need exuberant-ctags
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'tpope/vim-abolish'
+" Plugin 'vim-airline/vim-airline'				" statusline
+" Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'easymotion/vim-easymotion'
 " Plugin 'sjl/gundo.vim'                        " need python support
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'scrooloose/syntastic'
@@ -65,8 +66,9 @@ set splitright
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
+colorscheme solarized
 if has('gui_running')
-	colorscheme solarized
+    set t_Co=256
 	set lines=53 columns=100	" 25 lines and 80 columnn
 
 	" setup for plugin vim-multiple-cursors
@@ -78,10 +80,6 @@ if has('gui_running')
 	set guicursor=a:blinkon0
 	" set guioptions=aegit	" default
 	set guioptions=
-	"set guioptions-=m		" hide menu bar
-	"set guioptions-=T		" hide tool bar
-	"set guioptions-=L
-	"set guioptions-=r
 else
 	"colorscheme molokai
 endif
@@ -105,6 +103,7 @@ set infercase
 set nowrap
 set textwidth=0			" don't auto break line
 
+set noshowmode
 syntax enable			" enable syntax highlight
 set shiftwidth=4
 set tabstop=4
@@ -210,6 +209,9 @@ xmap ga <Plug>(EasyAlign)
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
+
+" setup for lightline
+let g:lightline = { 'colorscheme': 'solarized' }
 
 " taglist setting
 set tags=./tags;/			" find tags file in parent dir recursively
