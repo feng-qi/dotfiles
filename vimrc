@@ -163,7 +163,7 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
 nnoremap <leader><tab> <C-^>
-nnoremap <leader>fs :w<cr>
+nnoremap <leader>fs :update<cr>
 nnoremap <leader>fS :wa<cr>
 nnoremap <leader>fr :browse oldfiles<cr>
 nnoremap <leader>gs :Gstatus<cr>
