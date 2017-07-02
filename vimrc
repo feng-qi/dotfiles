@@ -30,6 +30,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
 Plugin 'itchyny/lightline.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 " Plugin 'SirVer/ultisnips'
 " Plugin 'tomasr/molokai'							" color scheme
 " Plugin 'majutsushi/tagbar'						" need exuberant-ctags
@@ -162,6 +163,8 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
 nnoremap <leader><tab> <C-^>
+"nnoremap <leader>dw :%s/\s\+$//<cr>
+nnoremap <leader>dw :StripWhitespace<cr>         " need 'ntpeters/vim-better-whitespace'
 nnoremap <leader>fs :update<cr>
 nnoremap <leader>fS :wa<cr>
 nnoremap <leader>fr :browse oldfiles<cr>

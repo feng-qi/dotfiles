@@ -9,9 +9,9 @@ command_exists () {
 
 install_utils() {
     if ! command_exists ag ; then
-        sudo apt-get install silversearcher-ag
+        sudo apt-get install -y silversearcher-ag
     else
-    echo "[WARN] ag already exists! Skipped!"
+        echo "[WARN] ag already exists! Skipped!"
     fi
 }
 
@@ -37,8 +37,7 @@ create_soft_link() {
     done
 }
 
-# main
-
+#----- main ----------
 
 install_utils
 clone_repo
