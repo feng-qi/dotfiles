@@ -41,7 +41,7 @@ values."
             scala-auto-insert-asterisk-in-comments t)
      ;; emoji
      ;; games
-     dash
+     ;; dash
      git
      github
      version-control
@@ -54,7 +54,7 @@ values."
      pdf-tools
      python
      ranger
-     fasd
+     ;; fasd
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -69,7 +69,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(bison-mode)
+   dotspacemacs-additional-packages '(bison-mode
+                                      plur ; vim Abolish
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     vi-tilde-fringe
@@ -123,8 +125,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
+                         solarized-dark
                          solarized-light
                          spacemacs-light
                          leuven
@@ -289,9 +291,19 @@ you should place your code here."
   (global-prettify-symbols-mode t)
   (setq-default show-trailing-whitespace t)
 
+  (defun eval-and-replace ()
+    "Replace the preceding sexp with its value."
+    (interactive)
+    (backward-kill-sexp)
+    (condition-case nil
+        (prin1 (eval (read (current-kill 0)))
+               (current-buffer))
+      (error (message "Invalid expression")
+             (insert (current-kill 0)))))
   (defun fengqi/define-key (keymap &rest bindings)
     (while bindings
       (define-key keymap (pop bindings) (pop bindings))))
+
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
                      "-" 'evil-numbers/dec-at-pt)
@@ -305,6 +317,7 @@ you should place your code here."
     (kbd "xas") 'spacemacs/align-repeat-space
     (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
     (kbd "bv")  'mark-whole-buffer
+    (kbd "oe")  'eval-and-replace
     (kbd "os")  'just-one-space
     (kbd "oy")  'youdao-dictionary-search-at-point+
     (kbd "w-")  'split-window-below-and-focus

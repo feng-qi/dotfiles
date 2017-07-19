@@ -23,6 +23,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/tpope-vim-abolish'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mileszs/ack.vim'						" need ack-grep
 Plugin 'tommcdo/vim-exchange'					" swap two regions of text
@@ -35,7 +36,6 @@ Plugin 'ntpeters/vim-better-whitespace'
 " Plugin 'tomasr/molokai'							" color scheme
 " Plugin 'majutsushi/tagbar'						" need exuberant-ctags
 " Plugin 'scrooloose/nerdtree'
-" Plugin 'tpope/vim-abolish'
 " Plugin 'vim-airline/vim-airline'				" statusline
 " Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'terryma/vim-multiple-cursors'
