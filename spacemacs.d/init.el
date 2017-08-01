@@ -49,6 +49,7 @@ values."
      cscope
      html
      javascript
+     latex
      markdown
      org
      pdf-tools
@@ -77,6 +78,10 @@ values."
                                     vi-tilde-fringe
                                     evil-escape
                                     clean-aindent-mode
+                                    multiple-cursors
+                                    ace-pinyin
+                                    find-by-pinyin-dired
+                                    fancy-battery
                                     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -318,6 +323,8 @@ you should place your code here."
     (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
     (kbd "bv")  'mark-whole-buffer
     (kbd "oe")  'eval-and-replace
+    (kbd "of")  'clang-format
+    ;; (kbd "om")  'evil-mc-mode
     (kbd "os")  'just-one-space
     (kbd "oy")  'youdao-dictionary-search-at-point+
     (kbd "w-")  'split-window-below-and-focus
@@ -330,6 +337,12 @@ you should place your code here."
     (kbd "8")   'spacemacs/toggle-maximize-frame)
   ;; (spacemacs/set-leader-keys (kbd "in") (lambda () (interactive) (insert (file-name-nondirectory (buffer-file-name)))))
   ;; (spacemacs/set-leader-keys (kbd "fO") (lambda () (interactive) (spacemacs//open-in-external-app (expand-file-name default-directory))))
+
+  (add-hook 'LaTeX-mode-hook
+            (lambda ()
+              (setq TeX-engine 'xetex)
+              (add-to-list 'TeX-command-list
+                           '("XeLaTeX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil t))))
 
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'auto-fill-mode)
