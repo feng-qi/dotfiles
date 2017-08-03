@@ -308,6 +308,14 @@ you should place your code here."
   (defun fengqi/define-key (keymap &rest bindings)
     (while bindings
       (define-key keymap (pop bindings) (pop bindings))))
+  (defun fengqi/upcase-previous-WORD ()
+    (interactive)
+    (save-excursion
+      (setq end (point))
+      (skip-chars-backward "[:alnum:]-_")
+      (setq begin (point))
+      ;; (message (concat (number-to-string begin) " " (number-to-string end)))
+      (upcase-region begin end)))
 
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
@@ -317,6 +325,7 @@ you should place your code here."
 
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
+  (global-set-key (kbd "C-c u") 'fengqi/upcase-previous-WORD)
   (spacemacs|create-align-repeat-x "space" " " nil t)
   (spacemacs/set-leader-keys
     (kbd "xas") 'spacemacs/align-repeat-space
@@ -325,12 +334,14 @@ you should place your code here."
     (kbd "oe")  'eval-and-replace
     (kbd "of")  'clang-format
     ;; (kbd "om")  'evil-mc-mode
+    (kbd "op")  'plur-replace
     (kbd "os")  'just-one-space
+    (kbd "ou")  'fengqi/upcase-previous-WORD
     (kbd "oy")  'youdao-dictionary-search-at-point+
-    (kbd "w-")  'split-window-below-and-focus
     ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
     ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
-    (kbd "w/")  'split-window-right-and-focus
+    (kbd "ws")  'split-window-below-and-focus
+    (kbd "wv")  'split-window-right-and-focus
     (kbd "fCr") 'revert-buffer-with-coding-system
     (kbd "fCc") 'set-buffer-file-coding-system ; change buffer encoding
     (kbd "dw")  'delete-trailing-whitespace
