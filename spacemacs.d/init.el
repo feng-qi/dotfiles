@@ -48,6 +48,7 @@ values."
      ;; (gtags :variables gtags-enable-by-default nil)
      cscope
      html
+     java
      javascript
      latex
      markdown
@@ -55,13 +56,14 @@ values."
      pdf-tools
      python
      ranger
+     sql
      ;; fasd
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      ;; speed-reading
      spell-checking
-     vimscript
+     ;; vimscript
      yaml
      ;; syntax-checking
      ;; fengqi
@@ -82,6 +84,7 @@ values."
                                     ace-pinyin
                                     find-by-pinyin-dired
                                     fancy-battery
+                                    pangu-spacing
                                     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -130,8 +133,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         solarized-dark
+   dotspacemacs-themes '(solarized-dark
+                         spacemacs-dark
                          solarized-light
                          spacemacs-light
                          leuven
@@ -316,8 +319,21 @@ you should place your code here."
       (setq begin (point))
       ;; (message (concat (number-to-string begin) " " (number-to-string end)))
       (upcase-region begin end)))
+  (defun fengqi/insert-current-buffer-name ()
+    "Insert the full path file name into the current buffer. https://unix.stackexchange.com/questions/45125/how-to-get-current-buffers-filename-in-emacs/243679"
+    (interactive)
+    (insert (buffer-name)))
+    ;; (insert (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+  (defun fengqi/copy-current-buffer-name ()
+    "Copy the full path of the current buffer."
+    (interactive)
+    (kill-new (buffer-name)))
+    ;; (kill-new (buffer-file-name (window-buffer (minibuffer-selected-window)))))
 
   (fengqi/define-key evil-normal-state-map
+                     "+" 'evil-numbers/inc-at-pt
+                     "-" 'evil-numbers/dec-at-pt)
+  (fengqi/define-key evil-visual-state-map
                      "+" 'evil-numbers/inc-at-pt
                      "-" 'evil-numbers/dec-at-pt)
   ;; (fengqi/define-key evil-motion-state-map
@@ -325,15 +341,17 @@ you should place your code here."
 
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
-  (global-set-key (kbd "C-c u") 'fengqi/upcase-previous-WORD)
+  (global-set-key (kbd "C-'") 'fengqi/upcase-previous-WORD)
   (spacemacs|create-align-repeat-x "space" " " nil t)
   (spacemacs/set-leader-keys
     (kbd "xas") 'spacemacs/align-repeat-space
     (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
     (kbd "bv")  'mark-whole-buffer
     (kbd "oe")  'eval-and-replace
-    (kbd "of")  'clang-format
+    (kbd "of")  'clang-format-region
     ;; (kbd "om")  'evil-mc-mode
+    (kbd "oi")  'fengqi/insert-current-buffer-name
+    (kbd "oc")  'fengqi/copy-current-buffer-name
     (kbd "op")  'plur-replace
     (kbd "os")  'just-one-space
     (kbd "ou")  'fengqi/upcase-previous-WORD
@@ -346,8 +364,6 @@ you should place your code here."
     (kbd "fCc") 'set-buffer-file-coding-system ; change buffer encoding
     (kbd "dw")  'delete-trailing-whitespace
     (kbd "8")   'spacemacs/toggle-maximize-frame)
-  ;; (spacemacs/set-leader-keys (kbd "in") (lambda () (interactive) (insert (file-name-nondirectory (buffer-file-name)))))
-  ;; (spacemacs/set-leader-keys (kbd "fO") (lambda () (interactive) (spacemacs//open-in-external-app (expand-file-name default-directory))))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()
@@ -355,6 +371,7 @@ you should place your code here."
               (add-to-list 'TeX-command-list
                            '("XeLaTeX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil t))))
 
+  (add-hook 'compilation-mode-hook (lambda () (setq compilation-window-height 10)))
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'smartparens-mode)
@@ -380,6 +397,11 @@ you should place your code here."
                  (c-offset-alist
                   (defun-open . 0)
                   (defun-block-intro . +))))
+
+  (setq eclim-eclipse-dirs '("~/eclipse")
+        eclim-executable "~/eclipse/eclim"
+        eclimd-default-workspace "~/workspace")
+  ;; (add-hook 'java-mode-hook (lambda () (company-emacs-eclim-setup)))
 
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
   ;; (with-eval-after-load 'projectile

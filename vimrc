@@ -91,7 +91,7 @@ elseif has('unix')
 	set guifont=Source\ Code\ Pro\ 11
 endif
 
-set clipboard=unnamed
+" set clipboard=unnamed
 set winaltkeys=no			" Alt key will not pop out menu bar menus
 set background=dark
 set visualbell
