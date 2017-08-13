@@ -292,60 +292,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq ivy-count-format "(%d/%d) ")
+  (load-file "~/.spacemacs.d/funcs.el")
+  ;; (setq ivy-count-format "(%d/%d) ")
   (setq powerline-default-separator nil)
   ;; (spaceline-compile)
   (global-company-mode t)
   (global-prettify-symbols-mode t)
   (setq-default show-trailing-whitespace t)
-
-  (defun eval-and-replace ()
-    "Replace the preceding sexp with its value."
-    (interactive)
-    (backward-kill-sexp)
-    (condition-case nil
-        (prin1 (eval (read (current-kill 0)))
-               (current-buffer))
-      (error (message "Invalid expression")
-             (insert (current-kill 0)))))
-  (defun fengqi/define-key (keymap &rest bindings)
-    (while bindings
-      (define-key keymap (pop bindings) (pop bindings))))
-  (defun fengqi/upcase-previous-WORD ()
-    (interactive)
-    (save-excursion
-      (setq end (point))
-      (skip-chars-backward "[:alnum:]-_")
-      (setq begin (point))
-      ;; (message (concat (number-to-string begin) " " (number-to-string end)))
-      (upcase-region begin end)))
-  (defun fengqi/insert-current-buffer-name ()
-    "Insert the full path file name into the current buffer. https://unix.stackexchange.com/questions/45125/how-to-get-current-buffers-filename-in-emacs/243679"
-    (interactive)
-    (insert (buffer-name)))
-    ;; (insert (buffer-file-name (window-buffer (minibuffer-selected-window)))))
-  (defun fengqi/copy-current-buffer-name ()
-    "Copy the full path of the current buffer."
-    (interactive)
-    (kill-new (buffer-name)))
-    ;; (kill-new (buffer-file-name (window-buffer (minibuffer-selected-window)))))
-  (defun fengqi/buffer-contains-pattern? (pattern)
-    (interactive "sPattern: ")
-    (save-excursion
-      (goto-char (point-min))
-      (search-forward pattern nil t)))
-  (defun fengqi/set-compile-command ()
-    "Set compile-command to compile current file."
-    (interactive)
-    (let ((library-opt  (if (fengqi/buffer-contains-pattern? "BOOST_") " -lboost_unit_test_framework" ""))
-          (static-opt   (if (fengqi/buffer-contains-pattern? "BOOST_") " -static" ""))
-          (c++11-opt    (if (string= major-mode "c++-mode") " -std=c++11" ""))
-          (compiler-opt (cond ((string= major-mode "c++-mode")  "clang++ ")
-                              ((string= major-mode "c-mode")    "clang ")
-                              ((string= major-mode "java-mode") "javac ")
-                              (t ""))))
-      (when (not (string= compiler-opt ""))
-        (setq compile-command (concat compiler-opt (buffer-name) c++11-opt library-opt static-opt)))))
 
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
@@ -359,7 +312,6 @@ you should place your code here."
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
   (global-set-key (kbd "C-'") 'fengqi/upcase-previous-WORD)
-  (spacemacs|create-align-repeat-x "space" " " nil t)
   (spacemacs/set-leader-keys
     (kbd "xas") 'spacemacs/align-repeat-space
     (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
