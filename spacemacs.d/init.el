@@ -329,6 +329,23 @@ you should place your code here."
     (interactive)
     (kill-new (buffer-name)))
     ;; (kill-new (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+  (defun fengqi/buffer-contains-pattern? (pattern)
+    (interactive "sPattern: ")
+    (save-excursion
+      (goto-char (point-min))
+      (search-forward pattern nil t)))
+  (defun fengqi/set-compile-command ()
+    "Set compile-command to compile current file."
+    (interactive)
+    (let ((library-opt  (if (fengqi/buffer-contains-pattern? "BOOST_") " -lboost_unit_test_framework" ""))
+          (static-opt   (if (fengqi/buffer-contains-pattern? "BOOST_") " -static" ""))
+          (c++11-opt    (if (string= major-mode "c++-mode") " -std=c++11" ""))
+          (compiler-opt (cond ((string= major-mode "c++-mode")  "clang++ ")
+                              ((string= major-mode "c-mode")    "clang ")
+                              ((string= major-mode "java-mode") "javac ")
+                              (t ""))))
+      (when (not (string= compiler-opt ""))
+        (setq compile-command (concat compiler-opt (buffer-name) c++11-opt library-opt static-opt)))))
 
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
@@ -352,6 +369,7 @@ you should place your code here."
     ;; (kbd "om")  'evil-mc-mode
     (kbd "oi")  'fengqi/insert-current-buffer-name
     (kbd "oc")  'fengqi/copy-current-buffer-name
+    (kbd "oo")  'fengqi/set-compile-command
     (kbd "op")  'plur-replace
     (kbd "os")  'just-one-space
     (kbd "ou")  'fengqi/upcase-previous-WORD
