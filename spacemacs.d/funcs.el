@@ -59,3 +59,11 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
                             (t ""))))
     (when (not (string= compiler-opt ""))
       (setq compile-command (concat compiler-opt (buffer-name) c++11-opt library-opt static-opt)))))
+
+(defun fengqi/move-current-buffer-file ()
+  "Move current buffer file."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (call-interactively 'write-file)
+    (delete-file filename)
+    (message "Move `%s' to `%s' successfully!" filename (buffer-file-name))))

@@ -316,6 +316,8 @@ you should place your code here."
     (kbd "xas") 'spacemacs/align-repeat-space
     (kbd "iv")  'rectangle-number-lines ; https://www.reddit.com/r/emacs/comments/3n1ikz/turn_column_of_0s_into_incrementing_values/
     (kbd "bv")  'mark-whole-buffer
+    (kbd "by")  'spacemacs/copy-whole-buffer-to-clipboard
+    (kbd "fm")  'fengqi/move-current-buffer-file
     (kbd "oe")  'eval-and-replace
     (kbd "of")  'clang-format-region
     ;; (kbd "om")  'evil-mc-mode
