@@ -20,14 +20,15 @@ package_installed () {
 }
 
 install_utils() {
-    pkgs_str="git clang clang-format golang-any emacs25 vim-gui-common i3-wm ibus-table-wubi ibus-pinyin chromium-browser zsh yakuake command-not-found"
+    pkgs_str="git tree clang clang-format golang-any emacs25 vim-gui-common i3-wm ibus-table-wubi ibus-pinyin chromium-browser zsh yakuake command-not-found"
     pkgs=(${pkgs_str})
 
     for pkg in ${pkgs[@]}; do
         # if ! command_exists ${pkg} ; then
         if ! package_installed ${pkg} ; then
             # sudo apt-get install -y silversearcher-ag
-            echo -e "${INFO} ${COLR_GREEN}${pkg}${COLR_NC} will be installed."
+            # echo -e "${INFO} ${COLR_GREEN}${pkg}${COLR_NC} will be installed."
+            sudo apt install -y ${pkg}
         else
             echo -e "${WARN} ${COLR_RED}${pkg}${COLR_NC} already exists! Skipped!"
         fi
@@ -36,9 +37,9 @@ install_utils() {
 
 clone_repo() {
     if [ -e "$HOME/.vim/bundle/Vundle.vim" ]; then
-        echo "[WARN] Vundle.vim already exists! Skipped!"
+        echo -e "${WARN} ${COLR_GREEN}Vundle.vim${COLR_NC} already exists! Skipped!"
     else
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
     fi
 }
 
@@ -49,8 +50,8 @@ create_soft_link() {
     for file in ${files[@]}
     do
         if [ -e "$HOME/.${file}" ]; then
-            echo -e "[WARN] ${COLR_GREEN}${file}${COLR_NC} already exists! Skipped!" # -e is necessary
-            # printf "[WARN] ${COLR_GREEN}${file}${COLR_NC} already exists! Skipped!\n"
+            echo -e "${WARN} ${COLR_GREEN}${file}${COLR_NC} already exists! Skipped!" # -e is necessary
+            # printf "${WARN} ${COLR_GREEN}${file}${COLR_NC} already exists! Skipped!\n"
         else
             ln -s "$HOME/dotfiles/${file}" "$HOME/.${file}"
         fi
