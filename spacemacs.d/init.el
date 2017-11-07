@@ -33,11 +33,12 @@ values."
      emacs-lisp
      (go :variables go-tab-width 4)
      haskell
+     rust
      (scala :variables
             scala-indent:use-javadoc-style t
             scala-enable-eldoc t
             ;; scala-use-unicode-arrows t
-            scala-auto-start-ensime t
+            ;; scala-auto-start-ensime t
             scala-auto-insert-asterisk-in-comments t)
      ;; emoji
      ;; games
@@ -55,6 +56,7 @@ values."
      org
      pdf-tools
      python
+     ipython-notebook
      ranger
      sql
      ;; fasd
@@ -73,12 +75,15 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(bison-mode
+                                      cuda-mode
+                                      monokai-theme
                                       plur ; vim Abolish
+                                      ;; material-theme
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     vi-tilde-fringe
-                                    evil-escape
+                                    ;; evil-escape
                                     clean-aindent-mode
                                     multiple-cursors
                                     ace-pinyin
@@ -133,13 +138,13 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark
+   dotspacemacs-themes '(zenburn
+                         solarized-dark
                          spacemacs-dark
                          solarized-light
                          spacemacs-light
                          leuven
-                         monokai
-                         zenburn)
+                         monokai)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font `("Source Code Pro"
@@ -296,9 +301,11 @@ you should place your code here."
   ;; (setq ivy-count-format "(%d/%d) ")
   (setq powerline-default-separator nil)
   ;; (spaceline-compile)
+  ;; (setq-default evil-escape-key-sequence "jk")
   (global-company-mode t)
   (global-prettify-symbols-mode t)
-  (setq-default show-trailing-whitespace t)
+  ;; (setq-default show-trailing-whitespace t)
+  (setq python-shell-interpreter "python3")
 
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt
@@ -309,7 +316,7 @@ you should place your code here."
   ;; (fengqi/define-key evil-motion-state-map
   ;;                    "t" 'evil-find-char-backward)
 
-  (global-set-key (kbd "C-=") 'er/expand-region)
+  ;; (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-c i") 'ido-insert-buffer)
   (global-set-key (kbd "C-'") 'fengqi/upcase-previous-WORD)
   (spacemacs/set-leader-keys
@@ -326,7 +333,7 @@ you should place your code here."
     (kbd "oo")  'fengqi/set-compile-command
     (kbd "op")  'plur-replace
     (kbd "os")  'just-one-space
-    (kbd "ou")  'fengqi/upcase-previous-WORD
+    ;; (kbd "ou")  'fengqi/upcase-previous-WORD
     (kbd "oy")  'youdao-dictionary-search-at-point+
     ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
     ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
@@ -347,7 +354,9 @@ you should place your code here."
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'smartparens-mode)
-  (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+  ;; (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+
+  ;; (add-to-list 'auto-mode-alist '("\\.cu\\'" . c-mode))
 
   (setq sp-highlight-pair-overlay     nil
         sp-highlight-wrap-overlay     nil

@@ -53,12 +53,13 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
   (let ((library-opt  (if (fengqi/buffer-contains-pattern? "BOOST_") " -lboost_unit_test_framework" ""))
         (static-opt   (if (fengqi/buffer-contains-pattern? "BOOST_") " -static" ""))
         (c++11-opt    (if (string= major-mode "c++-mode") " -std=c++11" ""))
+        (file-name    (file-name-nondirectory (buffer-file-name)))
         (compiler-opt (cond ((string= major-mode "c++-mode")  "clang++ ")
                             ((string= major-mode "c-mode")    "clang ")
                             ((string= major-mode "java-mode") "javac ")
                             (t ""))))
     (when (not (string= compiler-opt ""))
-      (setq compile-command (concat compiler-opt (buffer-name) c++11-opt library-opt static-opt)))))
+      (setq compile-command (concat compiler-opt file-name c++11-opt library-opt static-opt)))))
 
 (defun fengqi/move-current-buffer-file ()
   "Move current buffer file."
@@ -73,3 +74,11 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
     (kill-buffer buffer-old)
     (find-file filename-new)
     (message "Move `%s' to `%s' successfully." filename-old filename-new)))
+
+(defun fengqi/string-reverse (beg end)
+  (interactive)
+  (let ((string-to-reverse (buffer-substring-no-properties beg end)))
+    (message string-to-reverse beg end))
+    ;; (delete-region beg end)
+    ;; (insert (string-reverse string-to-reverse))
+  )

@@ -20,7 +20,9 @@ package_installed () {
 }
 
 install_utils() {
-    pkgs_str="git tree clang clang-format golang-any emacs25 vim-gui-common i3-wm ibus-table-wubi ibus-pinyin chromium-browser zsh yakuake command-not-found"
+    pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
+              vim-gui-common i3-wm ibus-table-wubi ibus-pinyin chromium-browser command-not-found
+              build-essential kubuntu-restricted-addons kubuntu-restricted-extras silversearcher-ag"
     pkgs=(${pkgs_str})
 
     for pkg in ${pkgs[@]}; do

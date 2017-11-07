@@ -82,7 +82,7 @@ if has('gui_running')
 	" set guioptions=aegit	" default
 	set guioptions=
 else
-	"colorscheme molokai
+	colorscheme evening
 endif
 
 if has('win32')
