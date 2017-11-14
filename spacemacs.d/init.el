@@ -354,6 +354,7 @@ you should place your code here."
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'smartparens-mode)
+  (add-hook 'org-mode-hook (lambda () (setq show-trailing-whitespace t)))
   ;; (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
   ;; (add-to-list 'auto-mode-alist '("\\.cu\\'" . c-mode))
