@@ -43,7 +43,7 @@ clone_repo() {
 }
 
 create_soft_link() {
-    files_str="vimrc spacemacs.d agignore xmonad"
+    files_str="vimrc spacemacs.d agignore xmonad gitconfig"
     files=(${files_str})
 
     for file in ${files[@]}
@@ -72,4 +72,15 @@ install_fonts() {
         fc-cache -fv
         echo -e "${INFO} fonts installed."
     fi
+}
+
+install_miscs() {
+    # install fasd
+    sudo add-apt-repository ppa:aacebedo/fasd
+    sudo apt-get update
+    sudo apt-get install fasd
+
+    # install fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 }

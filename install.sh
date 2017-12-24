@@ -27,6 +27,10 @@ while [ $# -gt 0 ]; do
             clone_repo
             shift
             ;;
+        miscs)
+            install_miscs
+            shift
+            ;;
         *)
             echo -e "${WARN} Unrecognized Argument: ${COLR_RED}$1${COLR_NC}"
             exit 1
