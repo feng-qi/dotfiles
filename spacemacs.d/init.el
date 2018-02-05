@@ -33,6 +33,7 @@ values."
      emacs-lisp
      (go :variables go-tab-width 4)
      haskell
+     lua
      rust
      (scala :variables
             scala-indent:use-javadoc-style t
@@ -79,6 +80,7 @@ values."
                                       monokai-theme
                                       plur ; vim Abolish
                                       ;; material-theme
+                                      nhexl-mode
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
@@ -305,7 +307,7 @@ you should place your code here."
   (global-company-mode t)
   (global-prettify-symbols-mode t)
   ;; (setq-default show-trailing-whitespace t)
-  (setq python-shell-interpreter "python3")
+  (setq-default python-shell-interpreter "python3")
 
   (fengqi/define-key evil-normal-state-map
                      "+" 'evil-numbers/inc-at-pt

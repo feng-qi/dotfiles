@@ -91,11 +91,15 @@ source /etc/zsh_command_not_found
 #eval "$(fasd --init auto)"
 
 # export LFS=/home/qi/lfs
-alias python=python3
-alias c=cat
+#alias python=python3
 
 export TERM=xterm-256color
-export PATH=$PATH:/usr/local/cuda/bin:/home/qi/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+export PATH=$PATH:/usr/local/cuda-9.0/bin:/home/qi/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+
+# setup for virtualenvwrapper
+export WORKON_HOME=~/Envs
+export PROJECT_HOME=~/pyprojects
+#source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

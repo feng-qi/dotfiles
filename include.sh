@@ -83,4 +83,11 @@ install_miscs() {
     # install fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
+
+    # include ubuntu-restricted-extras
+    sudo apt install -y ubuntu-restricted-extras
+
+    # packages for Awesome wm
+    sudo apt install -y awesome xautolock i3lock xfce4-power-manager
+    ln -s $HOME/dotfiles/awesome $HOME/.config/awesome
 }
