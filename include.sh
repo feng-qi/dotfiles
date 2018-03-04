@@ -17,19 +17,35 @@ package_installed () {
 }
 
 install_utils() {
-    pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
-              vim-gui-common i3-wm ibus-table-wubi ibus-pinyin chromium-browser command-not-found
+    local pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
+              konsole gnome-do gnome-pie tmux tlp cmake checkinstall vlc
+              vim-gui-common ibus-table-wubi ibus-pinyin chromium-browser command-not-found
               build-essential silversearcher-ag"
-    pkgs=(${pkgs_str})
+    local pkgs=(${pkgs_str})
 
     for pkg in ${pkgs[@]}; do
         # if ! command_exists ${pkg} ; then
         if ! package_installed ${pkg} ; then
-            # sudo apt-get install -y silversearcher-ag
-            # echo -e "${INFO} ${COLR_GREEN}${pkg}${COLR_NC} will be installed."
+            echo -e "${INFO} ${COLR_GREEN}${pkg}${COLR_NC} installing"
             sudo apt install -y ${pkg}
+            echo -e "${INFO} ${COLR_GREEN}${pkg}${COLR_NC} installed"
         else
             echo -e "${WARN} ${COLR_RED}${pkg}${COLR_NC} already exists! Skipped!"
+        fi
+    done
+}
+
+install_libs() {
+    local libs_str="libclang-dev"
+    local libs=(${libs_str})
+
+    for lib in ${libs[@]}; do
+        if ! package_installed ${lib} ; then
+            echo -e "${INFO} ${COLR_GREEN}${lib}${COLR_NC} installing"
+            sudo apt install -y ${lib}
+            echo -e "${INFO} ${COLR_GREEN}${lib}${COLR_NC} installed successfully"
+        else
+            echo -e "${WARN} ${COLR_RED}${lib}${COLR_NC} already exists! Skipped!"
         fi
     done
 }
@@ -43,8 +59,8 @@ clone_repo() {
 }
 
 create_soft_link() {
-    files_str="vimrc spacemacs.d agignore xmonad gitconfig"
-    files=(${files_str})
+    local files_str="vimrc spacemacs.d agignore xmonad gitconfig"
+    local files=(${files_str})
 
     for file in ${files[@]}
     do
@@ -87,6 +103,18 @@ install_miscs() {
     # include ubuntu-restricted-extras
     sudo apt install -y ubuntu-restricted-extras
 
+    # install tomate: https://github.com/eliostvs/tomate-gtk
+    RELEASE=`sed -n 's/VERSION_ID="\(.*\)"/\1/p' /etc/os-release`
+    sudo wget -O- http://download.opensuse.org/repositories/home:/eliostvs:/tomate/xUbuntu_$RELEASE/Release.key | sudo apt-key add -
+    sudo bash -c "echo 'deb http://download.opensuse.org/repositories/home:/eliostvs:/tomate/xUbuntu_$RELEASE/ ./' > /etc/apt/sources.list.d/tomate.list"
+    sudo apt update
+    sudo apt install tomate-gtk
+    sudo apt install tomate-indicator-plugin
+    sudo apt install tomate-alarm-plugin
+    sudo apt install tomate-exec-plugin
+}
+
+install_awesome_wm() {
     # packages for Awesome wm
     sudo apt install -y awesome xautolock i3lock xfce4-power-manager
     ln -s $HOME/dotfiles/awesome $HOME/.config/awesome

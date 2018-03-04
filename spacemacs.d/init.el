@@ -32,6 +32,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     vimscript
      auto-completion
      better-defaults
      ;; semantic
@@ -381,7 +382,6 @@ you should place your code here."
     (kbd "by")  'spacemacs/copy-whole-buffer-to-clipboard
     (kbd "fm")  'fengqi/move-current-buffer-file
     (kbd "oe")  'eval-and-replace
-    (kbd "of")  'clang-format-region
     ;; (kbd "om")  'evil-mc-mode
     (kbd "oi")  'fengqi/insert-current-buffer-name
     (kbd "oc")  'fengqi/copy-current-buffer-name
@@ -398,6 +398,10 @@ you should place your code here."
     (kbd "fCc") 'set-buffer-file-coding-system ; change buffer encoding
     (kbd "dw")  'delete-trailing-whitespace
     (kbd "8")   'spacemacs/toggle-maximize-frame)
+
+  (dolist (mode '(c-mode c++-mode))
+    (evil-leader/set-key-for-mode mode
+      "f f" 'clang-format-region))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()

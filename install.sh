@@ -15,6 +15,10 @@ while [ $# -gt 0 ]; do
             install_utils
             shift
             ;;
+        libs)
+            install_libs
+            shift
+            ;;
         fonts)
             install_fonts
             shift
@@ -25,6 +29,10 @@ while [ $# -gt 0 ]; do
             ;;
         github)
             clone_repo
+            shift
+            ;;
+        awesome)
+            install_awesome_wm
             shift
             ;;
         miscs)
