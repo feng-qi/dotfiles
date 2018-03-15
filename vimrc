@@ -100,6 +100,7 @@ set hidden
 set ignorecase
 set incsearch			" become useless while plugin easymotion presents
 set infercase
+vnoremap <leader>rv c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
 
 set nowrap
 set textwidth=0			" don't auto break line
