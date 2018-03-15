@@ -76,9 +76,12 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
     (message "Move `%s' to `%s' successfully." filename-old filename-new)))
 
 (defun fengqi/string-reverse (beg end)
-  (interactive)
-  (let ((string-to-reverse (buffer-substring-no-properties beg end)))
-    (message string-to-reverse beg end))
-    ;; (delete-region beg end)
-    ;; (insert (string-reverse string-to-reverse))
+  (interactive "r")
+  (save-restriction
+    (narrow-to-region beg end)
+    (let ((string-to-reverse (buffer-substring-no-properties (point-min) (point-max))))
+      (message string-to-reverse)
+      (goto-char (point-min))
+      (search-forward string-to-reverse)
+      (replace-match (string-reverse string-to-reverse))))
   )
