@@ -96,6 +96,7 @@ source /etc/zsh_command_not_found
 export TERM=xterm-256color
 export PATH=$PATH:/usr/local/cuda-9.0/bin:/home/qi/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # setup for virtualenvwrapper
 export WORKON_HOME=~/Envs
@@ -103,3 +104,6 @@ export PROJECT_HOME=~/pyprojects
 #source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/test/llvm/install-2018-02-18/bin:$PATH"
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"

@@ -96,6 +96,7 @@ values."
                                       plur ; vim Abolish
                                       ;; material-theme
                                       nhexl-mode
+                                      thrift
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
@@ -364,6 +365,8 @@ you should place your code here."
   (setq-default python-shell-interpreter "python3")
 
   (fengqi/define-key evil-normal-state-map
+                     "g[" 'backward-page ; https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E5%90%88%E7%90%86%E5%9C%B0%E5%9C%A8Emacs%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E7%AC%A6.org
+                     "g]" 'backward-page
                      "+" 'evil-numbers/inc-at-pt
                      "-" 'evil-numbers/dec-at-pt)
   (fengqi/define-key evil-visual-state-map
@@ -387,6 +390,7 @@ you should place your code here."
     (kbd "oc")  'fengqi/copy-current-buffer-name
     (kbd "oo")  'fengqi/set-compile-command
     (kbd "op")  'plur-replace
+    (kbd "or")  'fengqi/string-reverse
     (kbd "os")  'just-one-space
     ;; (kbd "ou")  'fengqi/upcase-previous-WORD
     (kbd "oy")  'youdao-dictionary-search-at-point+
@@ -401,7 +405,9 @@ you should place your code here."
 
   (dolist (mode '(c-mode c++-mode))
     (evil-leader/set-key-for-mode mode
-      "f f" 'clang-format-region))
+      "f f" 'clang-format-region
+      "o o" 'fengqi/set-compile-command
+      ))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()
@@ -452,6 +458,11 @@ you should place your code here."
                   (defun-open . 0)
                   (defun-block-intro . +))))
 
+  ;; https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E8%AE%A9Emacs%E4%B8%BA%E4%BD%A0%E8%87%AA%E5%8A%A8%E6%8F%92%E5%85%A5%E5%86%85%E5%AE%B9(Emacs%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97).org
+  ;; (add-hook 'find-file-hook 'auto-insert)
+  ;; (define-auto-insert "CMakeLists.txt" "~/github/cpp_starter_project/CMakeLists.txt")
+
+  (add-to-list 'yas-snippet-dirs "~/dotfiles/snippets")
   (setq eclim-eclipse-dirs '("~/eclipse")
         eclim-executable "~/eclipse/eclim"
         eclimd-default-workspace "~/workspace")
