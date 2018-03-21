@@ -59,7 +59,7 @@ clone_repo() {
 }
 
 create_soft_link() {
-    local files_str="vimrc spacemacs.d agignore xmonad gitconfig"
+    local files_str="zshrc vimrc spacemacs.d agignore xmonad gitconfig"
     local files=(${files_str})
 
     for file in ${files[@]}

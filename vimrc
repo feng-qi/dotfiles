@@ -1,59 +1,48 @@
-"***************** Vundle configure *****************
+"****************** Install vim-plug ******************
+if empty(glob('~/.vim/autoload/plug.vim'))
+   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set nocompatible
-filetype off
-
-" install vundle
-"	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" set Runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-" this is the call to begin the Vundle Plugin Opperation
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"***************** vim-plug configure *****************
+call plug#begin('~/.vim/plugged')
 
 " git repos:
-Plugin 'altercation/vim-colors-solarized'		" color scheme
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/tpope-vim-abolish'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'mileszs/ack.vim'						" need ack-grep
-Plugin 'tommcdo/vim-exchange'					" swap two regions of text
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
-Plugin 'itchyny/lightline.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'tomasr/molokai'							" color scheme
-" Plugin 'majutsushi/tagbar'						" need exuberant-ctags
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'vim-airline/vim-airline'				" statusline
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'nathanaelkane/vim-indent-guides'
-" Plugin 'easymotion/vim-easymotion'
-" Plugin 'sjl/gundo.vim'                        " need python support
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'scrooloose/syntastic'
-" Plugin 'othree/xml.vim'
-" Plugin 'mattn/emmet-vim'
-" Plugin 'godlygeek/tabular'
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'ARM9/arm-syntax-vim'
+Plug 'altercation/vim-colors-solarized'		" color scheme
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'junegunn/vim-easy-align'
+Plug 'mileszs/ack.vim'						" need ack-grep
+Plug 'tommcdo/vim-exchange'					" swap two regions of text
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'jiangmiao/auto-pairs'
+Plug 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
+Plug 'itchyny/lightline.vim'
+Plug 'ntpeters/vim-better-whitespace'
+" Plug 'SirVer/ultisnips'
+" Plug 'tomasr/molokai'							" color scheme
+" Plug 'majutsushi/tagbar'						" need exuberant-ctags
+" Plug 'scrooloose/nerdtree'
+" Plug 'vim-airline/vim-airline'				" statusline
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'sjl/gundo.vim'                        " need python support
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'scrooloose/syntastic'
+" Plug 'othree/xml.vim'
+" Plug 'mattn/emmet-vim'
+" Plug 'godlygeek/tabular'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'ARM9/arm-syntax-vim'
 
-" All of you Plugins must be added before the following line
-call vundle#end()		" required
-filetype plugin indent on	" required
-
+call plug#end()		" required
 "***************** End configure *****************
 
 set encoding=utf-8
