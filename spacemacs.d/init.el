@@ -468,6 +468,10 @@ you should place your code here."
         eclimd-default-workspace "~/workspace")
   ;; (add-hook 'java-mode-hook (lambda () (company-emacs-eclim-setup)))
 
+  ;; markdown exporter, more info: https://orgmode.org/worg/exporters/ox-overview.html
+  (eval-after-load "org"
+    '(require 'ox-md nil t))
+
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
   ;; (with-eval-after-load 'projectile
   ;;   (push '("c" "h") projectile-other-file-alist))
