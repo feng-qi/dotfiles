@@ -470,7 +470,16 @@ you should place your code here."
 
   ;; markdown exporter, more info: https://orgmode.org/worg/exporters/ox-overview.html
   (eval-after-load "org"
-    '(require 'ox-md nil t))
+    '(progn
+       (require 'ox-md nil t)
+       (setq org-link-frame-setup
+             '((vm      . vm-visit-folder-other-frame)
+               (vm-imap . vm-visit-imap-folder-other-frame)
+               (gnus    . org-gnus-no-new-news)
+               (file    . find-file)
+               (wl      . wl-other-frame)))
+       ))
+
 
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
   ;; (with-eval-after-load 'projectile
