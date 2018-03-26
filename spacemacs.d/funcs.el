@@ -85,3 +85,7 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
       (search-forward string-to-reverse)
       (replace-match (string-reverse string-to-reverse))))
   )
+
+(defun fengqi/describe-buffer-file-coding-system ()
+  (interactive)
+  (message "%s" buffer-file-coding-system))

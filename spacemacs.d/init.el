@@ -401,6 +401,7 @@ you should place your code here."
     (kbd "fCr") 'revert-buffer-with-coding-system
     (kbd "fCc") 'set-buffer-file-coding-system ; change buffer encoding
     (kbd "dw")  'delete-trailing-whitespace
+    (kbd "dc")  'fengqi/describe-buffer-file-coding-system
     (kbd "8")   'spacemacs/toggle-maximize-frame)
 
   (dolist (mode '(c-mode c++-mode))
@@ -417,14 +418,26 @@ you should place your code here."
 
   (add-hook 'compilation-mode-hook (lambda () (setq compilation-window-height 10)))
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'smartparens-mode)
   (add-hook 'org-mode-hook (lambda () (progn
                                    (setq show-trailing-whitespace t)
-                                   ;; (define-key org-mode-map [(kbd "C-'")] nil)
-                                   (fengqi/define-key org-mode-map
-                                                      (kbd "C-'") 'fengqi/upcase-previous-WORD)
+                                   (smartparens-mode t)
+                                   (auto-fill-mode t)
                                    )))
+
+  ;; markdown exporter, more info: https://orgmode.org/worg/exporters/ox-overview.html
+  (eval-after-load "org"
+    '(progn
+       ;; (define-key org-mode-map [(kbd "C-'")] nil)
+       (fengqi/define-key org-mode-map
+                          (kbd "C-'") 'fengqi/upcase-previous-WORD)
+       (require 'ox-md nil t)
+       (setq org-link-frame-setup
+             '((vm      . vm-visit-folder-other-frame)
+               (vm-imap . vm-visit-imap-folder-other-frame)
+               (gnus    . org-gnus-no-new-news)
+               (file    . find-file)
+               (wl      . wl-other-frame)))
+       ))
 
   ;; https://emacs.stackexchange.com/questions/9583/how-to-treat-underscore-as-part-of-the-word
   (with-eval-after-load 'evil
@@ -467,18 +480,6 @@ you should place your code here."
         eclim-executable "~/eclipse/eclim"
         eclimd-default-workspace "~/workspace")
   ;; (add-hook 'java-mode-hook (lambda () (company-emacs-eclim-setup)))
-
-  ;; markdown exporter, more info: https://orgmode.org/worg/exporters/ox-overview.html
-  (eval-after-load "org"
-    '(progn
-       (require 'ox-md nil t)
-       (setq org-link-frame-setup
-             '((vm      . vm-visit-folder-other-frame)
-               (vm-imap . vm-visit-imap-folder-other-frame)
-               (gnus    . org-gnus-no-new-news)
-               (file    . find-file)
-               (wl      . wl-other-frame)))
-       ))
 
 
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
