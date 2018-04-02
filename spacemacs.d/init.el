@@ -396,6 +396,7 @@ you should place your code here."
     (kbd "oy")  'youdao-dictionary-search-at-point+
     ;; (kbd "tf")  'spacemacs/toggle-auto-fill-mode
     ;; (kbd "tF")  'spacemacs/toggle-fill-column-indicator
+    (kbd "wo")  'spacemacs/toggle-maximize-buffer
     (kbd "ws")  'split-window-below-and-focus
     (kbd "wv")  'split-window-right-and-focus
     (kbd "fCr") 'revert-buffer-with-coding-system
