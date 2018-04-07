@@ -18,7 +18,7 @@ package_installed () {
 
 install_utils() {
     local pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
-              konsole gnome-do gnome-pie tmux tlp cmake checkinstall vlc curl
+              konsole gnome-do gnome-pie tmux tlp cmake checkinstall vlc curl xclip
               vim-gui-common ibus-table-wubi ibus-pinyin chromium-browser command-not-found
               build-essential silversearcher-ag"
     local pkgs=(${pkgs_str})
