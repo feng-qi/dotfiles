@@ -18,7 +18,7 @@ package_installed () {
 
 install_utils() {
     local pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
-              konsole gnome-do gnome-pie tmux tlp cmake checkinstall vlc curl xclip
+              konsole tmux tlp cmake cmake-curses-gui checkinstall vlc curl xclip
               vim-gui-common ibus-table-wubi ibus-pinyin chromium-browser command-not-found
               build-essential silversearcher-ag"
     local pkgs=(${pkgs_str})
@@ -92,26 +92,37 @@ install_fonts() {
 
 install_miscs() {
     # install fasd
-    sudo add-apt-repository ppa:aacebedo/fasd
-    sudo apt-get update
-    sudo apt-get install fasd
+    if ! package_installed fasd ; then
+        sudo add-apt-repository ppa:aacebedo/fasd
+        sudo apt-get update
+        sudo apt-get install fasd
+    else
+        echo -e "${WARN} fasd already installed!"
+    fi
 
     # install fzf
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    if ! [ -e "${HOME}/.fzf" ]; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install
+    else
+        echo -e "${WARN} fzf already installed!"
+    fi
 
     # include ubuntu-restricted-extras
-    sudo apt install -y ubuntu-restricted-extras
+    if ! package_installed ubuntu-restricted-extras ; then
+        sudo apt install -y ubuntu-restricted-extras
+    else
+        echo -e "${WARN} ubuntu-restricted-extras already installed!"
+    fi
 
     # install tomate: https://github.com/eliostvs/tomate-gtk
-    RELEASE=`sed -n 's/VERSION_ID="\(.*\)"/\1/p' /etc/os-release`
-    sudo wget -O- http://download.opensuse.org/repositories/home:/eliostvs:/tomate/xUbuntu_$RELEASE/Release.key | sudo apt-key add -
-    sudo bash -c "echo 'deb http://download.opensuse.org/repositories/home:/eliostvs:/tomate/xUbuntu_$RELEASE/ ./' > /etc/apt/sources.list.d/tomate.list"
-    sudo apt update
-    sudo apt install tomate-gtk
-    sudo apt install tomate-indicator-plugin
-    sudo apt install tomate-alarm-plugin
-    sudo apt install tomate-exec-plugin
+    # RELEASE=`sed -n 's/VERSION_ID="\(.*\)"/\1/p' /etc/os-release`
+    # sudo wget -O- http://download.opensuse.org/repositories/home:/eliostvs:/tomate/xUbuntu_$RELEASE/Release.key | sudo apt-key add -
+    # sudo bash -c "echo 'deb http://download.opensuse.org/repositories/home:/eliostvs:/tomate/xUbuntu_$RELEASE/ ./' > /etc/apt/sources.list.d/tomate.list"
+    # sudo apt update
+    # sudo apt install tomate-gtk
+    # sudo apt install tomate-indicator-plugin
+    # sudo apt install tomate-alarm-plugin
+    # sudo apt install tomate-exec-plugin
 }
 
 install_awesome_wm() {
