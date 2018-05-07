@@ -3,32 +3,32 @@ ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
 # Install antigen.zsh if not exist
 if [ ! -f "$ANTIGEN" ]; then
-	echo "Installing antigen ..."
-	[ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
-	[ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
-	[ ! -f "$HOME/.z" ] && touch "$HOME/.z"
-	URL="http://git.io/antigen"
-	TMPFILE="/tmp/antigen.zsh"
-	if [ -x "$(which curl)" ]; then
-		curl -L "$URL" -o "$TMPFILE"
-	elif [ -x "$(which wget)" ]; then
-		wget "$URL" -O "$TMPFILE"
-	else
-		echo "ERROR: please install curl or wget before installation !!"
-		exit
-	fi
-	if [ ! $? -eq 0 ]; then
-		echo ""
-		echo "ERROR: downloading antigen.zsh ($URL) failed !!"
-		exit
-	fi;
-	echo "move $TMPFILE to $ANTIGEN"
-	mv "$TMPFILE" "$ANTIGEN"
+    echo "Installing antigen ..."
+    [ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
+    [ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
+    [ ! -f "$HOME/.z" ] && touch "$HOME/.z"
+    URL="http://git.io/antigen"
+    TMPFILE="/tmp/antigen.zsh"
+    if [ -x "$(which curl)" ]; then
+        curl -L "$URL" -o "$TMPFILE"
+    elif [ -x "$(which wget)" ]; then
+        wget "$URL" -O "$TMPFILE"
+    else
+        echo "ERROR: please install curl or wget before installation !!"
+        exit
+    fi
+    if [ ! $? -eq 0 ]; then
+        echo ""
+        echo "ERROR: downloading antigen.zsh ($URL) failed !!"
+        exit
+    fi;
+    echo "move $TMPFILE to $ANTIGEN"
+    mv "$TMPFILE" "$ANTIGEN"
 fi
 
 
 # Initialize command prompt
-export PS1="%n@%m:%~%# "
+# export PS1="%B%n@%m:%~%# "
 
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
@@ -80,8 +80,8 @@ antigen bundle willghatch/zsh-cdr
 
 # check login shell
 if [[ -o login ]]; then
-	[ -f "$HOME/.local/etc/login.sh" ] && source "$HOME/.local/etc/login.sh"
-	[ -f "$HOME/.local/etc/login.zsh" ] && source "$HOME/.local/etc/login.zsh"
+    [ -f "$HOME/.local/etc/login.sh" ] && source "$HOME/.local/etc/login.sh"
+    [ -f "$HOME/.local/etc/login.zsh" ] && source "$HOME/.local/etc/login.zsh"
 fi
 
 # syntax color definition
@@ -130,7 +130,7 @@ autoload -U deer
 zle -N deer
 
 # default keymap
-bindkey -s '\ee' 'vim\n'
+# bindkey -s '\ee' 'vim\n'
 # bindkey '\eh' backward-char
 # bindkey '\el' forward-char
 # bindkey '\ej' down-line-or-history
@@ -168,7 +168,7 @@ setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY # Don't execute immediately upon history expansion.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 
 
 # source function.sh if it exists
@@ -179,14 +179,22 @@ setopt HIST_VERIFY # Don't execute immediately upon history expansion.
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*:*sh:*:' tag-order files
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/llvm/install/2018-04-11/lib
 export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/pyprojects
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
-export PATH="$HOME/llvm/install/2018-04-11/bin:$PATH"
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
+# rust
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
+
+# llvm
+export PATH="$HOME/test/llvm/install/2018-02-18/bin:$PATH"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/test/llvm/install/2018-02-18/lib
+
+# go
 export GOPATH="$HOME/GO"
 export PATH="$PATH:$GOPATH/bin"
+
+autoload -Uz promptinit && promptinit
+prompt adam1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
