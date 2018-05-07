@@ -1,3 +1,17 @@
 [user]
 	name = fengqi
 	email = feng.qi@msn.com
+[alias]
+	a    = add
+	aa   = add --all
+	br   = branch
+	cl   = clone --recursive
+	cmsg = commit -m
+	co   = checkout
+	d    = diff
+	l    = pull
+	lol  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lola = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+	p    = push
+	rv   = remote -v
+	st   = status
