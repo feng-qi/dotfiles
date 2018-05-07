@@ -60,8 +60,10 @@ values."
      ;; games
      ;; dash
      git
-     github
-     version-control
+     ;; github
+     (version-control :variables
+                      version-control-diff-side 'left
+                      version-control-global-margin nil)
      ;; (gtags :variables gtags-enable-by-default nil)
      cscope
      html
@@ -92,12 +94,15 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(bison-mode
                                       cuda-mode
+                                      solarized-theme
                                       monokai-theme
                                       plur ; vim Abolish
                                       ;; material-theme
                                       nhexl-mode
                                       thrift
                                       rtags
+                                      yasnippet-snippets
+                                      tldr
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
@@ -414,11 +419,12 @@ you should place your code here."
     (kbd "bv")  'mark-whole-buffer
     (kbd "by")  'spacemacs/copy-whole-buffer-to-clipboard
     (kbd "fm")  'fengqi/move-current-buffer-file
+    (kbd "hh")  'helm-tldr
     (kbd "oe")  'eval-and-replace
     ;; (kbd "om")  'evil-mc-mode
     (kbd "oi")  'fengqi/insert-current-buffer-name
     (kbd "oc")  'fengqi/copy-current-buffer-name
-    (kbd "oo")  'fengqi/set-compile-command
+    ;; (kbd "oo")  'fengqi/set-compile-command
     (kbd "op")  'plur-replace
     (kbd "or")  'fengqi/string-reverse
     (kbd "os")  'just-one-space
@@ -438,8 +444,14 @@ you should place your code here."
 
   (dolist (mode '(c-mode c++-mode))
     (evil-leader/set-key-for-mode mode
+      "f b" 'clang-format-buffer
       "f f" 'clang-format-region
+      "g g" 'rtags-find-symbol-at-point
       "o o" 'fengqi/set-compile-command
+      "r g" 'rtags-find-symbol-at-point
+      "r r" 'rtags-find-references-at-point
+      "r p" 'rtags-preprocess-file
+      "r i" 'rtags-print-symbol-info
       ))
 
   (add-hook 'LaTeX-mode-hook
@@ -513,6 +525,8 @@ you should place your code here."
         eclimd-default-workspace "~/workspace")
   ;; (add-hook 'java-mode-hook (lambda () (company-emacs-eclim-setup)))
 
+  ;; (load-file "/home/qi/github/rtags/build/src/rtags.el")
+  ;; (setq rtags-path "/home/qi/github/rtags/build/bin")
 
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
   ;; (with-eval-after-load 'projectile

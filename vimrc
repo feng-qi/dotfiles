@@ -26,7 +26,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ntpeters/vim-better-whitespace'
 " Plug 'SirVer/ultisnips'
 " Plug 'tomasr/molokai'							" color scheme
-" Plug 'majutsushi/tagbar'						" need exuberant-ctags
+Plug 'majutsushi/tagbar'						" need exuberant-ctags
 " Plug 'scrooloose/nerdtree'
 " Plug 'vim-airline/vim-airline'				" statusline
 " Plug 'vim-airline/vim-airline-themes'

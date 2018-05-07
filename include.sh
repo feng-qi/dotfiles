@@ -5,7 +5,7 @@ COLR_GREEN='\033[0;32m'
 COLR_NC='\033[0m' # No Color
 
 WARN='\033[0;31m[WARN]\033[0m'
-INFO='\033[0;32m[WARN]\033[0m'
+INFO='\033[0;32m[INFO]\033[0m'
 
 command_exists () {
     type "$1" &> /dev/null ;
@@ -18,7 +18,7 @@ package_installed () {
 
 install_utils() {
     local pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
-              konsole tmux tlp cmake cmake-curses-gui checkinstall vlc curl xclip
+              konsole tmux tlp cmake cmake-curses-gui checkinstall vlc curl xclip exuberant-ctags
               vim-gui-common ibus-table-wubi ibus-pinyin chromium-browser command-not-found
               build-essential silversearcher-ag"
     local pkgs=(${pkgs_str})
@@ -59,7 +59,7 @@ clone_repo() {
 }
 
 create_soft_link() {
-    local files_str="zshrc vimrc spacemacs.d agignore xmonad gitconfig"
+    local files_str="zshrc vimrc spacemacs.d agignore xmonad"
     local files=(${files_str})
 
     for file in ${files[@]}
