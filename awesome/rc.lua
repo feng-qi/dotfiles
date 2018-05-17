@@ -343,7 +343,8 @@ globalkeys = awful.util.table.join(
 
 local volume_down = "amixer -q -D pulse sset Master 5%-"
 local volume_up   = "amixer -q -D pulse sset Master 5%+"
-local screenshot  = "import \"$HOME/Pictures/Screenshot-on-$(date +'%F_%H-%M-%S').png\""
+-- local screenshot  = "import \"$HOME/Pictures/Screenshot-on-$(date +'%F_%H-%M-%S').png\""
+local screenshot = "gnome-screenshot -a -i -c"
 
 clientkeys = awful.util.table.join(
     -- Lock screen
