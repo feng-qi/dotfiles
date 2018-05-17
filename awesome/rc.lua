@@ -44,8 +44,9 @@ end
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "vim"
+-- terminal = "x-terminal-emulator"
+terminal = "konsole"
+editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -57,18 +58,18 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
+    awful.layout.suit.floating,
+    awful.layout.suit.max,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
+    -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
+    -- awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
@@ -119,7 +120,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %F, %R, %a ")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -185,9 +186,10 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-    local tag_names = { "Terminal", "Browser", "Skype", "Else" }
+    -- local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+    local tag_names = { "Browser", "Emacs", "VM", "Terminal", "5", "6", "7", "8", "9" }
     local l         = awful.layout.suit  -- Just to save some typing: use an alias.
-    local layouts   = { l.tile, l.tile, l.tile, l.tile }
+    local layouts   = { l.tile, l.max, l.max, l.tile.left, l.tile, l.tile, l.tile, l.tile, l.tile }
     awful.tag(tag_names, s, layouts)
 
     -- Create a promptbox for each screen
@@ -341,6 +343,7 @@ globalkeys = awful.util.table.join(
 
 local volume_down = "amixer -q -D pulse sset Master 5%-"
 local volume_up   = "amixer -q -D pulse sset Master 5%+"
+local screenshot  = "import \"$HOME/Pictures/Screenshot-on-$(date +'%F_%H-%M-%S').png\""
 
 clientkeys = awful.util.table.join(
     -- Lock screen
@@ -352,6 +355,12 @@ clientkeys = awful.util.table.join(
             awful.spawn.with_shell("xautolock -locknow")
         end,
         {description = "lock screen", group = "client"}),
+    -- Screenshot
+    awful.key({}, "Print",
+        function ()
+            awful.spawn.with_shell(screenshot, false);
+        end,
+        {description = "screenshot", group = "client"}),
     -- Volume Control
     awful.key({}, "XF86AudioLowerVolume",
         function ()
@@ -521,6 +530,14 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+
+    -- Not valid code below
+    -- { rule = { class = "Firefox"},
+    --   properties = { tag = tags[1][2] }
+    -- },
+    -- { rule = { class = "dolphin"},
+    --   properties = { tag = tags[1][4] }
+    -- },
 }
 -- }}}
 
