@@ -43,7 +43,7 @@ values."
      (chinese :variables
               chinese-default-input-method 'wubi
               chinese-enable-youdao-dict t)
-     (clojure :variables clojure-enable-fancify-symbols t)
+     (clojure :variables clojure-enable-fancify-symbols nil)
      ;; ivy
      emacs-lisp
      (go :variables go-tab-width 4)
@@ -107,7 +107,7 @@ values."
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     vi-tilde-fringe
-                                    ;; evil-escape
+                                    evil-escape
                                     clean-aindent-mode
                                     multiple-cursors
                                     ace-pinyin
@@ -395,7 +395,7 @@ you should place your code here."
   ;; (spaceline-compile)
   ;; (setq-default evil-escape-key-sequence "jk")
   (global-company-mode t)
-  (global-prettify-symbols-mode t)
+  ;; (global-prettify-symbols-mode t)
   ;; (setq-default show-trailing-whitespace t)
   (setq-default python-shell-interpreter "python3")
 
