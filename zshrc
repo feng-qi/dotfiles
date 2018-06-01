@@ -58,7 +58,7 @@ antigen use oh-my-zsh
 # antigen bundle heroku
 antigen bundle pip
 antigen bundle svn-fast-info
-# antigen bundle command-not-find
+antigen bundle command-not-find
 
 antigen bundle colorize
 antigen bundle github
@@ -115,8 +115,8 @@ ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
 
 # load local config
-[ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh"
-[ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
+# [ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh"
+# [ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
 
 # enable syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -172,7 +172,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 
 
 # source function.sh if it exists
-[ -f "$HOME/.local/etc/function.sh" ] && . "$HOME/.local/etc/function.sh"
+# [ -f "$HOME/.local/etc/function.sh" ] && . "$HOME/.local/etc/function.sh"
 
 
 # ignore complition
@@ -187,8 +187,8 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 
 # llvm
-export PATH="$HOME/test/llvm/install/2018-02-18/bin:$PATH"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/test/llvm/install/2018-02-18/lib
+export PATH="$HOME/llvm/install/2018-04-11/bin:$PATH"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/llvm/install/2018-04-11/lib
 
 # go
 export GOPATH="$HOME/GO"

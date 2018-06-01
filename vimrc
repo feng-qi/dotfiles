@@ -27,7 +27,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " Plug 'SirVer/ultisnips'
 " Plug 'tomasr/molokai'							" color scheme
 Plug 'majutsushi/tagbar'						" need exuberant-ctags
-" Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Plug 'vim-airline/vim-airline'				" statusline
 " Plug 'vim-airline/vim-airline-themes'
 " Plug 'terryma/vim-multiple-cursors'
@@ -70,8 +70,8 @@ if has('gui_running')
 	set guicursor=a:blinkon0
 	" set guioptions=aegit	" default
 	set guioptions=
-else
-	colorscheme evening
+"else
+	"colorscheme evening
 endif
 
 if has('win32')
@@ -162,6 +162,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :windo diffthis<cr>
 nnoremap <leader>gD :windo diffoff<cr>
+nnoremap <leader>pt :NERDTreeToggle<cr>
 nnoremap <leader>qq :qa<cr>
 nnoremap <leader>sc :nohlsearch<cr>
 nnoremap <leader>wd :q<cr>

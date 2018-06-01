@@ -127,6 +127,6 @@ install_miscs() {
 
 install_awesome_wm() {
     # packages for Awesome wm
-    sudo apt install -y awesome xautolock i3lock xfce4-power-manager
+    sudo apt install -y awesome xautolock i3lock xfce4-power-manager imagemagick
     ln -s $HOME/dotfiles/awesome $HOME/.config/awesome
 }

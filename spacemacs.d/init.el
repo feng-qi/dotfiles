@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     nginx
      vimscript
      auto-completion
      better-defaults
@@ -48,7 +49,7 @@ values."
      emacs-lisp
      (go :variables go-tab-width 4)
      haskell
-     lua
+     (lua :variables lua-indent-level 4)
      rust
      (scala :variables
             scala-indent:use-javadoc-style t
@@ -68,7 +69,7 @@ values."
      cscope
      html
      java
-     javascript
+     ;; javascript
      latex
      markdown
      (org :variables org-enable-reveal-js-support t)
@@ -81,9 +82,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; speed-reading
      spell-checking
-     ;; vimscript
      yaml
      ;; syntax-checking
      fengqi
@@ -95,9 +94,15 @@ values."
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
+                                    chinese-word-at-point
                                     vi-tilde-fringe
                                     evil-escape
+                                    evil-tutor
+                                    coffee-mode
                                     clean-aindent-mode
+                                    google-translate
+                                    lorem-ipsum
+                                    gh-md
                                     multiple-cursors
                                     ace-pinyin
                                     find-by-pinyin-dired
@@ -387,6 +392,8 @@ you should place your code here."
   ;; (global-prettify-symbols-mode t)
   ;; (setq-default show-trailing-whitespace t)
   (setq-default python-shell-interpreter "python3")
+  (setq hscroll-step 50)
+  (setq hscroll-margin 50)
 
   (fengqi/define-key evil-normal-state-map
                      "g[" 'backward-page ; https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E5%90%88%E7%90%86%E5%9C%B0%E5%9C%A8Emacs%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E7%AC%A6.org
