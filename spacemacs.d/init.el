@@ -27,7 +27,7 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
@@ -86,24 +86,13 @@ values."
      ;; vimscript
      yaml
      ;; syntax-checking
-     ;; fengqi
+     fengqi
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(bison-mode
-                                      cuda-mode
-                                      solarized-theme
-                                      monokai-theme
-                                      plur ; vim Abolish
-                                      ;; material-theme
-                                      nhexl-mode
-                                      thrift
-                                      rtags
-                                      yasnippet-snippets
-                                      tldr
-                                      )
+   dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     vi-tilde-fringe
