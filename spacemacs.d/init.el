@@ -71,7 +71,7 @@ values."
      javascript
      latex
      markdown
-     org
+     (org :variables org-enable-reveal-js-support t)
      pdf-tools
      python
      ipython-notebook
@@ -181,10 +181,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(solarized-light
                          solarized-dark
                          spacemacs-dark
-                         solarized-light
+                         spacemacs-light
                          zenburn
                          leuven
                          monokai)
@@ -401,7 +401,7 @@ you should place your code here."
 
   (fengqi/define-key evil-normal-state-map
                      "g[" 'backward-page ; https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E5%90%88%E7%90%86%E5%9C%B0%E5%9C%A8Emacs%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E7%AC%A6.org
-                     "g]" 'backward-page
+                     "g]" 'forward-page
                      "+" 'evil-numbers/inc-at-pt
                      "-" 'evil-numbers/dec-at-pt)
   (fengqi/define-key evil-visual-state-map
@@ -469,19 +469,19 @@ you should place your code here."
                                    )))
 
   ;; markdown exporter, more info: https://orgmode.org/worg/exporters/ox-overview.html
-  (eval-after-load "org"
-    '(progn
-       ;; (define-key org-mode-map [(kbd "C-'")] nil)
-       (fengqi/define-key org-mode-map
-                          (kbd "C-'") 'fengqi/upcase-previous-WORD)
-       (require 'ox-md nil t)
-       (setq org-link-frame-setup
-             '((vm      . vm-visit-folder-other-frame)
-               (vm-imap . vm-visit-imap-folder-other-frame)
-               (gnus    . org-gnus-no-new-news)
-               (file    . find-file)
-               (wl      . wl-other-frame)))
-       ))
+  (with-eval-after-load "org"
+    ;; (define-key org-mode-map [(kbd "C-'")] nil)
+    (fengqi/define-key org-mode-map
+                       (kbd "C-'") 'fengqi/upcase-previous-WORD)
+    (require 'ox-md nil t)
+    (setq org-link-frame-setup
+          '((vm      . vm-visit-folder-other-frame)
+            (vm-imap . vm-visit-imap-folder-other-frame)
+            (gnus    . org-gnus-no-new-news)
+            (file    . find-file)
+            (wl      . wl-other-frame)))
+    ;; (org-ac/config-default)
+    )
 
   ;; https://emacs.stackexchange.com/questions/9583/how-to-treat-underscore-as-part-of-the-word
   (with-eval-after-load 'evil

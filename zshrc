@@ -194,6 +194,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/test/llvm/install/2018-02-18/lib
 export GOPATH="$HOME/GO"
 export PATH="$PATH:$GOPATH/bin"
 
+# clojure boot
+export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
+
 autoload -Uz promptinit && promptinit
 prompt adam1
 
