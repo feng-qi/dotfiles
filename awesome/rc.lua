@@ -45,7 +45,7 @@ beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 -- terminal = "x-terminal-emulator"
-terminal = "konsole"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -120,7 +120,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock(" %F, %R, %a ")
+mytextclock = wibox.widget.textclock(" %F | %a | %R ")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -189,7 +189,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
     local tag_names = { "Browser", "Emacs", "VM", "Terminal", "5", "6", "7", "8", "9" }
     local l         = awful.layout.suit  -- Just to save some typing: use an alias.
-    local layouts   = { l.tile, l.max, l.max, l.tile.left, l.tile, l.tile, l.tile, l.tile, l.tile }
+    local layouts   = { l.max, l.max, l.max, l.floating, l.floating, l.floating, l.floating, l.floating, l.floating }
     awful.tag(tag_names, s, layouts)
 
     -- Create a promptbox for each screen
