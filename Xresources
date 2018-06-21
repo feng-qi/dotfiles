@@ -16,7 +16,7 @@ URxvt*boldFont: xft:Monospace:pixelsize=13
 URxvt.scrollBar_right: true
 URxvt*iso14755: False
 URxvt*iso14755_52: False
-URxvt.url-launcher: firefox
+! URxvt.url-launcher: firefox
 
 !!Source http://github.com/altercation/solarized
 

@@ -187,7 +187,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     -- local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
-    local tag_names = { "Browser", "Emacs", "VM", "Terminal", "5", "6", "7", "8", "9" }
+    local tag_names = { "Browser", "Emacs", "VM", "Trello", "5", "6", "7", "8", "9" }
     local l         = awful.layout.suit  -- Just to save some typing: use an alias.
     local layouts   = { l.max, l.max, l.max, l.floating, l.floating, l.floating, l.floating, l.floating, l.floating }
     awful.tag(tag_names, s, layouts)
