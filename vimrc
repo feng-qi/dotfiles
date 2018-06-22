@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " git repos:
+Plug 'machakann/vim-highlightedyank'
 Plug 'altercation/vim-colors-solarized'		" color scheme
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'

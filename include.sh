@@ -71,6 +71,13 @@ create_soft_link() {
             ln -s "$HOME/dotfiles/${file}" "$HOME/.${file}"
         fi
     done
+
+    # NeoVim
+    if [ -e "$HOME/.config/nvim" ]; then
+        echo -e "${WARN} ${COLR_GREEN}nvim${COLR_NC} already exists! Skipped!" # -e is necessary
+    else
+        ln -s "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
+    fi
 }
 
 install_fonts() {
