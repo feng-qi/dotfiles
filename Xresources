@@ -7,7 +7,13 @@ URxvt*scrollWithBuffer: true    ! scroll in relation to buffer (with mouse scrol
 URxvt*scrollTtyKeypress: true   ! scroll back to the bottom on keypress
 
 ! URxvt.perl-ext-common: default,matcher,tabbed
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,resize-font
+
+! https://github.com/majutsushi/urxvt-font-size
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-equal:  perl:font-size:reset
+
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 URxvt.depth: 32

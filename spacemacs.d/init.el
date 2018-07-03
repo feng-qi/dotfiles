@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     docker
      nginx
      vimscript
      auto-completion
@@ -91,7 +92,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(json-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     chinese-word-at-point
@@ -415,10 +416,10 @@ you should place your code here."
     (kbd "bv")  'mark-whole-buffer
     (kbd "by")  'spacemacs/copy-whole-buffer-to-clipboard
     (kbd "fm")  'fengqi/move-current-buffer-file
-    (kbd "hh")  'helm-tldr
+    ;; (kbd "hh")  'helm-tldr
     (kbd "oe")  'eval-and-replace
     ;; (kbd "om")  'evil-mc-mode
-    (kbd "oi")  'fengqi/insert-current-buffer-name
+    (kbd "oi")  'fengqi/count-words-region
     (kbd "oc")  'fengqi/copy-current-buffer-name
     ;; (kbd "oo")  'fengqi/set-compile-command
     (kbd "op")  'plur-replace

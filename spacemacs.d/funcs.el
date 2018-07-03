@@ -89,3 +89,23 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
 (defun fengqi/describe-buffer-file-coding-system ()
   (interactive)
   (message "%s" buffer-file-coding-system))
+
+(defun fengqi/count-words-region (posBegin posEnd)
+  "Print number of words and chars in region.
+
+See URL `http://ergoemacs.org/emacs/elisp_count-region.html'."
+  (interactive "r")
+  (message "Counting …")
+  (save-excursion
+    (let (wordCount charCount)
+      (setq wordCount 0)
+      (setq charCount (- posEnd posBegin))
+      (goto-char posBegin)
+      (while (and (< (point) posEnd)
+                  (re-search-forward "\\w+\\W*" posEnd t))
+        (setq wordCount (1+ wordCount)))
+
+      (kill-new (number-to-string charCount))
+      (evil-exit-visual-state)
+      (message "Words: %d. Chars: %d." wordCount charCount)
+      )))
