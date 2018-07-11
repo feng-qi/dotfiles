@@ -93,7 +93,8 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
 (defun fengqi/count-words-region (posBegin posEnd)
   "Print number of words and chars in region.
 
-See URL `http://ergoemacs.org/emacs/elisp_count-region.html'."
+See URL `http://ergoemacs.org/emacs/elisp_count-region.html'.
+See also `count-words-region'"
   (interactive "r")
   (message "Counting …")
   (save-excursion

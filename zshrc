@@ -27,9 +27,6 @@ if [ ! -f "$ANTIGEN" ]; then
 fi
 
 
-# Initialize command prompt
-# export PS1="%B%n@%m:%~%# "
-
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
 
@@ -197,7 +194,14 @@ export PATH="$PATH:$GOPATH/bin"
 # clojure boot
 export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
 
-autoload -Uz promptinit && promptinit
-prompt adam1
+# java
+# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# export PATH=$JAVA_HOME/bin:$PATH
+
+# Initialize command prompt
+export PS1='%F{cyan}%~%f%B%F{red}%(?.. <E:%?>)%(1j. <J:%j>.)%f %#%b '
+
+# autoload -Uz promptinit && promptinit
+# prompt adam1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
