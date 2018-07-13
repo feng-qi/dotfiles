@@ -27,10 +27,6 @@ if [ ! -f "$ANTIGEN" ]; then
 fi
 
 
-# Enable 256 color to make auto-suggestions look nice
-export TERM="xterm-256color"
-
-
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
 [ -f "$HOME/.local/etc/init.sh" ] && source "$HOME/.local/etc/init.sh"
@@ -51,17 +47,17 @@ antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
-# antigen bundle git
+antigen bundle git
 # antigen bundle heroku
 antigen bundle pip
-antigen bundle svn-fast-info
+# antigen bundle svn-fast-info
 antigen bundle command-not-find
 
 antigen bundle colorize
 antigen bundle github
 antigen bundle python
 antigen bundle rupa/z z.sh
-# antigen bundle z
+antigen bundle z
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -111,20 +107,14 @@ ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
 
-# load local config
-# [ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh"
-# [ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
-
 # enable syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-# antigen theme robbyrussell
-
 antigen apply
 
-# setup for deer
-autoload -U deer
-zle -N deer
+# # setup for deer
+# autoload -U deer
+# zle -N deer
 
 # default keymap
 # bindkey -s '\ee' 'vim\n'
@@ -148,7 +138,6 @@ bindkey -s '\e;' 'll\n'
 
 bindkey '\ev' deer
 
-alias ll='ls -l'
 alias g=git
 
 
@@ -176,6 +165,10 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*:*sh:*:' tag-order files
 
+# Enable 256 color to make auto-suggestions look nice
+export TERM="xterm-256color"
+
+# python
 export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/pyprojects
 
@@ -199,7 +192,7 @@ export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
 # export PATH=$JAVA_HOME/bin:$PATH
 
 # Initialize command prompt
-export PS1='%F{cyan}%~%f%B%F{red}%(?.. <E:%?>)%(1j. <J:%j>.)%f %#%b '
+export PS1='%F{cyan}%~%f%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%#%f)%b '
 
 # autoload -Uz promptinit && promptinit
 # prompt adam1

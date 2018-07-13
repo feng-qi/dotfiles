@@ -42,6 +42,7 @@
     yasnippet-snippets
     tldr
     ;; org-ac
+    zenburn-theme
     )
   "The list of Lisp packages required by the fengqi layer.
 
@@ -116,6 +117,11 @@ Each entry is either:
     ))
 
 (defun fengqi/init-tldr ()
+  (use-package tldr
+    :defer t
+    ))
+
+(defun fengqi/init-zenburn-theme ()
   (use-package tldr
     :defer t
     ))
