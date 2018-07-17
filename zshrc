@@ -47,11 +47,12 @@ antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
-antigen bundle git
+# antigen bundle git
 # antigen bundle heroku
 antigen bundle pip
 # antigen bundle svn-fast-info
 antigen bundle command-not-find
+antigen bundle lein
 
 antigen bundle colorize
 antigen bundle github
@@ -139,6 +140,15 @@ bindkey -s '\e;' 'll\n'
 bindkey '\ev' deer
 
 alias g=git
+alias ga='git add'
+alias gaa='git add --all'
+alias gs='git status'
+alias gd='git diff'
+alias gb='git branch'
+alias gl='git pull'
+alias gp='git push'
+alias glol='git lol'
+alias gco='git checkout'
 
 
 # options
@@ -181,7 +191,7 @@ export PATH="$HOME/llvm/install/2018-04-11/bin:$PATH"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/llvm/install/2018-04-11/lib
 
 # go
-export GOPATH="$HOME/GO"
+export GOPATH="$HOME/test/go"
 export PATH="$PATH:$GOPATH/bin"
 
 # clojure boot
@@ -196,5 +206,16 @@ export PS1='%F{cyan}%~%f%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%#%f)%b
 
 # autoload -Uz promptinit && promptinit
 # prompt adam1
+
+# source /etc/zsh_command_not_found
+
+alias fmacs='emacs -q --load "$HOME/.emacs.e/init.el"'
+
+dtouch () {
+    for file in $@; do
+        mkdir -p "$(dirname "$file")"
+        touch $file
+    done
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
