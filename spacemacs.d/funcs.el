@@ -54,14 +54,14 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
                             ((fengqi/buffer-contains-pattern? "BOOST_") " -lboost_unit_test_framework")
                             (t "")))
         (static-opt   (if (fengqi/buffer-contains-pattern? "BOOST_") " -static" ""))
-        (c++11-opt    (if (string= major-mode "c++-mode") " -std=c++11" ""))
+        (c++17-opt    (if (string= major-mode "c++-mode") " -std=c++17" ""))
         (file-name    (file-name-nondirectory (buffer-file-name)))
         (compiler-opt (cond ((string= major-mode "c++-mode")  "clang++ ")
                             ((string= major-mode "c-mode")    "clang ")
                             ((string= major-mode "java-mode") "javac ")
                             (t ""))))
     (when (not (string= compiler-opt ""))
-      (setq compile-command (concat compiler-opt file-name c++11-opt library-opt static-opt)))))
+      (setq compile-command (concat compiler-opt file-name c++17-opt library-opt static-opt)))))
 
 (defun fengqi/move-current-buffer-file ()
   "Move current buffer file."

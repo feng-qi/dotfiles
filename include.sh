@@ -59,7 +59,7 @@ clone_repo() {
 }
 
 create_soft_link() {
-    local files_str="zshrc vimrc spacemacs.d agignore xmonad tmux.conf"
+    local files_str="zshrc vimrc spacemacs.d agignore xmonad tmux.conf Xresources"
     local files=(${files_str})
 
     for file in ${files[@]}

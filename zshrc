@@ -145,10 +145,14 @@ alias gaa='git add --all'
 alias gs='git status'
 alias gd='git diff'
 alias gb='git branch'
+alias gcl='git clone'
 alias gl='git pull'
 alias gp='git push'
 alias glol='git lol'
+alias glola='git lola'
 alias gco='git checkout'
+alias gcm='git checkout master'
+alias gcmsg='git commit -m'
 
 
 # options
@@ -202,7 +206,13 @@ export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
 # export PATH=$JAVA_HOME/bin:$PATH
 
 # Initialize command prompt
-export PS1='%F{cyan}%~%f%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%#%f)%b '
+# http://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats " %{$fg[blue]%}(%b)%{$reset_color%}"
+precmd() { vcs_info }
+setopt prompt_subst
+export PS1='%F{cyan}%~%f${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%#%f)%b '
 
 # autoload -Uz promptinit && promptinit
 # prompt adam1
