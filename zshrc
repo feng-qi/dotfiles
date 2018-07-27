@@ -154,6 +154,8 @@ alias gco='git checkout'
 alias gcm='git checkout master'
 alias gcmsg='git commit -m'
 
+alias s='ssh -l fengqi -p 10020 -J jump.hk'
+
 
 # options
 unsetopt correct_all
@@ -212,7 +214,7 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats " %{$fg[blue]%}(%b)%{$reset_color%}"
 precmd() { vcs_info }
 setopt prompt_subst
-export PS1='%F{cyan}%~%f${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%#%f)%b '
+export PS1='%F{cyan}%n%F{yellow}@%F{cyan}%~%f${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%#%f)%b '
 
 # autoload -Uz promptinit && promptinit
 # prompt adam1
