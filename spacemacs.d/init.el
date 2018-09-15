@@ -74,7 +74,8 @@ values."
      ;; javascript
      latex
      markdown
-     (org :variables org-enable-reveal-js-support t)
+     ;; (org :variables org-enable-reveal-js-support t)
+     org
      pdf-tools
      python
      ipython-notebook
@@ -93,7 +94,8 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(json-mode)
+   dotspacemacs-additional-packages '(json-mode
+                                      protobuf-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(chinese-pyim
                                     chinese-word-at-point
@@ -110,6 +112,7 @@ values."
                                     find-by-pinyin-dired
                                     fancy-battery
                                     pangu-spacing
+                                    spaceline
                                     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -191,8 +194,8 @@ values."
    dotspacemacs-default-font `("Source Code Pro"
                                :size ,(if (string= system-name "qi-laptop") 15 13)
                                :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+                               :width normal)
+                               ;; :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -394,8 +397,8 @@ you should place your code here."
   ;; (global-prettify-symbols-mode t)
   ;; (setq-default show-trailing-whitespace t)
   (setq-default python-shell-interpreter "python3")
-  (setq hscroll-step 50)
-  (setq hscroll-margin 50)
+  ;; (setq hscroll-step 50)
+  ;; (setq hscroll-margin 50)
 
   (fengqi/define-key evil-normal-state-map
                      "g[" 'backward-page ; https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E5%90%88%E7%90%86%E5%9C%B0%E5%9C%A8Emacs%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E7%AC%A6.org
@@ -446,6 +449,7 @@ you should place your code here."
       "f f" 'clang-format-region
       "g g" 'rtags-find-symbol-at-point
       "o o" 'fengqi/set-compile-command
+      "r f" 'rtags-find-symbol
       "r g" 'rtags-find-symbol-at-point
       "r r" 'rtags-find-references-at-point
       "r p" 'rtags-preprocess-file
@@ -458,7 +462,7 @@ you should place your code here."
               (add-to-list 'TeX-command-list
                            '("XeLaTeX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil t))))
 
-  (add-hook 'compilation-mode-hook (lambda () (setq compilation-window-height 10)))
+  ;; (add-hook 'compilation-mode-hook (lambda () (setq compilation-window-height 10)))
   (add-hook 'markdown-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook (lambda () (progn
                                    (setq show-trailing-whitespace t)
@@ -472,6 +476,9 @@ you should place your code here."
     (fengqi/define-key org-mode-map
                        (kbd "C-'") 'fengqi/upcase-previous-WORD)
     (require 'ox-md nil t)
+    ;; (setq org-hide-leading-stars t)
+    (setq org-export-with-section-numbers  nil
+          org-export-with-sub-superscripts nil)
     (setq org-link-frame-setup
           '((vm      . vm-visit-folder-other-frame)
             (vm-imap . vm-visit-imap-folder-other-frame)
@@ -496,6 +503,7 @@ you should place your code here."
         sp-highlight-wrap-overlay     nil
         sp-highlight-wrap-tag-overlay nil)
 
+  (setq c-default-style "k&r")
   (setq-default tab-width      4
                 fill-column    80
                 truncate-lines t
