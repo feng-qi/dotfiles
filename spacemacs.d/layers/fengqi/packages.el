@@ -38,8 +38,6 @@
     plur ; vim Abolish
     nhexl-mode
     thrift
-    rtags
-    yasnippet-snippets
     tldr
     ;; org-ac
     zenburn-theme
@@ -103,16 +101,6 @@ Each entry is either:
 
 (defun fengqi/init-thrift ()
   (use-package thrift
-    :defer t
-    ))
-
-(defun fengqi/init-rtags ()
-  (use-package rtags
-    :defer t
-    ))
-
-(defun fengqi/init-yasnippet-snippets ()
-  (use-package yasnippet-snippets
     :defer t
     ))
 

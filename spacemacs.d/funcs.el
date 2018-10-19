@@ -50,9 +50,10 @@ See URL `https://stackoverflow.com/questions/3034237/check-if-current-emacs-buff
 (defun fengqi/set-compile-command ()
   "Set compile-command to compile current file."
   (interactive)
-  (let ((library-opt  (cond ((fengqi/buffer-contains-pattern? "gtest") " -lgtest -lgtest_main -lpthread")
-                            ((fengqi/buffer-contains-pattern? "BOOST_") " -lboost_unit_test_framework")
-                            (t "")))
+  (let ((library-opt  (concat
+                       (when (fengqi/buffer-contains-pattern? "<gtest") " -lgtest -lgtest_main -lpthread")
+                       (when (fengqi/buffer-contains-pattern? "BOOST_") " -lboost_unit_test_framework")
+                       (when (fengqi/buffer-contains-pattern? "<fmt")   " -lfmt")))
         (static-opt   (if (fengqi/buffer-contains-pattern? "BOOST_") " -static" ""))
         (c++17-opt    (if (string= major-mode "c++-mode") " -std=c++17" ""))
         (file-name    (file-name-nondirectory (buffer-file-name)))
