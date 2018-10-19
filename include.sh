@@ -50,34 +50,42 @@ install_libs() {
     done
 }
 
-clone_repo() {
-    if [ -e "$HOME/.vim/bundle/Vundle.vim" ]; then
-        echo -e "${WARN} ${COLR_GREEN}Vundle.vim${COLR_NC} already exists! Skipped!"
+clone_repo_if_not_exist() {
+    local to_clone=$1
+    local source=$2
+    if [ -e "${to_clone}" ]; then
+        echo -e "${WARN} ${COLR_GREEN}${to_clone}${COLR_NC} already cloned! Skipped!"
     else
-        git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
+        git clone "${source}" "${to_clone}"
+    fi
+}
+
+clone_repo() {
+    #                        to_clone                     clone_what
+    clone_repo_if_not_exist "${HOME}/github/spacemacs.d" "git@github.com:feng-qi/spacemacs.d.git"
+}
+
+create_soft_link_if_not_exist() {
+    local to_install=$1
+    local source=$2
+    if [ -e ${to_install} ]; then
+        echo -e "${WARN} ${COLR_GREEN}${to_install}${COLR_NC} already exists! Skipped!"
+    else
+        ln -s "${source}" "${to_install}"
     fi
 }
 
 create_soft_link() {
-    local files_str="zshrc vimrc spacemacs.d agignore xmonad tmux.conf Xresources"
+    local files_str="zshrc vimrc agignore xmonad tmux.conf Xresources"
     local files=(${files_str})
 
-    for file in ${files[@]}
-    do
-        if [ -e "$HOME/.${file}" ]; then
-            echo -e "${WARN} ${COLR_GREEN}${file}${COLR_NC} already exists! Skipped!" # -e is necessary
-            # printf "${WARN} ${COLR_GREEN}${file}${COLR_NC} already exists! Skipped!\n"
-        else
-            ln -s "$HOME/dotfiles/${file}" "$HOME/.${file}"
-        fi
+    for file in ${files[@]}; do
+        create_soft_link_if_not_exist "$HOME/.${file}" "$HOME/dotfiles/${file}"
     done
 
-    # NeoVim
-    if [ -e "$HOME/.config/nvim" ]; then
-        echo -e "${WARN} ${COLR_GREEN}nvim${COLR_NC} already exists! Skipped!" # -e is necessary
-    else
-        ln -s "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
-    fi
+    #                              to_install           install_what
+    create_soft_link_if_not_exist "$HOME/.config/nvim" "$HOME/dotfiles/nvim"
+    create_soft_link_if_not_exist "$HOME/.spacemacs.d" "$HOME/github/spacemacs.d"
 }
 
 install_fonts() {
