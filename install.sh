@@ -7,6 +7,18 @@ source "$HOME/dotfiles/include.sh"
 
 #----- main ----------
 
+if [ $# -eq 0 ]; then
+    echo -e "usage: $0 <arg> [arg ...]"
+    echo -e "available argument:"
+    echo -e "    base     basic utilities"
+    echo -e "    libs     libraries"
+    echo -e "    fonts    fonts, may take a while"
+    echo -e "    link     links to appropriate targets"
+    echo -e "    github   GitHub repositories"
+    echo -e "    awesome  awesome Window Manager"
+    echo -e "    miscs    miscellaneous stuff"
+fi
+
 while [ $# -gt 0 ]; do
     # echo $1
     # shift
