@@ -1,3 +1,25 @@
+# Prevent repeated loading
+[[ -z "$_INIT_SH_LOADED" ]] && _INIT_SH_LOADED=1 || return
+
+# If not running interactively, don't do anything
+[[ "$-" != *i* ]] && return
+
+# Delete duplicated path
+if [ -n "$PATH" ]; then
+    old_PATH=$PATH:; PATH=
+    while [ -n "$old_PATH" ]; do
+        x=${old_PATH%%:*}
+        case $PATH: in
+            *:"$x":*) ;;
+            *) PATH=$PATH:$x;;
+        esac
+        old_PATH=${old_PATH#*:}
+    done
+    PATH=${PATH#:}
+    unset old_PATH x
+fi
+export PATH
+
 # Antigen: https://github.com/zsh-users/antigen
 ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
