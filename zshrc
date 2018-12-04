@@ -225,6 +225,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/llvm/install/2018-04-11/lib
 export GOPATH="$HOME/test/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# Idris
+export PATH="$PATH:$HOME/.cabal/bin"
+
 # clojure boot
 export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
 
