@@ -247,7 +247,7 @@ export PS1='%F{cyan}%n%F{yellow}@%F{cyan}%~%f${vcs_info_msg_0_}%(1j. %F{red}<%j>
 # autoload -Uz promptinit && promptinit
 # prompt adam1
 
-# source /etc/zsh_command_not_found
+source /etc/zsh_command_not_found
 
 alias fmacs='emacs -q --load "$HOME/.emacs.e/init.el"'
 
