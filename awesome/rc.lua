@@ -242,6 +242,19 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    -- New emacs frame
+    awful.key({ modkey,           }, "e",
+        function ()
+            awful.spawn.with_shell("emacsclient -c")
+        end,
+        {description = "new emacs frame", group = "client"}),
+    -- Lock screen
+    awful.key({ modkey,           }, "z",
+        function ()
+            -- awful.spawn.with_shell("sync")
+            awful.spawn.with_shell("sync; xautolock -locknow")
+        end,
+        {description = "lock screen", group = "client"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -347,15 +360,6 @@ local volume_up   = "amixer -q -D pulse sset Master 5%+"
 local screenshot = "gnome-screenshot -a -i -c"
 
 clientkeys = awful.util.table.join(
-    -- Lock screen
-    awful.key({ modkey,           }, "z",
-        function ()
-            -- awful.util.spawn("sync")
-            -- awful.util.spawn("xautolock -locknow")
-            awful.spawn.with_shell("sync")
-            awful.spawn.with_shell("xautolock -locknow")
-        end,
-        {description = "lock screen", group = "client"}),
     -- Screenshot
     awful.key({}, "Print",
         function ()
