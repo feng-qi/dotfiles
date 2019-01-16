@@ -1,18 +1,12 @@
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
+local gears         = require("gears")     -- Standard awesome library
+local awful         = require("awful")     -- Standard awesome library
+local wibox         = require("wibox")     -- Widget and layout library
+local beautiful     = require("beautiful") -- Theme handling library
+local naughty       = require("naughty")   -- Notification library
+local menubar       = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-
--- Load Debian menu entries
-require("debian.menu")
+require("awful.autofocus")
+require("debian.menu")          -- Load Debian menu entries
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -32,8 +26,8 @@ do
         in_error = true
 
         naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
+                         title  = "Oops, an error happened!",
+                         text   = tostring(err) })
         in_error = false
     end)
 end
@@ -44,16 +38,11 @@ end
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
--- terminal = "x-terminal-emulator"
-terminal = "urxvt"
-editor = os.getenv("EDITOR") or "vi"
+terminal   = "urxvt"
+editor     = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -104,12 +93,10 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
-                                  }
+                                    { "open terminal", terminal }}
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -119,54 +106,41 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock(" %F | %a | %R ")
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
+    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+            if client.focus then client.focus:move_to_tag(t) end
+    end),
+    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+            if client.focus then client.focus:toggle_tag(t) end
+    end),
+    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end))
 
 local tasklist_buttons = awful.util.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  -- Without this, the following
-                                                  -- :isvisible() makes no sense
-                                                  c.minimized = false
-                                                  if not c:isvisible() and c.first_tag then
-                                                      c.first_tag:view_only()
-                                                  end
-                                                  -- This will also un-minimize
-                                                  -- the client, if needed
-                                                  client.focus = c
-                                                  c:raise()
-                                              end
-                                          end),
-                     awful.button({ }, 3, client_menu_toggle_fn()),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
+    awful.button({ }, 1, function (c)
+            if c == client.focus then
+                c.minimized = true
+            else
+                -- Without this, the following
+                -- :isvisible() makes no sense
+                c.minimized = false
+                if not c:isvisible() and c.first_tag then
+                    c.first_tag:view_only()
+                end
+                -- This will also un-minimize
+                -- the client, if needed
+                client.focus = c
+                c:raise()
+            end
+    end),
+    awful.button({ }, 3, client_menu_toggle_fn()),
+    awful.button({ }, 4, function () awful.client.focus.byidx(1) end),
+    awful.button({ }, 5, function () awful.client.focus.byidx(-1) end))
 
 local function set_wallpaper(s)
-    -- Wallpaper
     if beautiful.wallpaper then
         local wallpaper = beautiful.wallpaper
         -- If wallpaper is a function, call it with the screen
@@ -184,7 +158,6 @@ local battery_widget   = require("battery")
 screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
@@ -230,7 +203,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             battery_widget,
             volumebar_widget,
-            mytextclock,
+            wibox.widget.textclock(" %F | %a | %R "),
             s.mylayoutbox,
         },
     }
@@ -249,16 +222,11 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- New emacs frame
     awful.key({ modkey,           }, "e",
-        function ()
-            awful.spawn.with_shell("emacsclient -c")
-        end,
+        function () awful.spawn.with_shell("emacsclient -c") end,
         {description = "new emacs frame", group = "client"}),
     -- Lock screen
     awful.key({ modkey,           }, "z",
-        function ()
-            -- awful.spawn.with_shell("sync")
-            awful.spawn.with_shell("sync; xautolock -locknow")
-        end,
+        function () awful.spawn.with_shell("sync; xautolock -locknow") end,
         {description = "lock screen", group = "client"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -270,17 +238,11 @@ globalkeys = awful.util.table.join(
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
+        function () awful.client.focus.byidx( 1) end,
+        {description = "focus next by index", group = "client"}),
     awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
+        function () awful.client.focus.byidx(-1) end,
+        {description = "focus previous by index", group = "client"}),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
@@ -298,9 +260,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
+            if client.focus then client.focus:raise() end
         end,
         {description = "go back", group = "client"}),
 
@@ -311,7 +271,6 @@ globalkeys = awful.util.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -328,18 +287,13 @@ globalkeys = awful.util.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
-
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
-                  if c then
-                      client.focus = c
-                      c:raise()
-                  end
+                  if c then client.focus = c; c:raise() end
               end,
               {description = "restore minimized", group = "client"}),
-
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
@@ -367,44 +321,31 @@ local screenshot = "gnome-screenshot -a -i -c"
 clientkeys = awful.util.table.join(
     -- Screenshot
     awful.key({}, "Print",
-        function ()
-            awful.spawn.with_shell(screenshot, false);
-        end,
+        function () awful.spawn.with_shell(screenshot, false); end,
         {description = "screenshot", group = "client"}),
     -- Volume Control
     awful.key({}, "XF86AudioLowerVolume",
-        function ()
-            awful.spawn.with_shell(volume_down, false)
-        end,
+        function () awful.spawn.with_shell(volume_down, false) end,
         {description = "volume down", group = "client"}),
     awful.key({}, "XF86AudioRaiseVolume",
-        function ()
-            awful.spawn.with_shell(volume_up, false)
-        end,
+        function () awful.spawn.with_shell(volume_up, false) end,
         {description = "volume up", group = "client"}),
     awful.key({ modkey,           }, ",",
-        function ()
-            awful.spawn.with_shell(volume_down, false)
-        end,
+        function () awful.spawn.with_shell(volume_down, false) end,
         {description = "volume down", group = "client"}),
     awful.key({ modkey,           }, ".",
-        function ()
-            awful.spawn.with_shell(volume_up, false)
-        end,
+        function () awful.spawn.with_shell(volume_up, false) end,
         {description = "volume up", group = "client"}),
     -- Brightness Control
     awful.key({ modkey,           }, "[", function ()
-        awful.util.spawn("xbacklight -dec 15") end),
+        awful.util.spawn_with_shell("xbacklight -dec 15") end),
     awful.key({ modkey,           }, "]", function ()
-        awful.util.spawn("xbacklight -inc 15") end),
+        awful.util.spawn_with_shell("xbacklight -inc 15") end),
 
     -- Original below
 
     awful.key({ modkey,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
+        function (c) c.fullscreen = not c.fullscreen; c:raise() end,
         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
@@ -417,18 +358,12 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end ,
+        -- The client currently has the input focus, so it cannot be
+        -- minimized, since minimized clients can't have the focus.
+        function (c) c.minimized = true end,
         {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
-        end ,
-        {description = "maximize", group = "client"})
+    awful.key({ modkey,           }, "m", function (c) c.maximized = not c.maximized; c:raise() end,
+              {description = "maximize", group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -509,7 +444,7 @@ awful.rules.rules = {
     -- Floating clients.
     { rule_any = {
         instance = {
-          "DTA",  -- Firefox addon DownThemAll.
+          "DTA",    -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
         },
         class = {
