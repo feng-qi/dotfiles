@@ -177,6 +177,9 @@ local function set_wallpaper(s)
     end
 end
 
+local volumebar_widget = require("volumebar")
+local battery_widget   = require("battery")
+
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
@@ -225,6 +228,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            battery_widget,
+            volumebar_widget,
             mytextclock,
             s.mylayoutbox,
         },
@@ -535,14 +540,6 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
-
-    -- Not valid code below
-    -- { rule = { class = "Firefox"},
-    --   properties = { tag = tags[1][2] }
-    -- },
-    -- { rule = { class = "dolphin"},
-    --   properties = { tag = tags[1][4] }
-    -- },
 }
 -- }}}
 
@@ -618,30 +615,3 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- run on awesome startup/reload
 awful.spawn.with_shell("~/.config/awesome/awesome-autorun.sh")
 awful.spawn.with_shell("~/.config/awesome/lock.sh")
-
--- battery warning
--- created by bpdp
--- http://bpdp.blogspot.be/2013/06/battery-warning-notification-for.html
-local function trim(s)
-  return s:find'^%s*$' and '' or s:match'^%s*(.*%S)'
-end
-
-local function bat_notification()
-  local f_capacity   = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
-  local f_status     = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
-  local bat_capacity = tonumber(f_capacity:read("*all"))
-  local bat_status   = trim(f_status:read("*all"))
-  if (bat_capacity <= 10 and bat_status == "Discharging") then
-    naughty.notify({ title = "Battery Warning"
-                     , text = "Battery low! " .. bat_capacity .."%" .. " left!"
-                     , fg="#ff0000"
-                     , bg="#deb887"
-                     , timeout = 15
-                     , position = "bottom_left" })
-  end
-end
-battimer = timer({timeout = 120})
-battimer:connect_signal("timeout", bat_notification)
-battimer:start()
-
--- end here for battery warning
