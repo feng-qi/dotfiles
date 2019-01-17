@@ -44,10 +44,14 @@ local mybatterybar = wibox.widget {
         self.mytb.text  = tonumber(val).."%"
         self.mypb.value = tonumber(val)
     end,
+    set_color = function(self, val) self.mypb.color = val end,
 }
 
 local function update_battery_capacity()
-    mybatterybar.battery = get_battery_capacity()
+    local capacity = get_battery_capacity()
+    local red      = 255 - math.floor(capacity / 100 * 255)
+    mybatterybar.battery = capacity
+    mybatterybar.color   = string.format("#%02x8b00", red)
 end
 
 gears.timer {
