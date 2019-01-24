@@ -135,9 +135,11 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
-# # setup for deer
-# autoload -U deer
-# zle -N deer
+# setup for deer
+autoload -U deer
+zle -N deer
+bindkey '\ev' deer
+
 
 # default keymap
 # bindkey -s '\ee' 'vim\n'
@@ -153,13 +155,12 @@ antigen apply
 
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
+bindkey -s '\er' '_INIT_SH_LOADED=""; source $HOME/.zshrc\n'
 
 # bindkey '\e[1;3D' backward-word
 # bindkey '\e[1;3C' forward-word
 # bindkey '\e[1;3A' beginning-of-line
 # bindkey '\e[1;3B' end-of-line
-
-bindkey '\ev' deer
 
 alias g=git
 alias ga='git add'
@@ -247,9 +248,7 @@ export PS1='%F{cyan}%n%F{yellow}@%F{cyan}%~%f${vcs_info_msg_0_}%(1j. %F{red}<%j>
 # autoload -Uz promptinit && promptinit
 # prompt adam1
 
-source /etc/zsh_command_not_found
-
-alias fmacs='emacs -q --load "$HOME/.emacs.e/init.el"'
+[[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
 dtouch () {
     for file in $@; do
