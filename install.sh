@@ -25,37 +25,31 @@ while [ $# -gt 0 ]; do
     case "$1" in
         base)
             install_utils
-            shift
             ;;
         libs)
             install_libs
-            shift
             ;;
         fonts)
             install_fonts
-            shift
             ;;
         link)
             create_soft_link
-            shift
             ;;
         github)
             clone_repo
-            shift
             ;;
         awesome)
             install_awesome_wm
-            shift
             ;;
         miscs)
             install_miscs
-            shift
             ;;
         *)
             echo -e "${WARN} Unrecognized Argument: ${COLR_RED}$1${COLR_NC}"
             exit 1
             ;;
     esac
+    shift
 done
 
 
