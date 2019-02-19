@@ -20,6 +20,7 @@ install_utils() {
     local pkgs_str="git tree clang clang-format golang-any emacs25 zsh yakuake autoconf nmap net-tools
               jq konsole tmux tlp cmake cmake-curses-gui checkinstall vlc curl xclip exuberant-ctags
               vim-gui-common ibus-table-wubi ibus-pinyin chromium-browser command-not-found
+              suckless-tools
               build-essential silversearcher-ag virtualenvwrapper qrencode xsel aria2 pv woof progress"
     local pkgs=(${pkgs_str})
 
