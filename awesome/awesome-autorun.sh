@@ -14,4 +14,5 @@ run xfce4-power-manager
 run nm-applet     # network manager, using network-manager-gnome package
 run fcitx
 run albert
+run urxvtd -q -o -f
 # run xrdb $HOME/.Xresources
