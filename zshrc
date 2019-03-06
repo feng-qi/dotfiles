@@ -65,7 +65,7 @@ source "$ANTIGEN"
 
 
 # Initialize oh-my-zsh
-# antigen use oh-my-zsh
+antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
@@ -200,8 +200,8 @@ export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/pyprojects
 
 # rust
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # llvm
 export PATH="$HOME/llvm/install/2018-04-11/bin:$PATH"
@@ -242,4 +242,4 @@ dtouch () {
     done
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true

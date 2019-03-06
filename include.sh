@@ -69,7 +69,7 @@ clone_repo() {
 create_soft_link_if_not_exist() {
     local to_install=$1
     local source=$2
-    if [ -e ${to_install} ]; then
+    if [ -h ${to_install} ]; then
         echo -e "${WARN} ${COLR_GREEN}${to_install}${COLR_NC} already exists! Skipped!"
     else
         ln -s "${source}" "${to_install}"
