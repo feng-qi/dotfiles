@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/tpope-vim-abolish'
+Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'						" need ack-grep
 Plug 'tommcdo/vim-exchange'					" swap two regions of text
@@ -58,33 +59,41 @@ set splitright
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
-colorscheme solarized
-if has('gui_running')
-    set t_Co=256
-	set lines=53 columns=100	" 25 lines and 80 columnn
-
-	" setup for plugin vim-multiple-cursors
-	"	- put this *after* colorscheme setup, or it may has no effects
-	highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-	highlight link multiple_cursors_visual Visual
-	"let g:multi_cursor_exit_from_insert_mode = 0
-
-	set guicursor=a:blinkon0
-	" set guioptions=aegit	" default
-	set guioptions=
-"else
-	"colorscheme evening
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
 endif
 
-if has('win32')
-	set guifont=Source_Code_Pro:h10:cANSI:qDRAFT
-elseif has('unix')
-	set guifont=Source\ Code\ Pro\ 11
+if has('gui_running')
+    if g:os == "Linux"
+        set guifont=Source\ Code\ Pro\ 15
+    elseif g:os == "Darwin"
+        set guifont=SourceCodePro-Regular:h13
+    elseif g:os == "Windows"
+        set guifont=Source_Code_Pro:h10:cANSI:qDRAFT
+    endif
+
+    set t_Co=256
+    set lines=53 columns=100    " 25 lines and 80 columnn
+
+    " setup for plugin vim-multiple-cursors
+    "   - put this *after* colorscheme setup, or it may has no effects
+    highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+    highlight link multiple_cursors_visual Visual
+    "let g:multi_cursor_exit_from_insert_mode = 0
+
+    set guicursor=a:blinkon0
+    " set guioptions=aegit  " default
+    set guioptions=
+    colorscheme solarized
 endif
 
 " set clipboard=unnamed
 set winaltkeys=no			" Alt key will not pop out menu bar menus
-set background=dark
+set background=light
 set visualbell
 set showcmd
 set hidden
