@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 " git repos:
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'machakann/vim-highlightedyank'
-Plug 'altercation/vim-colors-solarized'		" color scheme
+Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -20,23 +20,24 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'mileszs/ack.vim'						" need ack-grep
-Plug 'tommcdo/vim-exchange'					" swap two regions of text
+Plug 'mileszs/ack.vim'                  " need ack-grep
+Plug 'tommcdo/vim-exchange'             " swap two regions of text
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'jiangmiao/auto-pairs'
-Plug 'plasticboy/vim-markdown'				" need 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'          " need 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'SirVer/ultisnips'
-" Plug 'tomasr/molokai'							" color scheme
-Plug 'majutsushi/tagbar'						" need exuberant-ctags
+Plug 'majutsushi/tagbar'                " need exuberant-ctags
 Plug 'scrooloose/nerdtree'
-" Plug 'vim-airline/vim-airline'				" statusline
+
+" Plug 'SirVer/ultisnips'
+" Plug 'tomasr/molokai'                   " color scheme
+" Plug 'vim-airline/vim-airline'          " statusline
 " Plug 'vim-airline/vim-airline-themes'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'easymotion/vim-easymotion'
-" Plug 'sjl/gundo.vim'                        " need python support
+" Plug 'sjl/gundo.vim'                    " need python support
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'scrooloose/syntastic'
 " Plug 'othree/xml.vim'
@@ -45,7 +46,7 @@ Plug 'scrooloose/nerdtree'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'ARM9/arm-syntax-vim'
 
-call plug#end()		" required
+call plug#end()         " required
 "***************** End configure *****************
 
 set encoding=utf-8
@@ -92,38 +93,38 @@ if has('gui_running')
 endif
 
 " set clipboard=unnamed
-set winaltkeys=no			" Alt key will not pop out menu bar menus
+set winaltkeys=no                       " Alt key will not pop out menu bar menus
 set background=light
 set visualbell
 set showcmd
 set hidden
 set ignorecase
-set incsearch			" become useless while plugin easymotion presents
+set incsearch                   " become useless while plugin easymotion presents
 set infercase
 vnoremap <leader>rv c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
 
 set nowrap
-set textwidth=0			" don't auto break line
+set textwidth=0                 " don't auto break line
 
 set noshowmode
-syntax enable			" enable syntax highlight
+syntax enable                   " enable syntax highlight
 set shiftwidth=4
 set tabstop=4
 set expandtab
-set softtabstop=4		" backspace will delete 4 spaces at 1 time
+set softtabstop=4               " backspace will delete 4 spaces at 1 time
 set number
 set history=200
-"set relativenumber		" relative line number
+"set relativenumber             " relative line number
 set hlsearch
-"set autochdir			" change directory automatically
+"set autochdir                  " change directory automatically
 set cursorline
 "highlight CursorLine  term=underline  guibg=#555555  cterm=underline
-set colorcolumn=80		"set up a ruler at column 80
+set colorcolumn=80              "set up a ruler at column 80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
-"set foldmethod=indent	" fold according to indentation
+"set foldmethod=indent  " fold according to indentation
 
 " Use the same symbols as TextMate for tabstops and EOLs
-" set listchars=tab:▸\ ,eol:¬,trail:·		" space:·
+" set listchars=tab:▸\ ,eol:¬,trail:·           " space:·
 set listchars=tab:»-,eol:¶,trail:·
 "Invisible character colors
 highlight NonText guifg=#4a4a59
@@ -136,7 +137,7 @@ set dictionary+=/usr/share/dict/words
 "set omnifunc=syntaxcomplete#Complete
 
 " set up status bar
-set laststatus=2		" always shows status bar
+set laststatus=2                " always shows status bar
 
 let mapleader=" "
 " expand '%%' to current file folder, %:h : % get full path to file, :h remove filename
@@ -196,19 +197,19 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " YouCompleteMe setting
-"set completeopt=longest,menu		" let complete behavior like IDE
-"let g:ycm_confirm_extra_conf=0		" close load .ycm_extra_conf.py prompt
-"let g:ycm_min_num_of_chars_for_completion=2	" complete start from 2nd char
-"let g:ycm_seed_identifiers_with_syntax=1	" complete syntactic keyword
-"let g:ycm_complete_in_comments=1	" complete in comments
-"let g:ycm_complete_in_strings=1		" complete in strings
+"set completeopt=longest,menu           " let complete behavior like IDE
+"let g:ycm_confirm_extra_conf=0         " close load .ycm_extra_conf.py prompt
+"let g:ycm_min_num_of_chars_for_completion=2    " complete start from 2nd char
+"let g:ycm_seed_identifiers_with_syntax=1       " complete syntactic keyword
+"let g:ycm_complete_in_comments=1       " complete in comments
+"let g:ycm_complete_in_strings=1                " complete in strings
 "let g:ycm_collect_identifiers_from_comments_and_strings=0
 "let g:ycm_key_list_select_completion = []
 "let g:ycm_key_list_previous_completion = []
 "let g:ycm_filetype_blacklist = {
-"		\ 'tagbar' : 1,
-"		\ 'nerdtree' : 1,
-"		\}
+"               \ 'tagbar' : 1,
+"               \ 'nerdtree' : 1,
+"               \}
 
 " setup for plugin syntastic
 "let g:syntastic_always_populate_loc_list = 1
@@ -220,7 +221,7 @@ xmap ga <Plug>(EasyAlign)
 let g:lightline = { 'colorscheme': 'solarized' }
 
 " taglist setting
-set tags=./tags;/			" find tags file in parent dir recursively
+set tags=./tags;/                       " find tags file in parent dir recursively
 "set taglist window in right, delete the following line if you don't like
 let Tlist_Use_Right_Window=1
 let Tlist_Auto_Update=1
@@ -228,8 +229,8 @@ let Tlist_File_Fold_Auto_Close=1
 "auto close Tlist when exiting file.
 let Tlist_Exit_OnlyWindow = 1
 let g:syntastic_mode_map = {
-			\ "mode": "active" }
-"	\ "passive_filetypes": ["go"] }
+                        \ "mode": "active" }
+"       \ "passive_filetypes": ["go"] }
 
 " setup for Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_start_level = 2
@@ -239,16 +240,16 @@ let g:indent_guides_guide_size = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,tags     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git)$',
-			\ 'file': '\v\.(log|jpg|png|jpeg|so|o|a|exe|out)$',
-			\ }
+                        \ 'dir':  '\v[\/]\.(git)$',
+                        \ 'file': '\v\.(log|jpg|png|jpeg|so|o|a|exe|out)$',
+                        \ }
 if (executable('ag'))
-	let g:ctrlp_user_command = 'ag %s -p ~/.agignore -t --nocolor -g ""'
-	let g:ackprg = 'ag --nogroup --nocolor --column'	" change ack program to ag
+        let g:ctrlp_user_command = 'ag %s -p ~/.agignore -t --nocolor -g ""'
+        let g:ackprg = 'ag --nogroup --nocolor --column'        " change ack program to ag
 endif
 let g:ctrlp_max_files = 10000
 let g:ctrlp_max_depth = 40
-let g:ctrlp_max_height = 10			" set result window height
+let g:ctrlp_max_height = 10                     " set result window height
 let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_working_path_mode = '0'
 
@@ -276,16 +277,16 @@ let g:EasyMotion_smartcase = 1
 "let fortran_do_enddo = 1
 
 " Shortcuts
-"	dictionary completion : <C-x><C-k>
-"	insert/delete indent  : <C-t>/<C-d>
-"	correct spelling error:
-"		[s: previous error
-"		]s: next error
-"		z=: correction list
-"		<C-x>s : correction in insert mode
-"	zj/zk: jump between folds
-"	:windo diffthis/diffoff
-"		[c, ]c, diffget, diffput
-"	q: "open command history
-"	:retab
+"       dictionary completion : <C-x><C-k>
+"       insert/delete indent  : <C-t>/<C-d>
+"       correct spelling error:
+"               [s: previous error
+"               ]s: next error
+"               z=: correction list
+"               <C-x>s : correction in insert mode
+"       zj/zk: jump between folds
+"       :windo diffthis/diffoff
+"               [c, ]c, diffget, diffput
+"       q: "open command history
+"       :retab
 
