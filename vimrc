@@ -189,7 +189,7 @@ nnoremap <leader>4  4<C-w>w
 nnoremap <leader>5  5<C-w>w
 nnoremap <leader>6  6<C-w>w
 nnoremap <leader>7  7<C-w>w
-nnoremap t F
+nnoremap Y y$
 nnoremap ' `
 
 " setup for 'junegunn/vim-easy-align'
