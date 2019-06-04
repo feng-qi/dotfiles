@@ -192,6 +192,13 @@ nnoremap <leader>7  7<C-w>w
 nnoremap Y y$
 nnoremap ' `
 
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+else
+    tnoremap <Esc> <C-w>N
+endif
+
+
 " setup for 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
