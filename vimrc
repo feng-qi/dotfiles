@@ -171,6 +171,7 @@ nnoremap <leader>dw :StripWhitespace<cr>         " need 'ntpeters/vim-better-whi
 nnoremap <leader>fs :update<cr>
 nnoremap <leader>fS :wa<cr>
 nnoremap <leader>fr :browse oldfiles<cr>
+nnoremap <leader>ft :NERDTreeToggle<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :windo diffthis<cr>
