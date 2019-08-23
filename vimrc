@@ -119,7 +119,7 @@ set hlsearch
 "set autochdir                  " change directory automatically
 set cursorline
 "highlight CursorLine  term=underline  guibg=#555555  cterm=underline
-set colorcolumn=80              "set up a ruler at column 80
+"set colorcolumn=80              "set up a ruler at column 80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 "set foldmethod=indent  " fold according to indentation
 
@@ -165,6 +165,7 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
 nnoremap <leader><tab> <C-^>
+nnoremap <leader>'  :terminal<cr>
 "nnoremap <leader>dw :%s/\s\+$//<cr>
 nnoremap <leader>bb :ls<cr>
 nnoremap <leader>dw :StripWhitespace<cr>         " need 'ntpeters/vim-better-whitespace'

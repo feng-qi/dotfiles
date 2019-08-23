@@ -52,18 +52,19 @@ install_libs() {
 }
 
 clone_repo_if_not_exist() {
-    local to_clone=$1
-    local source=$2
+    local source=$1
+    local to_clone=$2
+    shift 2
     if [ -e "${to_clone}" ]; then
         echo -e "${WARN} ${COLR_GREEN}${to_clone}${COLR_NC} already cloned! Skipped!"
     else
-        git clone "${source}" "${to_clone}"
+        git clone $@ "${source}" "${to_clone}"
     fi
 }
 
 clone_repo() {
-    #                        to_clone                     clone_what
-    clone_repo_if_not_exist "${HOME}/github/spacemacs.d" "git@github.com:feng-qi/spacemacs.d.git"
+    #                        clone_what                                 to_where
+    clone_repo_if_not_exist "https://github.com/syl20bnr/spacemacs.git" "${HOME}/.spacemacs.d" --depth=1 -b develop
 }
 
 create_soft_link_if_not_exist() {
@@ -86,7 +87,6 @@ create_soft_link() {
 
     #                              to_install           install_what
     create_soft_link_if_not_exist "$HOME/.config/nvim" "$HOME/dotfiles/nvim"
-    create_soft_link_if_not_exist "$HOME/.spacemacs.d" "$HOME/github/spacemacs.d"
 }
 
 install_fonts() {
