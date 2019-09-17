@@ -30,6 +30,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'majutsushi/tagbar'                " need exuberant-ctags
 Plug 'scrooloose/nerdtree'
 
+" Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 " Plug 'SirVer/ultisnips'
 " Plug 'tomasr/molokai'                   " color scheme
 " Plug 'vim-airline/vim-airline'          " statusline
@@ -70,7 +71,7 @@ endif
 
 if has('gui_running')
     if g:os == "Linux"
-        set guifont=Source\ Code\ Pro\ 15
+        set guifont=Source\ Code\ Pro\ 11
     elseif g:os == "Darwin"
         set guifont=SourceCodePro-Regular:h13
     elseif g:os == "Windows"

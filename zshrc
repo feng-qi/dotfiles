@@ -69,7 +69,7 @@ antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
-antigen bundle rupa/z z.sh
+# antigen bundle rupa/z z.sh
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -204,8 +204,8 @@ export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # llvm
-export PATH="$HOME/llvm/install/2018-04-11/bin:$PATH"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/llvm/install/2018-04-11/lib
+export PATH="$HOME/test/llvm/install/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/test/llvm/install/lib"
 
 # go
 export GOPATH="$HOME/test/go"
