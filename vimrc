@@ -180,6 +180,7 @@ nnoremap <leader>gd :windo diffthis<cr>
 nnoremap <leader>gD :windo diffoff<cr>
 nnoremap <leader>pt :NERDTreeToggle<cr>
 nnoremap <leader>qq :qa<cr>
+nnoremap <leader>qQ :qa!<cr>
 nnoremap <leader>sc :nohlsearch<cr>
 nnoremap <leader>wd :q<cr>
 nnoremap <leader>wD :q!<cr>
