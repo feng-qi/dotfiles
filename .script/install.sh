@@ -1,6 +1,6 @@
-git clone --bare --depth=1 https://feng-qi@bitbucket.org/feng-qi/dotfiles.git $HOME/.git
-function config { git --git-dir=$HOME/.git --work-tree=$HOME $@ }
-mkdir -p .dotfile-backup
+git clone --bare https://gitee.com/feng-qi/dotfiles.git $HOME/dotfiles
+function config { git --git-dir=$HOME/dotfiles --work-tree=$HOME $@; }
+mkdir -p .dotfile-backup/{,.config}
 echo "Checking out dotfiles ..."
 if config checkout; then
     echo "Done checking out dotfiles"

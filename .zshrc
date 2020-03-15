@@ -167,7 +167,7 @@ alias gcmsg='git commit -m'
 # alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
 alias lg='ls | grep -E'
 
-function config { git --git-dir=$HOME/.git --work-tree=$HOME $@ }
+function config { git --git-dir=$HOME/.git --work-tree=$HOME $@; }
 
 # options
 unsetopt correct_all
