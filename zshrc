@@ -141,6 +141,7 @@ bindkey '\ev' deer
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
 bindkey -s '\er' '_INIT_SH_LOADED=""; source $HOME/.zshrc\n'
+bindkey -r "^[l"
 
 # bindkey '\e[1;3D' backward-word
 # bindkey '\e[1;3C' forward-word
@@ -200,8 +201,8 @@ export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/pyprojects
 
 # rust
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+# export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup'
+source $HOME/.cargo/env
 
 # llvm
 export PATH="$HOME/test/llvm/install/bin:$PATH"
