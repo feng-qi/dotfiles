@@ -1,6 +1,6 @@
 [user]
 	name = fengqi
-	email = fengqi@microtrust.com.cn
+	email = feng.qi@msn.com
 [alias]
 	ffil = log --all -- $1
 	lfic = "!f(){ git show --pretty=format:\"\" --name-only $1; };f"
@@ -22,5 +22,3 @@
 	lola = git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
 [core]
 	editor = vi
-[push]
-	default = simple

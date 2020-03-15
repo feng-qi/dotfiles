@@ -163,10 +163,11 @@ alias gco='git checkout'
 alias gcm='git checkout master'
 alias gcmsg='git commit -m'
 
-alias s='ssh -l fengqi -p 10020 -J jump.hk'
-alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
+# alias s='ssh -l fengqi -p 10020 -J jump.hk'
+# alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
 alias lg='ls | grep -E'
 
+function config { git --git-dir=$HOME/.git --work-tree=$HOME $@ }
 
 # options
 unsetopt correct_all
@@ -242,5 +243,7 @@ dtouch () {
         touch $file
     done
 }
+
+export PATH="$PATH:$HOME/.local/bin:/snap/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true

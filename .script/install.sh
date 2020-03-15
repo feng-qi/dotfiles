@@ -1,7 +1,5 @@
-git clone --bare https://feng-qi@bitbucket.org/feng-qi/dotfiles.git $HOME/.dotfiles
-function config {
-    git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@
-}
+git clone --bare --depth=1 https://feng-qi@bitbucket.org/feng-qi/dotfiles.git $HOME/.git
+function config { git --git-dir=$HOME/.git --work-tree=$HOME $@ }
 mkdir -p .dotfile-backup
 echo "Checking out dotfiles ..."
 if config checkout; then
@@ -12,5 +10,5 @@ else
     echo "Done backing up existing dot files"
     config checkout
     echo "Done checking out dotfiles"
-fi;
+fi
 config config status.showUntrackedFiles no

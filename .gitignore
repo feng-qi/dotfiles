@@ -1,4 +1,7 @@
+# prevent recursive problems when bare clone
+dotfiles
+.dotfiles
+
 # Backup files
 *~
 *.swp
-
