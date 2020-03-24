@@ -18,4 +18,4 @@ else
     echo "Done checking out dotfiles"
 fi
 config config status.showUntrackedFiles no
-git config --bool core.bare false
+config config --bool core.bare false
