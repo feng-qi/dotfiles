@@ -4,6 +4,8 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
+export PATH="$PATH:$HOME/.local/bin:/snap/bin"
+
 # Delete duplicated path
 if [ -n "$PATH" ]; then
     old_PATH=$PATH:; PATH=
@@ -48,6 +50,8 @@ if [ ! -f "$ANTIGEN" ]; then
     mv "$TMPFILE" "$ANTIGEN"
 fi
 
+
+function __command_exists () { command -v "$1" &> /dev/null; }
 
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
@@ -203,21 +207,23 @@ export PROJECT_HOME=~/pyprojects
 
 # rust
 # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup'
-source $HOME/.cargo/env
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env" || true
 
-# llvm
-export PATH="$HOME/test/llvm/install/bin:$PATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/test/llvm/install/lib"
+# # llvm
+# export PATH="$HOME/test/llvm/install/bin:$PATH"
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/test/llvm/install/lib"
 
 # go
-export GOPATH="$HOME/test/go"
-export PATH="$PATH:$GOPATH/bin"
+if __command_exists go; then
+    export GOPATH="$HOME/test/go"
+    export PATH="$PATH:$GOPATH/bin"
+fi
 
 # Idris
-export PATH="$PATH:$HOME/.cabal/bin"
+[ -d "$HOME/.cabal/bin" ] && export PATH="$PATH:$HOME/.cabal/bin" || true
 
-# clojure boot
-export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
+# # clojure boot
+# export BOOT_JVM_OPTIONS='--add-modules java.xml.bind'
 
 # java
 # export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -244,6 +250,5 @@ dtouch () {
     done
 }
 
-export PATH="$PATH:$HOME/.local/bin:/snap/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
