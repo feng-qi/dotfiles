@@ -1,6 +1,6 @@
 [user]
-	name = fengqi
-	email = feng.qi@msn.com
+	name = Qi Feng
+	email = qi.feng@arm.com
 [alias]
 	ffil = log --all -- $1
 	lfic = "!f(){ git show --pretty=format:\"\" --name-only $1; };f"

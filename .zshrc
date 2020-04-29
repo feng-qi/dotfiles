@@ -4,6 +4,7 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
+[ -f "$HOME/github/templates/jdk/bash/include.sh" ] && . "$HOME/github/templates/jdk/bash/include.sh" || true
 export PATH="$PATH:$HOME/.local/bin:/snap/bin"
 
 # Delete duplicated path
@@ -78,6 +79,7 @@ antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle Vifon/deer
+antigen bundle git@github.com:spwhitt/nix-zsh-completions.git
 
 # uncomment the line below to enable theme
 # antigen theme fishy
