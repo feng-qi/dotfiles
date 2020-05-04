@@ -91,3 +91,10 @@ URxvt*color12: #8cd0d3
 URxvt*color13: #dc8cc3
 URxvt*color14: #93e0e3
 URxvt*color15: #ffffff
+
+! rofi.kb-accept-entry:  Control+m,Return,KP_Enter
+! rofi.kb-remove-to-eol: Alt+k
+! rofi.modi:             window,drun,ssh,run,combi,keys
+! rofi.combi-modi:       window,drun,ssh
+! rofi.kb-row-up:        Control+k,Control+p,ISO_Left_Tab,Up
+! rofi.kb-row-down:      Control+j,Control+n,Down

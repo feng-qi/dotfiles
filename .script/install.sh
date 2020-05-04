@@ -9,8 +9,8 @@ else
         echo "$HOME/.dotfile-backup already exists, can't backup files"
         exit 2
     fi
-    mkdir -p $HOME/.dotfile-backup/{,.config,.script,.xmonad}
-    mkdir -p $HOME/.dotfile-backup/.config/{awesome,i3,nvim}
+    mkdir -p $HOME/.dotfile-backup/{,.config,.script,.xmonad,.local/bin}
+    mkdir -p $HOME/.dotfile-backup/.config/{awesome,i3,nvim,rofi}
     config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv $HOME/{} $HOME/.dotfile-backup/{}
     if [ -e $HOME/README.md ]; then mv $HOME/README.md $HOME/.dotfile-backup; fi
     echo "Done backing up existing dot files"
