@@ -44,6 +44,7 @@ editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 modkey = "Mod4"
+altKey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -222,14 +223,13 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    -- New emacs frame
     awful.key({ modkey,           }, "e",
-        function () awful.spawn.with_shell("emacsclient -c") end,
-        {description = "new emacs frame", group = "client"}),
+              function () awful.spawn.with_shell("/home/qi/github/emacs/src/emacs") end,
+              {description = "emacs", group = "client"}),
     -- Lock screen
     awful.key({ modkey,           }, "z",
-        function () awful.spawn.with_shell("sync; xautolock -locknow") end,
-        {description = "lock screen", group = "client"}),
+              function () awful.spawn.with_shell("sync; xautolock -locknow") end,
+              {description = "lock screen", group = "client"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -289,7 +289,7 @@ globalkeys = awful.util.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
-    awful.key({ modkey, "Control" }, "n",
+    awful.key({ modkey, "Shift"   }, "n",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -310,6 +310,8 @@ globalkeys = awful.util.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+    awful.key({ altKey }, "space", function() awful.spawn.with_shell("rofi -show combi", false); end,
+              {description = "show the menubar", group = "launcher"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
