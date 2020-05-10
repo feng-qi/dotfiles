@@ -1,9 +1,9 @@
-Config { font             = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+Config { font             = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
        , additionalFonts  = []
        , borderColor      = "black"
        , border           = TopB
        , bgColor          = "black"
-       , fgColor          = "grey"
+       , fgColor          = "white"
        , alpha            = 255
        , position         = Top
        , textOffset       = -1
@@ -15,12 +15,51 @@ Config { font             = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , iconRoot         = "."
        , allDesktops      = True
        , overrideRedirect = True
-       , commands         = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                            , Run Memory ["-t","Mem: <usedbar>"] 10
-                            , Run Swap [] 10
-                            , Run Date "%a %b %_d %Y %H:%M" "date" 10
-                            , Run Wireless "wlp3s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                            , Run UnsafeStdinReader
+       , sepChar          = "%"
+       , alignSep         = "}{"
+       , template         = "%StdinReader% }{ %diskio% | %battery% | %cpu% | %memory% . %swap% | %date%"
+       -- , template         = "%UnsafeStdinReader% }{ %cpu% | %memory% * %swap% | <fc =#ee9a00>%date%</fc>"
+       , commands         = [ Run Cpu [ "--Low"      , "5"
+                                      , "--High"     , "50"
+                                      , "--low"      , "darkgreen"
+                                      , "--normal"   , "orange"
+                                      , "--high"     , "red"
+                                      ] 10
+                            -- , Run Memory ["-t","Mem: <usedbar>"] 10
+                            , Run Memory [ "--template" ,"Mem: <usedratio>%"
+                                         , "--Low"      , "30"        -- units: %
+                                         , "--High"     , "90"        -- units: %
+                                         , "--low"      , "darkgreen"
+                                         , "--normal"   , "darkorange"
+                                         , "--high"     , "darkred"
+                                         ] 10
+                            , Run Swap ["--template" ,"<usedratio>%"] 10
+                            , Run DiskIO [("/", "<read> <write>")] [] 10
+                            -- battery monitor
+                            , Run Battery [ "--template" , "Batt: <acstatus> <left>%"
+                                          , "--Low"      , "10"        -- units: %
+                                          , "--High"     , "80"        -- units: %
+                                          , "--low"      , "darkred"
+                                          , "--normal"   , "darkorange"
+                                          , "--high"     , "darkgreen"
+
+                                          , "--" -- battery specific options
+                                                 -- discharging status
+                                                 , "-o" , "<left>% (<timeleft>)"
+                                                 -- AC "on" status
+                                                 , "-O" , "<fc=#dAA520>Charging</fc>"
+                                                 -- charged status
+                                                 , "-i" , "<fc=#006000>Charged</fc>"
+                                          ] 50
+                            , Run Date "<fc=#ABABAB>%a %F</fc> %R" "date" 10
+                            , Run StdinReader
+                            -- , Run UnsafeStdinReader
+                            -- , Run Uptime [] 10
+                            -- , Run Brightness [ "-t", "<ipat>"
+                            --                  , "--"
+                            --                  -- , "--brightness-icon-pattern", "<icon=bright_%%.xpm/>"
+                            --                  ] 30
+                            -- , Run Wireless "wlp3s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                             -- , Run Weather "EGPF" ["-t","<station>: <tempC>C",
                             --                       "-L","18","-H","25",
                             --                       "--normal","green",
@@ -31,8 +70,9 @@ Config { font             = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
                             -- , Run Network "eth1" ["-L","0","-H","32",
                             --                       "--normal","green","--high","red"] 10
                             -- , Run Com "uname" ["-s","-r"] "" 36000
+                            -- -- keyboard layout indicator
+                            -- , Run Kbd    [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
+                            --              , ("us"         , "<fc=#8B0000>US</fc>")
+                            --              ]
                             ]
-       , sepChar          = "%"
-       , alignSep         = "}{"
-       , template         = "%UnsafeStdinReader% }{ %cpu% | %memory% * %swap% | %wlp3s0wi% <fc =#ee9a00>%date%</fc>"
 }
