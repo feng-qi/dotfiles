@@ -167,7 +167,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Be like spacemacs
 nnoremap <leader><tab> <C-^>
 nnoremap <leader>'  :terminal<cr>
-"nnoremap <leader>dw :%s/\s\+$//<cr>
+nnoremap ' `
+" nnoremap <leader>dw :%s/\s\+$//<cr>
 nnoremap <leader>bb :ls<cr>
 nnoremap <leader>dw :StripWhitespace<cr>         " need 'ntpeters/vim-better-whitespace'
 nnoremap <leader>fs :update<cr>
@@ -194,7 +195,7 @@ nnoremap <leader>5  5<C-w>w
 nnoremap <leader>6  6<C-w>w
 nnoremap <leader>7  7<C-w>w
 nnoremap Y y$
-nnoremap ' `
+xmap     s <Plug>VSurround
 
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
