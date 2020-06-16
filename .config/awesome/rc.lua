@@ -6,7 +6,6 @@ local naughty       = require("naughty")   -- Notification library
 local menubar       = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("awful.autofocus")
-require("debian.menu")          -- Load Debian menu entries
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -93,7 +92,6 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
                                     { "open terminal", terminal }}
                         })
 
@@ -259,12 +257,14 @@ globalkeys = awful.util.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
+    awful.key({ modkey,           }, "Tab", awful.tag.history.restore,
+              {description = "last workspace", group = "client"}),
+    awful.key({           altKey  }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then client.focus:raise() end
         end,
-        {description = "go back", group = "client"}),
+        {description = "last window", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
@@ -349,9 +349,11 @@ clientkeys = awful.util.table.join(
 
     -- Original below
 
-    awful.key({ modkey,           }, "f",
-        function (c) c.fullscreen = not c.fullscreen; c:raise() end,
-        {description = "toggle fullscreen", group = "client"}),
+    -- awful.key({ modkey,           }, "f",
+    --           function (c) c.fullscreen = not c.fullscreen; c:raise() end,
+    --           {description = "toggle fullscreen", group = "client"}),
+    -- awful.key({ modkey,           }, "f",      awful.client.floating.toggle,
+    --           {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
@@ -456,6 +458,7 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
+          "ffplay",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
