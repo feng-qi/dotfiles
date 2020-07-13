@@ -205,6 +205,9 @@ zstyle ':completion:*:*sh:*:' tag-order files
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
 
+# radare2
+[ -f "$HOME/bin/radare2" ] && export PATH="$PATH:$HOME/bin" || true
+
 # python
 export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/pyprojects
