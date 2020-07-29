@@ -73,7 +73,7 @@ URxvt*xftAntialias: true
 URxvt*background: #3f3f3f
 URxvt*foreground: #dcdccc
 URxvt*cursorColor: #aaaaaa
-URxvt*colorUL: #366060
+URxvt*colorUL: #73c0ef
 URxvt*underlineColor: #dfaf8f
 URxvt*color0: #3f3f3f
 URxvt*color1: #cc9393
