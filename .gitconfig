@@ -1,11 +1,6 @@
 [user]
 	name = Qi Feng
-	email = qi.feng@arm.com
 [alias]
-	ffil = log --all -- $1
-	lfic = "!f(){ git show --pretty=format:\"\" --name-only $1; };f"
-	mylog = log --graph --pretty=format:\"%h %an %ai %s %Cred %d\"
-	wcbr = for-each-ref --format=\"%(committerdate) %09 %(authorname) %09 %(refname)\"
 	st = status
 	rv = remote -v
 	a = add
@@ -15,11 +10,12 @@
 	co = checkout
 	cmsg = commit -m
 	d = diff
+	f = fetch
+	fa = fetch --all
 	p = push
 	l = pull
 	up = pull --rebase
-	lg = log
-	lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	lola = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+	lol = log --graph --pretty='%C(auto)%h%d%Creset %s %Cgreen(%cr) %Cblue(%an)'
+	lola = log --graph --pretty='%C(auto)%h%d%Creset %s %Cgreen(%cr) %Cblue(%an)' --all
 [core]
 	editor = vi
