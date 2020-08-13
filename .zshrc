@@ -79,7 +79,7 @@ antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle Vifon/deer
-antigen bundle git@github.com:spwhitt/nix-zsh-completions.git
+# antigen bundle git@github.com:spwhitt/nix-zsh-completions.git
 
 # uncomment the line below to enable theme
 # antigen theme fishy

@@ -19,3 +19,8 @@ else
 fi
 config config status.showUntrackedFiles no
 config config --bool core.bare false
+config remote rm origin
+config remote add origin https://gitee.com/feng-qi/dotfiles.git
+config remote add github https://github.com/feng-qi/dotfiles.git
+config fetch --all
+config branch --set-upstream-to origin/master master
