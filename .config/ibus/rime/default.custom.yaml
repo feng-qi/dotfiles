@@ -1,0 +1,6 @@
+patch:
+  "menu/page_size": 3
+  schema_list:
+    - {schema: wubi86}
+    - {schema: double_pinyin_mspy}
+  "ascii_composer/switch_key/Shift_L": commit_code
