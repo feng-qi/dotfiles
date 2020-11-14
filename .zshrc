@@ -7,6 +7,8 @@
 [ -f "$HOME/github/templates/jdk/bash/include.sh" ] && . "$HOME/github/templates/jdk/bash/include.sh" || true
 export PATH="$PATH:$HOME/.local/bin:/snap/bin"
 
+fpath+=$HOME/.zfunc
+
 # Delete duplicated path
 if [ -n "$PATH" ]; then
     old_PATH=$PATH:; PATH=
@@ -216,7 +218,7 @@ export WORKON_HOME=~/Envs
 export PROJECT_HOME=~/pyprojects
 
 # rust
-# export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup'
+# export RUSTUP_DIST_SERVER='https://mirrors.tuna.tsinghua.edu.cn/rustup'
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env" || true
 
 # # llvm

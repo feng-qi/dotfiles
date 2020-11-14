@@ -2,6 +2,7 @@
 	name = Qi Feng
 [alias]
 	st = status
+	rb = rebase
 	rv = remote -v
 	a = add
 	aa = add --all
