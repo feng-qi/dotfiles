@@ -243,8 +243,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "k",
         function () awful.client.focus.byidx(-1) end,
         {description = "focus previous by index", group = "client"}),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
+    awful.key({ modkey,           }, "w",
+              function () awful.spawn.with_shell("/snap/bin/scrcpy --turn-screen-off --stay-awake") end,
+              {description = "launch scrcpy", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
