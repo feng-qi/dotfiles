@@ -1,5 +1,8 @@
 ! xrdb ~/.Xresources
 
+! URxvt.inputMethod: ibus
+! URxvt.preeditType: OverTheSpot
+
 ! URxvt*foreground: white
 ! URxvt*background: black
 URxvt*scrollTtyOutput: false    ! do not scroll with output

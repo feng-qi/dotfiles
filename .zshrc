@@ -214,7 +214,7 @@ export TERM="xterm-256color"
 [ -f "$HOME/bin/radare2" ] && export PATH="$PATH:$HOME/bin" || true
 
 # python
-export WORKON_HOME=~/Envs
+export WORKON_HOME=~/.virtualenv
 export PROJECT_HOME=~/pyprojects
 
 # rust
@@ -254,12 +254,4 @@ export PS1='%F{cyan}%n%F{yellow}@${MACHTYPE} %F{cyan}%~%f${vcs_info_msg_0_}%(1j.
 # prompt adam1
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
-
-dtouch () {
-    for file in $@; do
-        mkdir -p "$(dirname "$file")"
-        touch $file
-    done
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true

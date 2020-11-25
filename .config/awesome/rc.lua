@@ -151,7 +151,7 @@ local function set_wallpaper(s)
 end
 
 -- local volumebar_widget = require("volumebar")
-local battery_widget   = require("battery")
+-- local battery_widget   = require("battery")
 -- local cpu_widget       = require("cpu")
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
@@ -202,7 +202,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             -- cpu_widget,
-            battery_widget,
+            -- battery_widget,
             -- volumebar_widget,
             wibox.widget.textclock(" %F | %a | %R "),
             s.mylayoutbox,
