@@ -1,0 +1,4 @@
+patch:
+  speller/max_code_length: 4
+  speller/auto_select: true
+  speller/auto_select_unique_candidate: true
