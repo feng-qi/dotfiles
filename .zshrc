@@ -5,7 +5,7 @@
 [[ "$-" != *i* ]] && return
 
 # [ -f "$HOME/github/templates/jdk/bash/include.sh" ] && . "$HOME/github/templates/jdk/bash/include.sh" || true
-export PATH="$PATH:$HOME/.local/bin:/snap/bin"
+export PATH="$PATH:$HOME/.local/bin:/snap/bin:/usr/lib/cargo/bin"
 
 fpath+=$HOME/.zfunc
 
@@ -178,7 +178,7 @@ alias gcmsg='git commit -m'
 # alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
 alias lg='ls | grep -E'
 
-function config { git --git-dir=$HOME/.git --work-tree=$HOME $@; }
+function config { git --git-dir=$HOME/dotfiles --work-tree=$HOME $@; }
 
 # options
 unsetopt correct_all
@@ -255,3 +255,5 @@ export PS1='%F{cyan}%n%F{yellow}@%m%F{magenta}${MACHTYPE/x86_64}:%F{cyan}%~%f${v
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh || true
+[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh || true

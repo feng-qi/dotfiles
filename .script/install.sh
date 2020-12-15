@@ -1,5 +1,5 @@
-git clone --bare https://gitee.com/feng-qi/dotfiles.git $HOME/.git || exit 1
-function config { git --git-dir=$HOME/.git --work-tree=$HOME $@; }
+git clone --bare https://gitee.com/feng-qi/dotfiles.git $HOME/dotfiles || exit 1
+function config { git --git-dir=$HOME/dotfiles --work-tree=$HOME $@; }
 echo "Checking out dotfiles ..."
 if config checkout; then
     echo "Done checking out dotfiles"
@@ -18,7 +18,6 @@ else
     echo "Done checking out dotfiles"
 fi
 config config status.showUntrackedFiles no
-config config --bool core.bare false
 config remote rm origin
 config remote add origin https://gitee.com/feng-qi/dotfiles.git
 config remote add github https://github.com/feng-qi/dotfiles.git
