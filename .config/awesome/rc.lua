@@ -329,6 +329,9 @@ clientkeys = awful.util.table.join(
     awful.key({}, "Print",
         function () awful.spawn.with_shell(screenshot, false); end,
         {description = "screenshot", group = "client"}),
+    awful.key({ altKey }, "a",
+        function () awful.spawn.with_shell(screenshot, false); end,
+        {description = "screenshot", group = "client"}),
     -- Volume Control
     awful.key({}, "XF86AudioLowerVolume",
         function () awful.spawn.with_shell(volume_down, false) end,
@@ -460,6 +463,7 @@ awful.rules.rules = {
         class = {
           "Arandr",
           "ffplay",
+          "flameshot",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.

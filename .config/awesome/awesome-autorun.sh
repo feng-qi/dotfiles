@@ -18,5 +18,5 @@ run redshift
 run urxvtd -q -o -f
 # run xrdb $HOME/.Xresources
 
-run pulseaudio --daemonize=yes --log-target=journal
+# run pulseaudio --daemonize=yes --log-target=journal
 ibus-daemon --xim --daemonize
