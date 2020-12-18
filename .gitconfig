@@ -15,7 +15,7 @@
 	fa = fetch --all
 	p = push
 	l = pull
-	up = pull --rebase
+	lr = pull --rebase
 	lol = log --graph --pretty='%C(auto)%h%d%Creset %s %Cgreen(%cr) %Cblue(%an)'
 	lola = log --graph --pretty='%C(auto)%h%d%Creset %s %Cgreen(%cr) %Cblue(%an)' --all
 [core]

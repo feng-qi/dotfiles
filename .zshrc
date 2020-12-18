@@ -72,6 +72,7 @@ source "$ANTIGEN"
 
 
 # Initialize oh-my-zsh
+DISABLE_MAGIC_FUNCTIONS=true
 antigen use oh-my-zsh
 
 # default bundles
@@ -132,29 +133,7 @@ antigen apply
 autoload -U deer
 zle -N deer
 bindkey '\ev' deer
-
-
-# default keymap
-# bindkey -s '\ee' 'vim\n'
-# bindkey '\eh' backward-char
-# bindkey '\el' forward-char
-# bindkey '\ej' down-line-or-history
-# bindkey '\ek' up-line-or-history
-# bindkey '\eu' undo
-# bindkey '\eH' backward-word
-# bindkey '\eL' forward-word
-# bindkey '\eJ' beginning-of-line
-# bindkey '\eK' end-of-line
-
-bindkey -s '\eo' 'cd ..\n'
-bindkey -s '\e;' 'll\n'
-bindkey -s '\er' '_INIT_SH_LOADED=""; source $HOME/.zshrc\n'
-bindkey -r "^[l"
-
-# bindkey '\e[1;3D' backward-word
-# bindkey '\e[1;3C' forward-word
-# bindkey '\e[1;3A' beginning-of-line
-# bindkey '\e[1;3B' end-of-line
+bindkey "^[l" undefined-key
 
 alias g=git
 alias ga='git add'
@@ -173,6 +152,8 @@ alias glola='git lola'
 alias gco='git checkout'
 alias gcm='git checkout master'
 alias gcmsg='git commit -m'
+alias grb='git rebase'
+alias grv='git remote -v'
 
 # alias s='ssh -l fengqi -p 10020 -J jump.hk'
 # alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
