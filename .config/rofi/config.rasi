@@ -11,7 +11,7 @@ configuration {
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 /*	show-icons: false;*/
-	terminal: "urxvtc";
+	terminal: "urxvt";
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host}";*/
 /*	run-command: "{cmd}";*/
@@ -65,8 +65,8 @@ configuration {
 /*	display-drun: ;*/
 /*	display-combi: ;*/
 /*	display-keys: ;*/
-/*	kb-primary-paste: "Control+V,Shift+Insert";*/
-/*	kb-secondary-paste: "Control+v,Insert";*/
+	kb-primary-paste: "Control+Y,Shift+Insert";
+	kb-secondary-paste: "Control+y,Insert";
 /*	kb-clear-line: "Control+w";*/
 /*	kb-move-front: "Control+a";*/
 /*	kb-move-end: "Control+e";*/
@@ -91,8 +91,8 @@ configuration {
 	kb-row-up: "Control+k,Control+p,ISO_Left_Tab,Up";
 	kb-row-down: "Control+j,Control+n,Down";
 /*	kb-row-tab: "Tab";*/
-/*	kb-page-prev: "Page_Up";*/
-/*	kb-page-next: "Page_Down";*/
+	kb-page-prev: "Alt+v,Page_Up";
+	kb-page-next: "Control+v,Page_Down";
 /*	kb-row-first: "Home,KP_Home";*/
 /*	kb-row-last: "End,KP_End";*/
 /*	kb-row-select: "Control+space";*/
