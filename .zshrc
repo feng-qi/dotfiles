@@ -154,6 +154,9 @@ alias gcm='git checkout master'
 alias gcmsg='git commit -m'
 alias grb='git rebase'
 alias grv='git remote -v'
+alias p=popd
+
+function ygd { git diff $@ | ydiff -s }
 
 # alias s='ssh -l fengqi -p 10020 -J jump.hk'
 # alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
