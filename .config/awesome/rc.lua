@@ -311,7 +311,7 @@ globalkeys = awful.util.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    awful.key({ altKey }, "space", function() awful.spawn.with_shell("rofi -show combi", false); end,
+    awful.key({ altKey }, "space", function() awful.spawn.with_shell("albert show", false); end,
               {description = "show the menubar", group = "launcher"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
@@ -327,9 +327,6 @@ local screenshot = "flameshot gui"
 clientkeys = awful.util.table.join(
     -- Screenshot
     awful.key({}, "Print",
-        function () awful.spawn.with_shell(screenshot, false); end,
-        {description = "screenshot", group = "client"}),
-    awful.key({ altKey }, "a",
         function () awful.spawn.with_shell(screenshot, false); end,
         {description = "screenshot", group = "client"}),
     -- Volume Control
@@ -459,6 +456,7 @@ awful.rules.rules = {
           "Arandr",
           "ffplay",
           "flameshot",
+          "scrcpy",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.

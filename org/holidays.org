@@ -1,0 +1,5 @@
+* Holidays
+  :PROPERTIES:
+  :CATEGORY: Holiday
+  :END:
+%%(org-calendar-holiday)

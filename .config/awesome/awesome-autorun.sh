@@ -10,12 +10,13 @@ function run {
 }
 
 run setxkbmap -option caps:swapescape
-run xfce4-power-manager
-run nm-applet     # network manager, using network-manager-gnome package
-run fcitx
+# run xfce4-power-manager
+# run nm-applet     # network manager, using network-manager-gnome package
+# run fcitx
 # run ibus-daemon -dr
-run redshift
+# run redshift
 run urxvtd -q -o -f
+run albert
 # run xrdb $HOME/.Xresources
 
 # run pulseaudio --daemonize=yes --log-target=journal
