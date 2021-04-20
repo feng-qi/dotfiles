@@ -5,6 +5,7 @@ local beautiful     = require("beautiful") -- Theme handling library
 local naughty       = require("naughty")   -- Notification library
 local menubar       = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local xrandr        = require("xrandr")
 require("awful.autofocus")
 
 -- {{{ Error handling
@@ -221,6 +222,14 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    awful.key({ modkey,           }, "`", function() xrandr.xrandr() end,
+              {description = "xrandr", group = "screen"}),
+    awful.key({ modkey,           }, "a", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey,           }, "q", function () awful.screen.focus(1) end,
+              {description = "focus the first screen", group = "screen"}),
+    awful.key({ modkey,           }, "w", function () awful.screen.focus(2) end,
+              {description = "focus the second screen", group = "screen"}),
     awful.key({ modkey,           }, "e",
               function () awful.spawn.with_shell("/home/qi/github/emacs/src/emacs") end,
               {description = "emacs", group = "client"}),
@@ -243,7 +252,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "k",
         function () awful.client.focus.byidx(-1) end,
         {description = "focus previous by index", group = "client"}),
-    awful.key({ modkey,           }, "w",
+    awful.key({ modkey, "Shift"   }, "w",
               function () awful.spawn.with_shell("/snap/bin/scrcpy --turn-screen-off --stay-awake") end,
               {description = "launch scrcpy", group = "awesome"}),
 
@@ -323,12 +332,16 @@ local volume_up   = "amixer -q -D pulse sset Master 5%+"
 -- local screenshot  = "import \"$HOME/Pictures/Screenshot-on-$(date +'%F_%H-%M-%S').png\""
 -- local screenshot = "gnome-screenshot -a -i -c"
 local screenshot = "flameshot gui"
+local screenshot_delay = "flameshot gui -d 10000"
 
 clientkeys = awful.util.table.join(
     -- Screenshot
     awful.key({}, "Print",
         function () awful.spawn.with_shell(screenshot, false); end,
         {description = "screenshot", group = "client"}),
+    awful.key({ altKey            }, "Print",
+        function () awful.spawn.with_shell(screenshot_delay, false); end,
+        {description = "screenshot with 10s delay", group = "client"}),
     -- Volume Control
     awful.key({}, "XF86AudioLowerVolume",
         function () awful.spawn.with_shell(volume_down, false) end,

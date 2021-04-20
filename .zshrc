@@ -160,7 +160,8 @@ function ygd { git diff $@ | ydiff -s }
 
 # alias s='ssh -l fengqi -p 10020 -J jump.hk'
 # alias d='docker run --rm -v ~/bigo:/home/qi/bigo --workdir /home/qi/bigo --user $(id -u):$(id -g) -it compile_base bash'
-alias lg='ls | grep -E'
+alias lg='ls -la | grep -E'
+alias pg='ps aux | grep -E'
 
 function config { git --git-dir=$HOME/dotfiles --work-tree=$HOME $@; }
 
