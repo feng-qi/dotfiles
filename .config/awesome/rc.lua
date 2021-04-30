@@ -96,7 +96,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "open terminal", terminal }}
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
+-- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -163,10 +163,10 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-    -- local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
-    local tag_names = { "Browser", "Emacs", "VM", "Trello", "5", "6", "7", "8", "9" }
+    local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+    -- local tag_names = { "Browser", "Emacs", "VM", "Trello", "5", "6", "7", "8", "9" }
     local l         = awful.layout.suit  -- Just to save some typing: use an alias.
-    local layouts   = { l.max, l.max, l.max, l.floating, l.floating, l.floating, l.floating, l.floating, l.floating }
+    local layouts   = { l.max, l.max, l.tile, l.floating, l.floating, l.floating, l.floating, l.floating, l.floating }
     awful.tag(tag_names, s, layouts)
 
     -- Create a promptbox for each screen
@@ -193,7 +193,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            -- mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
