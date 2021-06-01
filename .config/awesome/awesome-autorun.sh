@@ -15,7 +15,7 @@ run setxkbmap -option caps:swapescape
 # run fcitx
 # run ibus-daemon -dr
 # run redshift
-run urxvtd -q -o -f
+# run urxvtd -q -o -f
 run albert
 # run xrdb $HOME/.Xresources
 

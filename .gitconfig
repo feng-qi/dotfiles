@@ -20,3 +20,5 @@
 	lola = log --graph --pretty='%C(auto)%h%d%Creset %s %Cgreen(%cr) %Cblue(%an)' --all
 [core]
 	editor = vi
+[sendemail]
+	annotate = yes

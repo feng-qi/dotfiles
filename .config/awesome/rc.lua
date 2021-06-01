@@ -38,7 +38,7 @@ end
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal   = "urxvtc"
+terminal   = "alacritty"
 editor     = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -373,6 +373,8 @@ clientkeys = awful.util.table.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
+    awful.key({ modkey,           }, "v",      function (c) c:move_to_screen()               end,
+              {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
@@ -470,6 +472,7 @@ awful.rules.rules = {
           "ffplay",
           "flameshot",
           "scrcpy",
+          "Thunderbird",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
@@ -496,6 +499,7 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "zoom" }, properties = { screen = 1, tag = "4", switchtotag=true } },
 }
 -- }}}
 
