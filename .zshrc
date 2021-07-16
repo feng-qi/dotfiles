@@ -54,7 +54,9 @@ export WORDCHARS='*?_.[]~=&;!#$%^(){}<>'
 
 # https://unix.stackexchange.com/questions/94299/dircolors-modify-color-settings-globaly
 eval "$(dircolors)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# https://gist.github.com/nhibberd/9d78576aab943cdb0f6c
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 . "$HOME/.script/alias.sh"
 
@@ -94,3 +96,14 @@ export PROJECT_HOME=~/pyprojects
 # Remove duplicates in zsh $PATH
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path
+
+# https://www.nikhita.dev/automate-display-of-time-taken-by-command
+# https://stackoverflow.com/questions/12199631/convert-seconds-to-hours-minutes-seconds/29269811#29269811
+function preexec() { timer=${timer:-$SECONDS} }
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(date -d@$(($SECONDS - $timer)) -u +%H:%M:%S)
+    export RPROMPT="%F{cyan}${timer_show}%{$reset_color%}"
+    unset timer
+  fi
+}
