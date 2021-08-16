@@ -47,9 +47,23 @@ unsetopt SHARE_HISTORY
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats " %{$fg[blue]%}(%b)%{$reset_color%}"
-precmd() { vcs_info }
+
+# https://www.nikhita.dev/automate-display-of-time-taken-by-command
+# https://stackoverflow.com/questions/12199631/convert-seconds-to-hours-minutes-seconds/29269811#29269811
+function preexec() { _timer=${timer:-$SECONDS} }
+function precmd() {
+    if [ $_timer ]; then
+        # export timer_show=" $(date -d@$(($SECONDS - $_timer)) -u +%H:%M:%S)"
+        # export RPROMPT="%F{cyan}${timer_show}%{$reset_color%}"
+        ((_seconds = $SECONDS - $_timer))
+        export timer_show=" $((_seconds/3600)):$((_seconds%3600/60)):$((_seconds%60))"
+        unset _timer
+    fi
+    vcs_info
+}
+
 setopt prompt_subst
-export PS1='%F{cyan}%n%F{yellow}@%m%F{magenta}${MACHTYPE/x86_64}:%F{cyan}%~%f${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%? %#%f)%b '
+export PS1='%F{cyan}%n%F{yellow}@%m%F{magenta}${MACHTYPE/x86_64}:%F{cyan}%~%f${timer_show}${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%? %#%f)%b '
 export WORDCHARS='*?_.[]~=&;!#$%^(){}<>'
 
 # https://unix.stackexchange.com/questions/94299/dircolors-modify-color-settings-globaly
@@ -97,13 +111,3 @@ export PROJECT_HOME=~/pyprojects
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path
 
-# https://www.nikhita.dev/automate-display-of-time-taken-by-command
-# https://stackoverflow.com/questions/12199631/convert-seconds-to-hours-minutes-seconds/29269811#29269811
-function preexec() { timer=${timer:-$SECONDS} }
-function precmd() {
-  if [ $timer ]; then
-    timer_show=$(date -d@$(($SECONDS - $timer)) -u +%H:%M:%S)
-    export RPROMPT="%F{cyan}${timer_show}%{$reset_color%}"
-    unset timer
-  fi
-}
