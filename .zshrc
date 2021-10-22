@@ -103,6 +103,9 @@ export PROJECT_HOME=~/pyprojects
 # export RUSTUP_DIST_SERVER='https://mirrors.tuna.tsinghua.edu.cn/rustup'
 # [ -f "$HOME/.cargo/env" ] && export PATH="$HOME/.cargo/bin:$PATH" || true
 
+# haskell
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh || true
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh || true
