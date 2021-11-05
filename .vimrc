@@ -14,6 +14,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'altercation/vim-colors-solarized' " color scheme
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
@@ -175,7 +176,7 @@ nnoremap <leader>fs :update<cr>
 nnoremap <leader>fS :wa<cr>
 nnoremap <leader>fr :browse oldfiles<cr>
 nnoremap <leader>ft :NERDTreeToggle<cr>
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :windo diffthis<cr>
 nnoremap <leader>gD :windo diffoff<cr>
