@@ -3,22 +3,70 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
-[[ ! -f ~/.zinit/bin/zinit.zsh ]] && {
-    command mkdir -p ~/.zinit
-    command git clone --depth=1 https://github.com/zdharma/zinit ~/.zinit/bin
+## ------ Plugin setup begin ------
+# https://github.com/mattmc3/zsh_unplugged
+# $plugin_name.plugin.zsh(N) uses NULL_GLOB option
+# clone a plugin, find an init.zsh, source it, and add it to your fpath
+function plugin-load () {
+    local giturl="$1"
+    local plugin_name=${${giturl##*/}%.git}
+    local plugindir="${ZPLUGINDIR:-$HOME/.zsh/plugins}/$plugin_name"
+
+    # clone if the plugin isn't there already
+    if [[ ! -d $plugindir ]]; then
+        command git clone --depth 1 --recursive --shallow-submodules $giturl $plugindir
+        if [[ $? -ne 0 ]]; then
+            echo "plugin-load: git clone failed for: $giturl" >&2 && return 1
+        fi
+    fi
+
+    # symlink an init.zsh if there isn't one so the plugin is easy to source
+    if [[ ! -f $plugindir/init.zsh ]]; then
+        local initfiles=(
+            # look for specific files first
+            $plugindir/$plugin_name.plugin.zsh(N)
+            $plugindir/$plugin_name.zsh(N)
+            $plugindir/$plugin_name(N)
+            $plugindir/$plugin_name.zsh-theme(N)
+            # then do more aggressive globbing
+            $plugindir/*.plugin.zsh(N)
+            $plugindir/*.zsh(N)
+            $plugindir/*.zsh-theme(N)
+            $plugindir/*.sh(N)
+        )
+        if [[ ${#initfiles[@]} -eq 0 ]]; then
+            echo "plugin-load: no plugin init file found" >&2 && return 1
+        fi
+        command ln -s ${initfiles[1]} $plugindir/init.zsh
+    fi
+
+    # source the plugin
+    source $plugindir/init.zsh
+
+    # modify fpath
+    fpath+=$plugindir
+    [[ -d $plugindir/functions ]] && fpath+=$plugindir/functions
 }
+
+function plugin-update () {
+    local plugindir="${ZPLUGINDIR:-$HOME/.zsh/plugins}"
+    for d in $plugindir/*/.git(/); do
+        echo "Updating ${d:h:t}..."
+        command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+    done
+}
+
+# set where we should store Zsh plugins
+ZPLUGINDIR=$HOME/.zsh/plugins
+plugin-load https://github.com/zsh-users/zsh-autosuggestions.git
+plugin-load https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+## ------ Plugin setup end ------
 
 function __command_exists () { command -v "$1" &> /dev/null; }
 function ygd { git diff $@ | ydiff -s }
 function config { git --git-dir=$HOME/dotfiles --work-tree=$HOME $@; }
 function take { mkdir -p $@ && cd ${@:$#} }
-
-fpath+=$HOME/.zfunc
-source ~/.zinit/bin/zinit.zsh
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-      zsh-users/zsh-completions
 
 HISTFILE=~/.zhistory
 HISTSIZE=5000
@@ -64,8 +112,10 @@ function precmd() {
 
 setopt prompt_subst
 export PS1='%F{cyan}%n%F{yellow}@%m%F{magenta}${MACHTYPE/x86_64}:%F{cyan}%~%f${timer_show}${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%? %#%f)%b '
-export WORDCHARS='*?_.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?.[]~=&;!#$%^(){}<>'
 
+# https://unix.stackexchange.com/questions/341271/dircolors-myfile-sets-ls-colors-to-empty-string-in-screen
+export TERM=xterm-256color
 # https://unix.stackexchange.com/questions/94299/dircolors-modify-color-settings-globaly
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -106,11 +156,17 @@ export PROJECT_HOME=~/pyprojects
 # haskell
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
+# nodejs
+[ -d "$HOME/install/node/bin" ] && export PATH="$HOME/install/node/bin:$PATH" || true
+
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh || true
-[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh || true
 
-# Remove duplicates in zsh $PATH
-# https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
-typeset -aU path
+# # Remove duplicates in zsh $PATH
+# # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
+# typeset -aU path
+
+# # time-consuming operations, do them manually when needed
+# [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh || true
+# plugin-load https://github.com/zsh-users/zsh-completions.git && autoload -U compinit && compinit
 
