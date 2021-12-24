@@ -1,5 +1,5 @@
-[user]
-	name = Qi Feng
+[includeIf "gitdir:~/github/"]
+	path = ~/.script/gitconfig.github
 [alias]
 	st = status
 	rb = rebase
