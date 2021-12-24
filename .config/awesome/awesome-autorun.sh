@@ -24,8 +24,8 @@ run setxkbmap -option caps:swapescape
 run albert
 # run xrdb $HOME/.Xresources
 
-run compton
-run picom
+# run compton
+# run picom
 
 # run pulseaudio --daemonize=yes --log-target=journal
 ibus-daemon --xim --daemonize

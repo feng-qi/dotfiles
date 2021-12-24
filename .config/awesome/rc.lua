@@ -170,7 +170,7 @@ awful.screen.connect_for_each_screen(function(s)
     local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
     -- local tag_names = { "Browser", "Emacs", "VM", "Trello", "5", "6", "7", "8", "9" }
     local l         = awful.layout.suit  -- Just to save some typing: use an alias.
-    local layouts   = { l.max, l.max, l.tile, l.floating, l.floating, l.floating, l.floating, l.floating, l.floating }
+    local layouts   = { l.max, l.max, l.max, l.floating, l.floating, l.floating, l.floating, l.floating, l.floating }
     awful.tag(tag_names, s, layouts)
 
     -- Create a promptbox for each screen
@@ -235,7 +235,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () awful.screen.focus(2) end,
               {description = "focus the second screen", group = "screen"}),
     awful.key({ modkey,           }, "e",
-              function () awful.spawn.with_shell("/home/qi/github/emacs/src/emacs") end,
+              function () awful.spawn.with_shell("~/github/emacs/src/emacs") end,
+              {description = "emacs", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "e",
+              function () awful.spawn.with_shell("~/github/emacs/src/emacs -q") end,
               {description = "emacs", group = "client"}),
     -- Lock screen
     awful.key({ modkey,           }, "z",
@@ -257,7 +260,7 @@ globalkeys = gears.table.join(
         function () awful.client.focus.byidx(-1) end,
         {description = "focus previous by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "w",
-              function () awful.spawn.with_shell("/snap/bin/scrcpy --turn-screen-off --stay-awake") end,
+              function () awful.spawn.with_shell("/snap/bin/scrcpy --turn-screen-off --stay-awake --bit-rate 2M") end,
               {description = "launch scrcpy", group = "awesome"}),
 
     -- Layout manipulation
