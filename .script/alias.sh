@@ -3,6 +3,8 @@ alias   ....='cd ../../..'
 alias  .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+alias e='emacsclient -n'
+
 alias g=git
 alias ga='git add'
 alias gaa='git add --all'

@@ -67,6 +67,7 @@ function __command_exists () { command -v "$1" &> /dev/null; }
 function ygd { git diff $@ | ydiff -s }
 function config { git --git-dir=$HOME/dotfiles --work-tree=$HOME $@; }
 function take { mkdir -p $@ && cd ${@:$#} }
+function dpkgS () { dpkg -S $(command -v "$1"); }
 
 HISTFILE=~/.zhistory
 HISTSIZE=5000
@@ -126,6 +127,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:
 
 alias d='docker run --user $(id -u):$(id -g) -tid -e ARMFVP_BIN_PATH=/fvp/11.14.28 -e LM_LICENSE_FILE=7010@euhpc-lic03.euhpc.arm.com -v $HOME/zephyrproject:/workdir -v $HOME/fvp/11.14.28/:/fvp/11.14.28 -w=/workdir/zephyr --name zephyr docker.io/zephyrprojectrtos/zephyr-build:latest'
 alias dr='docker exec -ti zephyr'
+# docker exec -ti -w=/workdir/twister-outs zephyr bash -c 'source /workdir/zephyr/zephyr-env.sh && twister -p fvp_baser_aemv8r'
+# docker exec -ti -w=/workdir/twister-outs zephyr bash -c 'source /workdir/zephyr/zephyr-env.sh && west build -p always -b fvp_baser_aemv8r /workdir/zephyr/samples/hello_world/'
+alias droot='docker exec --user root -ti zephyr bash'
 
 export PATH="$HOME/github/emacs/lib-src:$HOME/github/emacs/src:$PATH:/usr/lib/cargo/bin"
 
