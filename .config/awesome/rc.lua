@@ -36,7 +36,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
-beautiful.useless_gap = 0.5
+-- beautiful.useless_gap = 0.5
 
 -- This is used later as the default terminal and editor to run.
 terminal   = "alacritty"
@@ -327,8 +327,10 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    awful.key({ altKey }, "space", function() awful.spawn.with_shell("albert show", false); end,
-              {description = "show the menubar", group = "launcher"}),
+    -- awful.key({ altKey }, "space", function() awful.spawn.with_shell("albert show", false); end,
+    --           {description = "albert show", group = "launcher"}),
+    awful.key({ altKey }, "space", function() awful.util.spawn("rofi -show-icons -show combi", false); end,
+              {description = "rofi -show combi", group = "launcher"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
@@ -466,8 +468,8 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = 0,
-                     -- border_width = beautiful.border_width,
+      properties = { -- border_width = 0,
+                     border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,

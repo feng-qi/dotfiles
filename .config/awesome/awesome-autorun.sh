@@ -21,7 +21,7 @@ run setxkbmap -option caps:swapescape
 # run ibus-daemon -dr
 # run redshift
 # run urxvtd -q -o -f
-run albert
+# run albert
 # run xrdb $HOME/.Xresources
 
 # run compton
