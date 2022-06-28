@@ -245,43 +245,43 @@ let g:syntastic_mode_map = {
                         \ "mode": "active" }
 "       \ "passive_filetypes": ["go"] }
 
-" setup for Plugin 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+" " setup for Plugin 'nathanaelkane/vim-indent-guides'
+" let g:indent_guides_start_level = 2
+" let g:indent_guides_guide_size = 1
 
-" setup for plugin 'ctrlp.vim'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,tags     " MacOSX/Linux
-"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_custom_ignore = {
-                        \ 'dir':  '\v[\/]\.(git)$',
-                        \ 'file': '\v\.(log|jpg|png|jpeg|so|o|a|exe|out)$',
-                        \ }
-if (executable('ag'))
-        let g:ctrlp_user_command = 'ag %s -p ~/.agignore -t --nocolor -g ""'
-        let g:ackprg = 'ag --nogroup --nocolor --column'        " change ack program to ag
-endif
-let g:ctrlp_max_files = 10000
-let g:ctrlp_max_depth = 40
-let g:ctrlp_max_height = 10                     " set result window height
-let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_working_path_mode = '0'
+" " setup for plugin 'ctrlp.vim'
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,tags     " MacOSX/Linux
+" "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+" let g:ctrlp_custom_ignore = {
+"                         \ 'dir':  '\v[\/]\.(git)$',
+"                         \ 'file': '\v\.(log|jpg|png|jpeg|so|o|a|exe|out)$',
+"                         \ }
+" if (executable('ag'))
+"         let g:ctrlp_user_command = 'ag %s -p ~/.agignore -t --nocolor -g ""'
+"         let g:ackprg = 'ag --nogroup --nocolor --column'        " change ack program to ag
+" endif
+" let g:ctrlp_max_files = 10000
+" let g:ctrlp_max_depth = 40
+" let g:ctrlp_max_height = 10                     " set result window height
+" let g:ctrlp_working_path_mode = 'ra'
+" "let g:ctrlp_working_path_mode = '0'
 
 " setup for plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 
-" setup for plugin 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enable = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+" " setup for plugin 'vim-airline/vim-airline'
+" let g:airline#extensions#tabline#enable = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" setup for plugin 'easymotion/vim-easymotion'
-let g:EasyMotion_smartcase = 1
-"nmap F <Plug>(easymotion-bd-f)
-"nmap F <Plug>(easymotion-overwin-f)
-"nmap s <Plug>(easymotion-bd-f2)
-"nmap / <Plug>(easymotion-sn)
-"nmap n <Plug>(easymotion-next)
-"nmap N <Plug>(easymotion-prev)
+" " setup for plugin 'easymotion/vim-easymotion'
+" let g:EasyMotion_smartcase = 1
+" "nmap F <Plug>(easymotion-bd-f)
+" "nmap F <Plug>(easymotion-overwin-f)
+" "nmap s <Plug>(easymotion-bd-f2)
+" "nmap / <Plug>(easymotion-sn)
+" "nmap n <Plug>(easymotion-next)
+" "nmap N <Plug>(easymotion-prev)
 
 " setup for fortran
 "let fortran_free_source = 1
