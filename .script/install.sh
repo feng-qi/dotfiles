@@ -23,3 +23,6 @@ config remote add origin https://gitee.com/feng-qi/dotfiles.git
 config remote add github https://github.com/feng-qi/dotfiles.git
 config fetch --all
 config branch --set-upstream-to origin/master master
+
+# sudo apt install fzf ripgrep fd-find rofi ibus-rime i3lock xautolock \
+#      libjansson-dev libsqlite3-dev libtool-bin
