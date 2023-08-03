@@ -113,7 +113,7 @@ function precmd() {
 
 setopt prompt_subst
 export PS1='%F{cyan}%n%F{yellow}@%m%F{magenta}${MACHTYPE/x86_64}:%F{cyan}%~%f${timer_show}${vcs_info_msg_0_}%(1j. %F{red}<%j>%f.) %B%(?.%F{green}%#%f.%F{red}%? %#%f)%b '
-export WORDCHARS='*?.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 
 # https://unix.stackexchange.com/questions/341271/dircolors-myfile-sets-ls-colors-to-empty-string-in-screen
 export TERM=xterm-256color
@@ -136,11 +136,18 @@ export PATH="$HOME/github/emacs/lib-src:$HOME/github/emacs/src:$PATH:/usr/lib/ca
 # radare2
 [ -f "$HOME/bin/radare2" ] && export PATH="$PATH:$HOME/bin" || true
 
-# go
-if __command_exists go; then
-    export GOPATH="$HOME/test/go"
-    export PATH="$PATH:$GOPATH/bin"
-fi
+# # go
+# if __command_exists go; then
+#     export GOPATH="$HOME/test/go"
+#     export PATH="$PATH:$GOPATH/bin"
+# fi
+
+# # PlatformIO
+# [ -d "$HOME/.platformio/penv/bin" ] && export PATH="$HOME/.platformio/penv/bin:$PATH" || true
+# # flutter
+# [ -d "$HOME/install/flutter/bin" ] && export PATH="$HOME/install/flutter/bin:$PATH" || true
+# # zig
+# [ -d "$HOME/install/zig-linux-x86_64-0.9.1" ] && export PATH="$HOME/install/zig-linux-x86_64-0.9.1:$PATH" || true
 
 # # Idris
 # [ -d "$HOME/.cabal/bin" ] && export PATH="$PATH:$HOME/.cabal/bin" || true
